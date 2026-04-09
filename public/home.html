@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealtheon — Independent Asset Management</title>
+  <meta name="description" content="Wealtheon is an independent asset manager with two generations of experience. We manage assets with the greatest care today, for tomorrow." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="main-nav">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="/home" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>
+
+    <!-- Main links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/home" class="active">Welcome</a></li>
+
+      <!-- Services dropdown -->
+      <li>
+        <button class="nav-dropdown-btn" id="services-btn" aria-expanded="false" aria-haspopup="true">
+          Services <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown" id="services-dropdown" role="menu">
+          <div class="dropdown-grid">
+            <!-- Left col: Direct Lines -->
+            <div>
+              <div class="dropdown-col-title">Direct Lines</div>
+              <a href="/services#growth" role="menuitem">
+                <div>
+                  <strong>Growth</strong>
+                  <span>High-growth equity strategy</span>
+                </div>
+              </a>
+              <a href="/services#high-conviction" role="menuitem">
+                <div>
+                  <strong>High Conviction</strong>
+                  <span>Concentrated best-ideas portfolio</span>
+                </div>
+              </a>
+              <a href="/services#value" role="menuitem">
+                <div>
+                  <strong>Value</strong>
+                  <span>Defensive, quality-at-discount</span>
+                </div>
+              </a>
+            </div>
+            <!-- Right col: Funds & FI -->
+            <div>
+              <div class="dropdown-col-title">Funds</div>
+              <a href="/services#funds" role="menuitem">
+                <div>
+                  <strong>High Conviction Fund</strong>
+                  <span>Concentrated multi-asset</span>
+                </div>
+              </a>
+              <a href="/services#funds" role="menuitem">
+                <div>
+                  <strong>Value Fund</strong>
+                  <span>Defensive equity fund</span>
+                </div>
+              </a>
+              <a href="/services#funds" role="menuitem">
+                <div>
+                  <strong>Protea Fund Growth World Equity</strong>
+                  <span>Global growth exposure</span>
+                </div>
+              </a>
+              <a href="/services#funds" role="menuitem">
+                <div>
+                  <strong>DBI-RDT Value Fund</strong>
+                  <span>Tax-efficient value fund</span>
+                </div>
+              </a>
+              <div class="dropdown-col-title" style="margin-top:0.75rem;">Partners</div>
+              <a href="/services#financial-intermediaries" role="menuitem">
+                <div>
+                  <strong>Financial Intermediaries</strong>
+                  <span>Partnership &amp; support model</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/impact">Impact</a></li>
+      <li><a href="/news">News</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/careers">Careers</a></li>
+    </ul>
+
+    <!-- Right side -->
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <a href="#" class="active">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="#">FR</a>
+        <span class="lang-sep">|</span>
+        <a href="#">NL</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-contact-btn">Contact Us</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Independent Asset Management</div>
+      <h1>Your <em>value</em>, our experience,<br>for common growth</h1>
+      <p class="hero-sub">
+        Independent asset management. Two generations of expertise.
+        Built for your financial future — today and tomorrow.
+      </p>
+      <div class="btn-group">
+        <a href="/services" class="btn btn-primary">Discover our strategies</a>
+        <a href="/about" class="btn btn-secondary">About Wealtheon</a>
+      </div>
+      <div class="hero-region" id="hero-region" style="display:none;">
+        <span class="region-badge" id="region-badge">EU</span>
+        <a href="/" style="font-size:0.78rem;color:var(--text-light);">Change region</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card-label">Our philosophy</div>
+      <p class="hero-quote">
+        "We manage assets with the greatest care today — for tomorrow."
+      </p>
+      <hr class="divider" style="margin:0.5rem 0;" />
+      <p style="font-size:0.88rem;color:var(--text-muted);">
+        As a family-owned firm with more than two generations of experience in asset management,
+        we bring deep knowledge, aligned interests, and a long-term perspective to every mandate.
+      </p>
+      <a href="/about" class="hero-card-link">More about us &nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS BAR
+     ═══════════════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-value">2<span class="stat-accent">+</span></div>
+      <div class="stat-label">Generations of<br>experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Investment<br>strategies</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">4</div>
+      <div class="stat-label">Offices across<br>Europe</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value"><span class="stat-accent">Family</span></div>
+      <div class="stat-label">Owned &amp;<br>operated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value"><span class="stat-accent">Long</span></div>
+      <div class="stat-label">Term vision &amp;<br>horizon</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     INVESTMENT STRATEGIES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">What we offer</p>
+      <h2>Our Investment Strategies</h2>
+      <p>We work with three core strategies, each tailored to different risk profiles and investment horizons. Every mandate is built around your objectives.</p>
+    </div>
+
+    <div class="strategy-grid">
+
+      <!-- Growth -->
+      <div class="strategy-card">
+        <div class="strategy-icon">📈</div>
+        <div>
+          <h3>Growth</h3>
+          <span class="risk-badge risk-offensive">Offensive</span>
+        </div>
+        <p>
+          Growth stocks expected to outpace the market average. Typical for young, promising companies
+          with strong turnover growth and substantial reinvestment. We seek tomorrow's leaders today.
+        </p>
+        <a href="/services#growth" class="card-link">Explore strategy &nbsp;→</a>
+      </div>
+
+      <!-- Value -->
+      <div class="strategy-card">
+        <div class="strategy-icon">🛡️</div>
+        <div>
+          <h3>Value</h3>
+          <span class="risk-badge risk-defensive">Defensive</span>
+        </div>
+        <p>
+          More defensive and attractively priced than growth stocks. Solid companies with above-average
+          returns available at discounted prices — stable, consistent returns with safety over the long term.
+        </p>
+        <a href="/services#value" class="card-link">Explore strategy &nbsp;→</a>
+      </div>
+
+      <!-- High Conviction -->
+      <div class="strategy-card">
+        <div class="strategy-icon">🎯</div>
+        <div>
+          <h3>High Conviction</h3>
+          <span class="risk-badge risk-concentrated">Concentrated</span>
+        </div>
+        <p>
+          A concentrated portfolio of our highest-conviction investments across both growth and value,
+          for investors seeking differentiated returns and willing to accept a focused approach.
+        </p>
+        <a href="/services#high-conviction" class="card-link">Explore strategy &nbsp;→</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VALUES SECTION
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Our principles</p>
+      <h2>What We Stand For</h2>
+      <p>Four values that guide every interaction, every decision, and every investment we make on your behalf.</p>
+    </div>
+
+    <div class="values-grid">
+
+      <div class="value-item">
+        <div class="value-number">01</div>
+        <div class="value-content">
+          <h3>Client First</h3>
+          <p>At every level of our organisation, we strive to constantly exceed your expectations. Your interests are the first consideration in everything we do.</p>
+        </div>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">02</div>
+        <div class="value-content">
+          <h3>Integrity</h3>
+          <p>As a family-owned business active in the financial sector, we attach great importance to our reputation. We act at all times in a trustworthy and transparent way towards all stakeholders.</p>
+        </div>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">03</div>
+        <div class="value-content">
+          <h3>Aligned Interests</h3>
+          <p>Together with you, we co-invest in our investment strategies for the long term. We put our own capital alongside yours — because we believe in what we do.</p>
+        </div>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">04</div>
+        <div class="value-content">
+          <h3>Expertise</h3>
+          <p>As a knowledge-driven organisation, we continuously build on our expertise spanning decades. Our research-first approach ensures every decision is grounded in rigorous analysis.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABOUT TEASER
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="two-col">
+      <div class="two-col-text">
+        <p class="section-label">Our story</p>
+        <h2>A family business built on trust</h2>
+        <p>
+          Wealtheon is an independent asset manager with a long-term vision. We manage assets with
+          the greatest care today, for tomorrow. Our firm was founded on the conviction that clients
+          deserve a manager who thinks in generations, not quarters.
+        </p>
+        <p>
+          With more than two generations of experience in asset management, we bring a depth of
+          knowledge that spans market cycles, economic shifts, and structural changes across Europe.
+          This continuity of expertise is rare — and it is at the core of what makes Wealtheon different.
+        </p>
+        <a href="/about" class="more-link">More about us &nbsp;→</a>
+      </div>
+      <div>
+        <div class="quote-box">
+          <blockquote>
+            "With more than two generations of experience in asset management, we dispose of a lot of
+            knowledge to advise you. We are a family business with a long-term vision."
+          </blockquote>
+          <cite>The Wealtheon Family</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FUNDS SECTION (dark)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Investment vehicles</p>
+      <h2>Our Funds</h2>
+      <p>Alongside our direct mandates, we offer a range of regulated investment funds designed for different investor profiles and objectives.</p>
+    </div>
+
+    <div class="funds-grid">
+
+      <div class="fund-card">
+        <div class="fund-tag">Global Equity</div>
+        <h3>Protea Fund Growth World Equity</h3>
+        <p>A diversified global equity fund focused on high-growth companies across developed and emerging markets. Suitable for investors seeking broad international exposure with a growth tilt.</p>
+        <a href="/services#funds" class="fund-link">View fund &nbsp;→</a>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-tag">Value · Tax-Efficient</div>
+        <h3>DBI-RDT Value Fund</h3>
+        <p>A value-oriented equity fund structured to benefit from the Belgian DBI-RDT (definitief belaste inkomsten) tax regime, making it particularly attractive for Belgian corporate investors.</p>
+        <a href="/services#funds" class="fund-link">View fund &nbsp;→</a>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-tag">Multi-Asset · Concentrated</div>
+        <h3>High Conviction Fund</h3>
+        <p>A concentrated portfolio of our best ideas — typically 15 to 25 positions — spanning both growth and value opportunities. For investors who prefer depth over breadth.</p>
+        <a href="/services#funds" class="fund-link">View fund &nbsp;→</a>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-tag">Defensive Equity</div>
+        <h3>Value Fund</h3>
+        <p>A fund investing in undervalued, high-quality businesses trading below intrinsic value. The fund prioritises capital preservation while delivering consistent long-term returns.</p>
+        <a href="/services#funds" class="fund-link">View fund &nbsp;→</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     IMPACT TEASER
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="impact-teaser">
+      <div>
+        <div class="impact-icon">🌱</div>
+        <p class="section-label">Responsible investing</p>
+        <h2>Our Commitment to Impact</h2>
+        <p>
+          At Wealtheon, responsible investment is not a marketing label — it is an integral part of our
+          investment process. We incorporate environmental, social, and governance (ESG) factors into our
+          analysis because we believe that sustainable businesses generate superior long-term returns.
+        </p>
+        <p>
+          Through the Wealtheon Foundation, we also support community and philanthropic initiatives
+          that reflect our values as a family-owned firm with a genuine long-term perspective.
+        </p>
+        <a href="/impact" class="more-link" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.9rem;font-weight:600;color:var(--red);margin-top:0.5rem;transition:gap 0.15s;">
+          Our impact &amp; ESG approach &nbsp;→
+        </a>
+      </div>
+      <div class="impact-right">
+        <h3>Wealtheon Foundation</h3>
+        <p>
+          We believe that financial success and social responsibility go hand in hand. Through our foundation,
+          we direct a portion of our revenues towards initiatives that create lasting positive impact —
+          for communities, for the environment, and for future generations.
+        </p>
+        <hr class="divider" style="margin:1.25rem 0;" />
+        <h3>ESG Integration</h3>
+        <p>
+          Our portfolio managers apply ESG screening and engagement across all strategies. We seek companies
+          that manage their environmental footprint, govern themselves with integrity, and treat their
+          stakeholders fairly.
+        </p>
+        <a href="/impact" class="btn btn-secondary" style="margin-top:1.25rem;font-size:0.88rem;padding:0.6rem 1.4rem;">
+          Learn more
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA SECTION (red bg)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-red">
+  <div class="cta-section">
+    <p class="section-label">Let's grow your value</p>
+    <h2>Ready to grow your wealth?</h2>
+    <p>Talk to our team — we'd love to hear about your situation and show you how Wealtheon can help you achieve your financial goals.</p>
+    <a href="/contact" class="btn btn-white">Get in touch</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Brand col -->
+    <div class="footer-brand">
+      <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" style="height:44px;width:auto;margin-bottom:0.6rem;" />
+      <p class="footer-tagline">"Your value, our experience, for common growth"</p>
+      <p class="footer-address">
+        <strong>Belgium — Brussels</strong><br>
+        Waterloosesteenweg 1135<br>
+        1180 Brussels<br>
+        +32 2 372 50 10
+      </p>
+      <p class="footer-address">
+        <strong>Belgium — Waregem</strong><br>
+        Kalkhoevestraat 30 B3.2<br>
+        8790 Waregem<br>
+        +32 56 96 05 01
+      </p>
+      <p class="footer-address">
+        <strong>The Netherlands</strong><br>
+        Schimmelt 28 unit-b<br>
+        5611 ZX Eindhoven<br>
+        +31 40 296 0480
+      </p>
+      <p class="footer-address">
+        <strong>Switzerland</strong><br>
+        14 Bd des Philosophes<br>
+        1205 Geneva<br>
+        +41 22 320 47 40
+      </p>
+    </div>
+
+    <!-- Services col -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services#growth">Growth Strategy</a></li>
+        <li><a href="/services#value">Value Strategy</a></li>
+        <li><a href="/services#high-conviction">High Conviction</a></li>
+        <li><a href="/services#funds">Our Funds</a></li>
+        <li><a href="/services#financial-intermediaries">Financial Intermediaries</a></li>
+      </ul>
+    </div>
+
+    <!-- Company col -->
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/impact">Impact &amp; ESG</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/careers">Careers</a></li>
+      </ul>
+    </div>
+
+    <!-- Legal col -->
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Regulatory Disclosures</a></li>
+        <li><a href="#">MiFID II</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact col -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a></li>
+        <li><a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="/">Change region</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Wealtheon SA. All rights reserved. &nbsp;·&nbsp; VAT BE0423.072.032 &nbsp;·&nbsp; CHE-100.840.696</span>
+    <div class="footer-lang">
+      <a href="#" class="active">EN</a>
+      <span class="lang-sep">|</span>
+      <a href="#">FR</a>
+      <span class="lang-sep">|</span>
+      <a href="#">NL</a>
+    </div>
+  </div>
+
+  <p class="footer-regulatory">
+    This website is for information purposes only and does not constitute investment advice, an offer to sell, or a solicitation to buy any financial instrument.
+    Past performance is not a reliable indicator of future results. The value of investments may fall as well as rise, and you may not get back the amount invested.
+    Wealtheon SA is regulated under Belgian financial services law. Wealtheon SA (Geneva) is authorised by FINMA, supervised by AOOS,
+    member of SAAM, ombudsman OFS Ombud Finance Switzerland.
+  </p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+  // Region indicator
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var region = params.get('region') || sessionStorage.getItem('wealtheon_region');
+    if (region) {
+      sessionStorage.setItem('wealtheon_region', region);
+      var badge = document.getElementById('region-badge');
+      var container = document.getElementById('hero-region');
+      if (badge && container) {
+        badge.textContent = region.toUpperCase() === 'CH' ? '🇨🇭 Switzerland' : '🇪🇺 European Union';
+        container.style.display = 'flex';
+      }
+    }
+  })();
+
+  // Services dropdown toggle
+  var btn = document.getElementById('services-btn');
+  var dropdown = document.getElementById('services-dropdown');
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = dropdown.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var arrow = btn.querySelector('.nav-arrow');
+    if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+  });
+
+  document.addEventListener('click', function () {
+    dropdown.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    var arrow = btn.querySelector('.nav-arrow');
+    if (arrow) arrow.style.transform = '';
+  });
+
+  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+
+  // Mobile nav toggle
+  document.getElementById('nav-toggle').addEventListener('click', function () {
+    var links = document.getElementById('nav-links');
+    links.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

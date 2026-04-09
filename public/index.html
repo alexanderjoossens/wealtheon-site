@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealtheon — Select Your Region</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: var(--white); }
+  </style>
+</head>
+<body class="region-selector-page" style="display:flex;flex-direction:column;min-height:100vh;">
+
+  <!-- Header with Logo -->
+  <header class="region-selector-header">
+    <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" style="height:56px;width:auto;margin:0 auto;" />
+    <p>Independent Asset Management</p>
+  </header>
+
+  <!-- Split panels -->
+  <main class="region-panels" style="flex:1;">
+
+    <!-- EU Panel -->
+    <div class="region-panel" id="eu-panel" onclick="selectRegion('eu')">
+      <div class="region-flag">🇪🇺</div>
+      <div class="region-country">Europe</div>
+      <p class="region-subtitle">
+        Belgium &amp; The Netherlands<br>
+        Regulated in Belgium (BE0423.072.032)
+      </p>
+      <p class="region-regulatory">
+        Wealtheon SA is an independent asset manager regulated under Belgian financial services law.
+        Services are provided to eligible clients in Belgium and the Netherlands.
+      </p>
+      <a class="region-enter-btn" href="/home?region=eu" onclick="sessionStorage.setItem('wealtheon_region','eu')">
+        Enter EU site &nbsp;→
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="region-divider"></div>
+
+    <!-- CH Panel -->
+    <div class="region-panel" id="ch-panel" onclick="selectRegion('ch')">
+      <div class="region-flag">🇨🇭</div>
+      <div class="region-country">Switzerland</div>
+      <p class="region-subtitle">
+        Geneva<br>
+        Authorised by FINMA · Supervised by AOOS
+      </p>
+      <p class="region-regulatory">
+        Wealtheon SA (Geneva) is authorised by FINMA, supervised by AOOS, a member of SAAM,
+        and subject to OFS Ombud Finance Switzerland as ombudsman.
+      </p>
+      <a class="region-enter-btn" href="/home?region=ch" onclick="sessionStorage.setItem('wealtheon_region','ch')">
+        Enter CH site &nbsp;→
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer note -->
+  <footer class="region-selector-footer">
+    This website is for information purposes only and does not constitute investment advice or an offer to provide investment services.
+    Past performance is not a reliable indicator of future results. &nbsp;|&nbsp;
+    <a href="/home" style="color:var(--red);">Skip selection</a>
+  </footer>
+
+  <script>
+    // If region already stored, redirect automatically
+    (function () {
+      var stored = sessionStorage.getItem('wealtheon_region');
+      if (stored) {
+        window.location.href = '/home?region=' + stored;
+      }
+    })();
+
+    function selectRegion(region) {
+      sessionStorage.setItem('wealtheon_region', region);
+      window.location.href = '/home?region=' + region;
+    }
+
+    // Allow clicking the whole panel (except clicking directly on the button which handles itself)
+    document.querySelectorAll('.region-panel').forEach(function(panel) {
+      panel.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') return;
+        var region = panel.id.replace('-panel', '');
+        selectRegion(region);
+      });
+    });
+  </script>
+
+</body>
+</html>

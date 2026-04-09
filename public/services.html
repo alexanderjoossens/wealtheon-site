@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Wealtheon</title>
+  <meta name="description" content="Discover Wealtheon's investment strategies — Growth, Value, and High Conviction — along with our regulated funds and financial intermediary partnership model." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="/home" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/home">Welcome</a></li>
+      <li>
+        <button class="nav-dropdown-btn" id="services-btn" aria-expanded="false" aria-haspopup="true">
+          Services <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown" id="services-dropdown" role="menu">
+          <div class="dropdown-grid">
+            <div>
+              <div class="dropdown-col-title">Direct Lines</div>
+              <a href="/services#growth"><div><strong>Growth</strong><span>High-growth equity strategy</span></div></a>
+              <a href="/services#high-conviction"><div><strong>High Conviction</strong><span>Concentrated best-ideas portfolio</span></div></a>
+              <a href="/services#value"><div><strong>Value</strong><span>Defensive, quality-at-discount</span></div></a>
+            </div>
+            <div>
+              <div class="dropdown-col-title">Funds</div>
+              <a href="/services#funds"><div><strong>High Conviction Fund</strong><span>Concentrated multi-asset</span></div></a>
+              <a href="/services#funds"><div><strong>Value Fund</strong><span>Defensive equity fund</span></div></a>
+              <a href="/services#funds"><div><strong>Protea Fund Growth World Equity</strong><span>Global growth exposure</span></div></a>
+              <a href="/services#funds"><div><strong>DBI-RDT Value Fund</strong><span>Tax-efficient value fund</span></div></a>
+              <div class="dropdown-col-title" style="margin-top:0.75rem;">Partners</div>
+              <a href="/services#financial-intermediaries"><div><strong>Financial Intermediaries</strong><span>Partnership &amp; support model</span></div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/impact">Impact</a></li>
+      <li><a href="/news">News</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/careers">Careers</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+        <a href="#">FR</a><span class="lang-sep">|</span>
+        <a href="#">NL</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-contact-btn">Contact Us</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/home">Home</a>
+      <span class="sep">›</span>
+      <span>Services</span>
+    </nav>
+    <h1>Our Services</h1>
+    <p>
+      We offer tailored investment solutions through three direct-line strategies and a range of regulated funds.
+      Each approach is designed with a clear investment philosophy, defined risk profile, and long-term horizon.
+      Whether you invest directly or through a fund, Wealtheon brings the same rigorous research and genuine partnership.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     DIRECT LINES INTRO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <p class="section-label">Direct Lines</p>
+    <h2>Investment Strategies</h2>
+    <p style="max-width:620px;margin-bottom:3rem;">
+      Our Direct Lines are individually managed portfolios aligned to one of our three core strategies.
+      Each line is managed with full transparency, regular reporting, and direct access to your portfolio managers.
+    </p>
+
+    <!-- Strategy overview cards -->
+    <div class="strategy-grid" style="margin-bottom:1rem;">
+      <div class="strategy-card">
+        <div class="strategy-icon">📈</div>
+        <div><h3>Growth</h3><span class="risk-badge risk-offensive">Offensive</span></div>
+        <p>High-growth companies expected to grow significantly faster than the market average. Suitable for investors with a higher risk tolerance and a long-term horizon.</p>
+        <a href="#growth" class="card-link">See details &nbsp;→</a>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon">🛡️</div>
+        <div><h3>Value</h3><span class="risk-badge risk-defensive">Defensive</span></div>
+        <p>Quality companies trading below intrinsic value. A disciplined approach to capturing long-term returns with a margin of safety and lower volatility.</p>
+        <a href="#value" class="card-link">See details &nbsp;→</a>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon">🎯</div>
+        <div><h3>High Conviction</h3><span class="risk-badge risk-concentrated">Concentrated</span></div>
+        <p>Our best ideas from across the growth and value spectrum, held in a focused portfolio for investors seeking differentiated performance.</p>
+        <a href="#high-conviction" class="card-link">See details &nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GROWTH STRATEGY DETAIL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-light" id="growth">
+  <div class="container">
+    <div class="strategy-detail-inner">
+
+      <!-- Sidebar meta -->
+      <div class="strategy-meta">
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Strategy</div>
+          <div class="strategy-meta-value">Growth</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Approach</div>
+          <div class="strategy-meta-value"><span class="risk-badge risk-offensive">Offensive</span></div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Risk Profile</div>
+          <div class="strategy-meta-value">Higher volatility · Higher potential return</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Investment Horizon</div>
+          <div class="strategy-meta-value">5+ years (long-term)</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Target Client</div>
+          <div class="strategy-meta-value">Growth-oriented investors comfortable with short-term volatility</div>
+        </div>
+        <hr class="divider" style="margin:1rem 0;" />
+        <a href="/contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">
+          Enquire now
+        </a>
+      </div>
+
+      <!-- Body -->
+      <div class="strategy-detail-body">
+        <h3>📈 &nbsp;Growth Strategy</h3>
+        <p>
+          The Growth strategy focuses on companies expected to grow their revenues and earnings
+          significantly faster than the overall market average. These are typically younger, innovative
+          businesses operating in expanding industries — technology, healthcare, consumer, and
+          specialised industrials — where strong reinvestment of profits fuels compounding growth over time.
+        </p>
+        <p>
+          Growth investing demands patience and discipline. Short-term price volatility is an inherent
+          feature of holding high-growth businesses. Our portfolio managers apply rigorous fundamental
+          analysis to identify companies with durable competitive advantages, strong management, and
+          a clear path to sustained profitability — not just temporary momentum.
+        </p>
+
+        <h4 style="margin:1.5rem 0 0.75rem;color:var(--black);">Investment Philosophy</h4>
+        <p>We look for companies that meet three key criteria:</p>
+        <ul class="strategy-bullets">
+          <li>Strong, proven revenue growth with visibility of continued expansion</li>
+          <li>Substantial reinvestment in research, technology, or market development</li>
+          <li>A clearly identifiable competitive moat protecting future returns</li>
+          <li>Management with skin in the game and a long-term orientation</li>
+          <li>Valuation discipline — even growth must be bought at a reasonable price</li>
+        </ul>
+
+        <h4 style="margin:1.5rem 0 0.75rem;color:var(--black);">What to Expect</h4>
+        <p>
+          Clients invested in the Growth strategy should expect meaningful outperformance over full
+          market cycles, with periods of underperformance during market drawdowns or risk-off environments.
+          Our role is to manage that volatility through disciplined position sizing, diversification
+          across sectors and geographies, and a clear-eyed assessment of valuation at all times.
+        </p>
+        <p>
+          Reporting is provided monthly, with a detailed quarterly letter from your portfolio manager
+          reviewing each holding, the investment thesis, and any portfolio changes.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VALUE STRATEGY DETAIL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white" id="value">
+  <div class="container">
+    <div class="strategy-detail-inner">
+
+      <div class="strategy-meta">
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Strategy</div>
+          <div class="strategy-meta-value">Value</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Approach</div>
+          <div class="strategy-meta-value"><span class="risk-badge risk-defensive">Defensive</span></div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Risk Profile</div>
+          <div class="strategy-meta-value">Lower volatility · Consistent returns</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Investment Horizon</div>
+          <div class="strategy-meta-value">3–7 years (medium to long-term)</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Target Client</div>
+          <div class="strategy-meta-value">Capital-preservation-minded investors seeking steady compounding</div>
+        </div>
+        <hr class="divider" style="margin:1rem 0;" />
+        <a href="/contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">
+          Enquire now
+        </a>
+      </div>
+
+      <div class="strategy-detail-body">
+        <h3>🛡️ &nbsp;Value Strategy</h3>
+        <p>
+          The Value strategy invests in solid, established companies with above-average return on
+          equity that are temporarily available at prices below their intrinsic value. This approach
+          is more defensive in nature — the discount to fair value provides a margin of safety that
+          reduces downside risk and creates an asymmetric return profile over time.
+        </p>
+        <p>
+          Value investing is patient by design. Markets often misprice businesses due to short-term
+          sentiment, temporary headwinds, or sector-wide pessimism. Our team uses deep fundamental
+          research — not price momentum — to identify when a quality company is genuinely cheap.
+        </p>
+
+        <h4 style="margin:1.5rem 0 0.75rem;color:var(--black);">Investment Philosophy</h4>
+        <ul class="strategy-bullets">
+          <li>Quality businesses with proven profitability and strong balance sheets</li>
+          <li>Attractive valuations relative to earnings, book value, and free cash flow</li>
+          <li>A clear catalyst or path to value recognition over the medium term</li>
+          <li>Low financial leverage — capital preservation is always front of mind</li>
+          <li>Sector and geographic diversification to reduce concentration risk</li>
+        </ul>
+
+        <h4 style="margin:1.5rem 0 0.75rem;color:var(--black);">What to Expect</h4>
+        <p>
+          Clients in the Value strategy typically experience smoother returns over time compared to
+          growth-oriented mandates, with better protection during equity market downturns. The strategy
+          aims to deliver consistent compounding — capturing a meaningful portion of market upside while
+          limiting drawdowns.
+        </p>
+        <p>
+          Dividend income often plays a role in total return, as many value companies are mature
+          businesses with strong cash generation and shareholder-friendly capital allocation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HIGH CONVICTION STRATEGY DETAIL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-light" id="high-conviction">
+  <div class="container">
+    <div class="strategy-detail-inner">
+
+      <div class="strategy-meta">
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Strategy</div>
+          <div class="strategy-meta-value">High Conviction</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Approach</div>
+          <div class="strategy-meta-value"><span class="risk-badge risk-concentrated">Concentrated</span></div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Risk Profile</div>
+          <div class="strategy-meta-value">Higher tracking error · Differentiated returns</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Typical Holdings</div>
+          <div class="strategy-meta-value">15–25 positions</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Investment Horizon</div>
+          <div class="strategy-meta-value">5+ years</div>
+        </div>
+        <div class="strategy-meta-item">
+          <div class="strategy-meta-label">Target Client</div>
+          <div class="strategy-meta-value">Sophisticated investors seeking alpha through concentration</div>
+        </div>
+        <hr class="divider" style="margin:1rem 0;" />
+        <a href="/contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">
+          Enquire now
+        </a>
+      </div>
+
+      <div class="strategy-detail-body">
+        <h3>🎯 &nbsp;High Conviction Strategy</h3>
+        <p>
+          The High Conviction strategy is Wealtheon's most concentrated offering — a focused portfolio
+          of typically 15 to 25 positions drawn from across the growth and value universe. These are
+          the investments where our conviction is highest: where the thesis is clear, the management
+          is trusted, and the risk/reward is compelling.
+        </p>
+        <p>
+          Concentration is not recklessness — it is the result of saying "no" to everything except
+          our very best ideas. Each position is sized to reflect our confidence in the thesis and
+          the expected return profile. The portfolio is actively managed, with positions reviewed
+          continuously against their original investment case.
+        </p>
+
+        <h4 style="margin:1.5rem 0 0.75rem;color:var(--black);">Investment Philosophy</h4>
+        <ul class="strategy-bullets">
+          <li>Only the highest-conviction ideas from across our research universe</li>
+          <li>Positions spanning both growth and value — wherever the best opportunities lie</li>
+          <li>No benchmark hugging — the portfolio looks genuinely different from market indices</li>
+          <li>Active position management with clear entry, sizing, and exit discipline</li>
+          <li>Full transparency: clients understand every position and its investment thesis</li>
+        </ul>
+
+        <h4 style="margin:1.5rem 0 0.75rem;color:var(--black);">What to Expect</h4>
+        <p>
+          This strategy is best suited to investors who understand and embrace the nature of
+          concentrated portfolios — higher potential for significant outperformance, with correspondingly
+          higher short-term volatility relative to the market. Returns will deviate meaningfully from
+          benchmark indices, both up and down.
+        </p>
+        <p>
+          Clients receive in-depth reporting including a position-by-position commentary,
+          thesis updates, and a candid assessment of any mistakes or changes in view.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FUNDS SECTION
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-dark" id="funds">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Regulated vehicles</p>
+      <h2>Our Funds</h2>
+      <p>For investors who prefer a fund structure — whether for diversification, tax efficiency, or operational convenience — Wealtheon offers four regulated investment funds.</p>
+    </div>
+
+    <div class="funds-grid">
+
+      <div class="fund-card">
+        <div class="fund-tag">Global Equity · Growth</div>
+        <h3>Protea Fund Growth World Equity</h3>
+        <p>
+          A broadly diversified global equity fund targeting high-growth companies across developed
+          and emerging markets. The fund applies Wealtheon's Growth investment philosophy at scale,
+          providing investors with efficient international equity exposure within a regulated UCITS structure.
+        </p>
+        <a href="/contact" class="fund-link">Request documentation &nbsp;→</a>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-tag">Value · DBI-RDT Tax Regime</div>
+        <h3>DBI-RDT Value Fund</h3>
+        <p>
+          A value-oriented equity fund structured to qualify under the Belgian DBI-RDT (definitief
+          belaste inkomsten / revenus définitivement taxés) regime. This makes it particularly
+          attractive for Belgian corporate investors seeking to hold dividend-paying equities
+          in a tax-efficient wrapper.
+        </p>
+        <a href="/contact" class="fund-link">Request documentation &nbsp;→</a>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-tag">Multi-Asset · Best Ideas</div>
+        <h3>High Conviction Fund</h3>
+        <p>
+          The fund equivalent of our High Conviction direct line — a concentrated portfolio of
+          15 to 25 positions representing our very best cross-asset ideas. Available to investors
+          who want concentrated, differentiated performance in a regulated and accessible vehicle.
+        </p>
+        <a href="/contact" class="fund-link">Request documentation &nbsp;→</a>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-tag">Defensive Equity · Income</div>
+        <h3>Value Fund</h3>
+        <p>
+          A diversified equity fund investing in quality companies trading below intrinsic value.
+          The fund prioritises capital preservation and consistent returns over the long term,
+          with an emphasis on cash-generative businesses and attractive dividend income.
+        </p>
+        <a href="/contact" class="fund-link">Request documentation &nbsp;→</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINANCIAL INTERMEDIARIES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white" id="financial-intermediaries">
+  <div class="container">
+    <p class="section-label">Partnerships</p>
+    <h2>Financial Intermediaries</h2>
+    <p style="max-width:620px;margin-bottom:2.5rem;">
+      We work closely with independent financial advisers, family offices, wealth managers, and
+      other financial intermediaries who seek a trusted investment management partner for their clients.
+      Our intermediary model is built on genuine partnership, transparency, and aligned interests.
+    </p>
+
+    <div class="fi-section">
+      <p>
+        As an independent asset manager with no proprietary products beyond our own strategies,
+        Wealtheon is free of the conflicts of interest that affect larger, bank-affiliated managers.
+        We manage your clients' assets the same way we manage our own — with patience, rigour, and
+        a long-term perspective.
+      </p>
+
+      <div class="fi-grid">
+
+        <div class="fi-item">
+          <h4>Dedicated Support</h4>
+          <p>Each intermediary partner is assigned a dedicated relationship manager at Wealtheon, providing a single point of contact for all operational, reporting, and investment matters.</p>
+        </div>
+
+        <div class="fi-item">
+          <h4>Full Transparency</h4>
+          <p>We provide complete transparency on portfolio composition, transaction history, performance attribution, and fee structures — enabling you to fulfil your own reporting obligations with ease.</p>
+        </div>
+
+        <div class="fi-item">
+          <h4>White-Label Options</h4>
+          <p>For qualifying intermediary partners, we can structure mandates and reporting under your branding, allowing you to deliver Wealtheon's investment quality seamlessly within your own client relationships.</p>
+        </div>
+
+        <div class="fi-item">
+          <h4>Co-Investment</h4>
+          <p>Consistent with our principle of aligned interests, Wealtheon staff co-invest in the strategies we manage — a meaningful demonstration of confidence in our own process.</p>
+        </div>
+
+        <div class="fi-item">
+          <h4>Research Access</h4>
+          <p>Intermediary partners have access to our in-house research, market views, and strategy updates — giving you deeper insight to share with your own clients.</p>
+        </div>
+
+        <div class="fi-item">
+          <h4>Flexible Structures</h4>
+          <p>We accommodate direct discretionary mandates, fund investments, and hybrid arrangements — whatever structure best suits your clients' legal, tax, and operational requirements.</p>
+        </div>
+
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a href="/contact" class="btn btn-primary">Speak to our partnerships team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-red">
+  <div class="cta-section">
+    <p class="section-label">Let's grow your value</p>
+    <h2>Find the right strategy for you</h2>
+    <p>Our team is happy to discuss your objectives and recommend the approach best suited to your situation — whether you are an individual investor, family office, or financial intermediary.</p>
+    <a href="/contact" class="btn btn-white">Get in touch</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" style="height:44px;width:auto;margin-bottom:0.6rem;" />
+      <p class="footer-tagline">"Your value, our experience, for common growth"</p>
+      <p class="footer-address"><strong>Belgium — Brussels</strong><br>Waterloosesteenweg 1135, 1180 Brussels<br>+32 2 372 50 10</p>
+      <p class="footer-address"><strong>Belgium — Waregem</strong><br>Kalkhoevestraat 30 B3.2, 8790 Waregem<br>+32 56 96 05 01</p>
+      <p class="footer-address"><strong>The Netherlands</strong><br>Schimmelt 28 unit-b, 5611 ZX Eindhoven<br>+31 40 296 0480</p>
+      <p class="footer-address"><strong>Switzerland</strong><br>14 Bd des Philosophes, 1205 Geneva<br>+41 22 320 47 40</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services#growth">Growth Strategy</a></li>
+        <li><a href="/services#value">Value Strategy</a></li>
+        <li><a href="/services#high-conviction">High Conviction</a></li>
+        <li><a href="/services#funds">Our Funds</a></li>
+        <li><a href="/services#financial-intermediaries">Financial Intermediaries</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/impact">Impact &amp; ESG</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/careers">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Regulatory Disclosures</a></li>
+        <li><a href="#">MiFID II</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a></li>
+        <li><a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="/">Change region</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Wealtheon SA. All rights reserved. · VAT BE0423.072.032 · CHE-100.840.696</span>
+    <div class="footer-lang">
+      <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+      <a href="#">FR</a><span class="lang-sep">|</span>
+      <a href="#">NL</a>
+    </div>
+  </div>
+  <p class="footer-regulatory">
+    This website is for information purposes only and does not constitute investment advice. Past performance is not a reliable indicator of future results.
+    Wealtheon SA is regulated under Belgian financial services law. Wealtheon SA (Geneva) is authorised by FINMA, supervised by AOOS, member of SAAM, ombudsman OFS.
+  </p>
+</footer>
+
+<script>
+  var btn = document.getElementById('services-btn');
+  var dropdown = document.getElementById('services-dropdown');
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = dropdown.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var arrow = btn.querySelector('.nav-arrow');
+    if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+  });
+  document.addEventListener('click', function () {
+    dropdown.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    var arrow = btn.querySelector('.nav-arrow');
+    if (arrow) arrow.style.transform = '';
+  });
+  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+  document.getElementById('nav-toggle').addEventListener('click', function () {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
