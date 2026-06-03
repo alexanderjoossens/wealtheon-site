@@ -41,6 +41,13 @@ app.get('/home', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
 });
 
+// Homepage variations (home1–home5) — selectable from the "Welcome" dropdown
+for (let i = 1; i <= 5; i++) {
+  app.get(`/home${i}`, (req, res) => {
+    res.sendFile(path.join(PUBLIC_DIR, `home${i}.html`));
+  });
+}
+
 // Services page
 app.get('/services', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'services.html'));
