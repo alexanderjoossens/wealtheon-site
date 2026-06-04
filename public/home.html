@@ -20,11 +20,25 @@
 
     <!-- Main links -->
     <ul class="nav-links" id="nav-links">
-      <li><a href="/home" class="active">Welcome</a></li>
+
+      <!-- Welcome dropdown (5 homepages) -->
+      <li>
+        <button class="nav-dropdown-btn active" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">
+          Welcome <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown dropdown-narrow" id="welcome-dropdown" role="menu">
+          <div class="dropdown-col-title">Homepage variations</div>
+          <a href="/home1" role="menuitem"><div><strong>Home 1</strong><span>Skyline — bold &amp; centered</span></div></a>
+          <a href="/home2" role="menuitem"><div><strong>Home 2</strong><span>Growth — long-term vision</span></div></a>
+          <a href="/home3" role="menuitem"><div><strong>Home 3</strong><span>Horizon — stats-driven</span></div></a>
+          <a href="/home4" role="menuitem"><div><strong>Home 4</strong><span>Partnership — brand red</span></div></a>
+          <a href="/home5" role="menuitem"><div><strong>Home 5</strong><span>Minimal — elegant &amp; light</span></div></a>
+        </div>
+      </li>
 
       <!-- Services dropdown -->
       <li>
-        <button class="nav-dropdown-btn" id="services-btn" aria-expanded="false" aria-haspopup="true">
+        <button class="nav-dropdown-btn" data-dropdown="services-dropdown" aria-expanded="false" aria-haspopup="true">
           Services <span class="nav-arrow">▾</span>
         </button>
         <div class="dropdown" id="services-dropdown" role="menu">
@@ -545,26 +559,28 @@
     }
   })();
 
-  // Services dropdown toggle
-  var btn = document.getElementById('services-btn');
-  var dropdown = document.getElementById('services-dropdown');
-
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var open = dropdown.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    var arrow = btn.querySelector('.nav-arrow');
-    if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+  // Generalised dropdown handling for all nav dropdowns (Welcome + Services)
+  document.querySelectorAll('.nav-dropdown-btn').forEach(function (btn) {
+    var dd = document.getElementById(btn.getAttribute('data-dropdown'));
+    if (!dd) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      document.querySelectorAll('.dropdown.open').forEach(function (d) { if (d !== dd) d.classList.remove('open'); });
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var arrow = btn.querySelector('.nav-arrow');
+      if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+    });
+    dd.addEventListener('click', function (e) { e.stopPropagation(); });
   });
 
   document.addEventListener('click', function () {
-    dropdown.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    var arrow = btn.querySelector('.nav-arrow');
-    if (arrow) arrow.style.transform = '';
+    document.querySelectorAll('.dropdown.open').forEach(function (d) { d.classList.remove('open'); });
+    document.querySelectorAll('.nav-dropdown-btn').forEach(function (b) {
+      b.setAttribute('aria-expanded', 'false');
+      var a = b.querySelector('.nav-arrow'); if (a) a.style.transform = '';
+    });
   });
-
-  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
 
   // Mobile nav toggle
   document.getElementById('nav-toggle').addEventListener('click', function () {

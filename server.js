@@ -4,7 +4,7 @@ const path = require('path');
 const multer = require('multer');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const UPLOADS_DIR = path.join(PUBLIC_DIR, 'uploads');
@@ -40,6 +40,13 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
 });
+
+// Homepage variations (home1–home5) — selectable from the "Welcome" dropdown
+for (let i = 1; i <= 5; i++) {
+  app.get(`/home${i}`, (req, res) => {
+    res.sendFile(path.join(PUBLIC_DIR, `home${i}.html`));
+  });
+}
 
 // Services page
 app.get('/services', (req, res) => {
