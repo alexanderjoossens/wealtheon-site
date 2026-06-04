@@ -1,0 +1,39 @@
+name: Auto Sync with Source
+
+on:
+  schedule:
+    # Runs every hour at the top of the hour.
+    - cron: '0 * * * *' 
+  workflow_dispatch: # Allows you to run it manually from the Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Destination Repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SYNC_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch and Merge Source
+        run: |
+          # Add the source repository as a remote
+          git remote add source-repo https://${{ secrets.SYNC_TOKEN }}@github.com/rraymaekers/Wealtheon-Website.git
+          
+          # Fetch the latest changes from the source
+          git fetch source-repo
+          
+          # Ensure you are on the main branch (change 'main' to 'master' below if your default branch is master)
+          git checkout main 
+          
+          # Merge the source main branch into your target main branch
+          git merge source-repo/main --no-edit
+          
+          # Push the synced changes to your target repo
+          git push origin main
