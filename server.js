@@ -41,8 +41,8 @@ app.get('/home', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
 });
 
-// Homepage variations (home1–home5) — selectable from the "Welcome" dropdown
-for (let i = 1; i <= 5; i++) {
+// Homepage variations (home1–home6) — selectable from the "Welcome" dropdown
+for (let i = 1; i <= 6; i++) {
   app.get(`/home${i}`, (req, res) => {
     res.sendFile(path.join(PUBLIC_DIR, `home${i}.html`));
   });
@@ -56,6 +56,11 @@ app.get('/services', (req, res) => {
 // About page
 app.get('/about', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'about.html'));
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'contact.html'));
 });
 
 // Data page

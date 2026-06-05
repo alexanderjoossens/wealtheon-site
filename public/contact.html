@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Wealtheon</title>
+  <meta name="description" content="Get in touch with Wealtheon. Visit one of our four offices in Brussels, Waregem, Eindhoven, or Geneva — or send us a message and we'll get back to you within one business day." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="/home" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/home">Welcome</a></li>
+      <li>
+        <button class="nav-dropdown-btn" id="services-btn" aria-expanded="false" aria-haspopup="true">
+          Services <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown" id="services-dropdown" role="menu">
+          <div class="dropdown-grid">
+            <div>
+              <div class="dropdown-col-title">Direct Lines</div>
+              <a href="/services#growth"><div><strong>Growth</strong><span>High-growth equity strategy</span></div></a>
+              <a href="/services#high-conviction"><div><strong>High Conviction</strong><span>Concentrated best-ideas portfolio</span></div></a>
+              <a href="/services#value"><div><strong>Value</strong><span>Defensive, quality-at-discount</span></div></a>
+            </div>
+            <div>
+              <div class="dropdown-col-title">Funds</div>
+              <a href="/services#funds"><div><strong>High Conviction Fund</strong><span>Concentrated multi-asset</span></div></a>
+              <a href="/services#funds"><div><strong>Value Fund</strong><span>Defensive equity fund</span></div></a>
+              <a href="/services#funds"><div><strong>Protea Fund Growth World Equity</strong><span>Global growth exposure</span></div></a>
+              <a href="/services#funds"><div><strong>DBI-RDT Value Fund</strong><span>Tax-efficient value fund</span></div></a>
+              <div class="dropdown-col-title" style="margin-top:0.75rem;">Partners</div>
+              <a href="/services#financial-intermediaries"><div><strong>Financial Intermediaries</strong><span>Partnership &amp; support model</span></div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/impact">Impact</a></li>
+      <li><a href="/news">News</a></li>
+      <li><a href="/contact" class="active">Contact</a></li>
+      <li><a href="/careers">Careers</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+        <a href="#">FR</a><span class="lang-sep">|</span>
+        <a href="#">NL</a>
+      </div>
+      <a href="/contact" class="btn btn-primary nav-contact-btn">Contact Us</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/home">Home</a>
+      <span class="sep">›</span>
+      <span>Contact</span>
+    </nav>
+    <h1>Let's Have a Conversation</h1>
+    <p>
+      Whether you're considering an investment, exploring a partnership, or simply have a question —
+      our team is happy to hear from you. We respond to every message within one business day.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACT FORM + DIRECT CONTACT
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Form -->
+      <div class="contact-form-wrap">
+        <p class="section-label">Send us a message</p>
+        <h2>How can we help?</h2>
+        <p class="contact-form-intro">
+          Fill in the form below and one of our advisers will get back to you personally.
+          Your details are treated confidentially and never shared with third parties.
+        </p>
+
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">Full name <span class="req">*</span></label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Jane Doe" />
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Email address <span class="req">*</span></label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="jane@example.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="+32 ..." />
+            </div>
+            <div class="form-field">
+              <label for="cf-office">Preferred office</label>
+              <select id="cf-office" name="office">
+                <option value="">No preference</option>
+                <option value="brussels">Brussels — Belgium</option>
+                <option value="waregem">Waregem — Belgium</option>
+                <option value="eindhoven">Eindhoven — The Netherlands</option>
+                <option value="geneva">Geneva — Switzerland</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="cf-subject">Subject</label>
+            <select id="cf-subject" name="subject">
+              <option value="general">General enquiry</option>
+              <option value="invest">Becoming a client / investing</option>
+              <option value="intermediary">Financial intermediary partnership</option>
+              <option value="press">Press &amp; media</option>
+              <option value="careers">Careers</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="cf-message">Your message <span class="req">*</span></label>
+            <textarea id="cf-message" name="message" rows="6" required placeholder="Tell us briefly what you'd like to discuss..."></textarea>
+          </div>
+
+          <label class="form-consent">
+            <input type="checkbox" id="cf-consent" required />
+            <span>I agree that Wealtheon may use my details to respond to my enquiry, in accordance with the <a href="#">Privacy Policy</a>. <span class="req">*</span></span>
+          </label>
+
+          <button type="submit" class="btn btn-primary form-submit">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- Direct contact sidebar -->
+      <aside class="contact-aside">
+        <div class="contact-aside-card">
+          <h3>Prefer direct contact?</h3>
+          <p>Call or email us — during office hours you'll speak to a person, not a menu.</p>
+
+          <div class="contact-direct">
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Belgium &amp; Netherlands</span>
+              <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+              <a href="tel:+3223725010">+32 2 372 50 10</a>
+            </div>
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Switzerland</span>
+              <a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a>
+              <a href="tel:+41223204740">+41 22 320 47 40</a>
+            </div>
+          </div>
+
+          <div class="contact-hours">
+            <span class="contact-direct-label">Office hours</span>
+            <p>Monday – Friday, 9:00 – 17:30 CET</p>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <blockquote>
+            "Your value, our experience, for common growth."
+          </blockquote>
+          <cite>The Wealtheon Family</cite>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     OFFICES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Where to find us</p>
+      <h2>Visit One of Our Offices</h2>
+      <p>Four offices across three countries. You're always welcome for a coffee and a conversation — by appointment.</p>
+    </div>
+
+    <div class="offices-grid offices-grid-4">
+
+      <div class="office-card">
+        <div class="office-flag">🇧🇪</div>
+        <p class="office-country">Belgium</p>
+        <h4>Brussels</h4>
+        <address>
+          Waterloosesteenweg 1135<br>
+          1180 Brussels<br>
+          <a href="tel:+3223725010">+32 2 372 50 10</a><br>
+          <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+        </address>
+      </div>
+
+      <div class="office-card">
+        <div class="office-flag">🇧🇪</div>
+        <p class="office-country">Belgium</p>
+        <h4>Waregem</h4>
+        <address>
+          Kalkhoevestraat 30 B3.2<br>
+          8790 Waregem<br>
+          <a href="tel:+3256960501">+32 56 96 05 01</a><br>
+          <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+        </address>
+      </div>
+
+      <div class="office-card">
+        <div class="office-flag">🇳🇱</div>
+        <p class="office-country">The Netherlands</p>
+        <h4>Eindhoven</h4>
+        <address>
+          Schimmelt 28 unit-b<br>
+          5611 ZX Eindhoven<br>
+          <a href="tel:+31402960480">+31 40 296 0480</a><br>
+          <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+        </address>
+      </div>
+
+      <div class="office-card">
+        <div class="office-flag">🇨🇭</div>
+        <p class="office-country">Switzerland</p>
+        <h4>Geneva</h4>
+        <address>
+          14 Bd des Philosophes<br>
+          1205 Geneva<br>
+          <a href="tel:+41223204740">+41 22 320 47 40</a><br>
+          <a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a>
+        </address>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-red">
+  <div class="cta-section">
+    <p class="section-label">Let's grow your value</p>
+    <h2>Not sure where to start?</h2>
+    <p>Learn more about our investment strategies and how we work — then let's talk.</p>
+    <a href="/services" class="btn btn-white">Explore our services</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" style="height:44px;width:auto;margin-bottom:0.6rem;" />
+      <p class="footer-tagline">"Your value, our experience, for common growth"</p>
+      <p class="footer-address"><strong>Belgium — Brussels</strong><br>Waterloosesteenweg 1135, 1180 Brussels<br>+32 2 372 50 10</p>
+      <p class="footer-address"><strong>Belgium — Waregem</strong><br>Kalkhoevestraat 30 B3.2, 8790 Waregem<br>+32 56 96 05 01</p>
+      <p class="footer-address"><strong>The Netherlands</strong><br>Schimmelt 28 unit-b, 5611 ZX Eindhoven<br>+31 40 296 0480</p>
+      <p class="footer-address"><strong>Switzerland</strong><br>14 Bd des Philosophes, 1205 Geneva<br>+41 22 320 47 40</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services#growth">Growth Strategy</a></li>
+        <li><a href="/services#value">Value Strategy</a></li>
+        <li><a href="/services#high-conviction">High Conviction</a></li>
+        <li><a href="/services#funds">Our Funds</a></li>
+        <li><a href="/services#financial-intermediaries">Financial Intermediaries</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/impact">Impact &amp; ESG</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/careers">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Regulatory Disclosures</a></li>
+        <li><a href="#">MiFID II</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a></li>
+        <li><a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="/">Change region</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Wealtheon SA. All rights reserved. · VAT BE0423.072.032 · CHE-100.840.696</span>
+    <div class="footer-lang">
+      <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+      <a href="#">FR</a><span class="lang-sep">|</span>
+      <a href="#">NL</a>
+    </div>
+  </div>
+  <p class="footer-regulatory">
+    This website is for information purposes only and does not constitute investment advice.
+    Wealtheon SA is regulated under Belgian financial services law. Wealtheon SA (Geneva) is authorised by FINMA, supervised by AOOS, member of SAAM, ombudsman OFS.
+  </p>
+</footer>
+
+<script>
+  var btn = document.getElementById('services-btn');
+  var dropdown = document.getElementById('services-dropdown');
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = dropdown.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var arrow = btn.querySelector('.nav-arrow');
+    if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+  });
+  document.addEventListener('click', function () {
+    dropdown.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    var arrow = btn.querySelector('.nav-arrow');
+    if (arrow) arrow.style.transform = '';
+  });
+  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+  document.getElementById('nav-toggle').addEventListener('click', function () {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  // Contact form — front-end prototype handler (no mail backend yet)
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var name = document.getElementById('cf-name').value.trim().split(' ')[0];
+    form.reset();
+    status.textContent = 'Thank you' + (name ? ', ' + name : '') + '! Your message has been received — we’ll get back to you within one business day.';
+    status.classList.add('visible');
+    status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+
+</body>
+</html>
