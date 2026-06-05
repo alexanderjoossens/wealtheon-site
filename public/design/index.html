@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Website concepten</title>
+<link rel="stylesheet" href="wealtheon-site/css/brand.css"/>
+<style>
+body { background: var(--w-stone); }
+.hub-top { background: var(--w-navy); color: #fff; }
+.hub-top .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.hub-top img { height: 28px; }
+.hub-top .tag { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 600; }
+
+.hub-intro { padding-block: clamp(56px, 7vw, 96px) clamp(40px, 5vw, 64px); }
+.hub-intro .sup { margin-bottom: 24px; }
+.hub-intro h1 { font-family: var(--font-serif); color: var(--w-navy); font-size: clamp(34px, 4.4vw, 60px); line-height: 1.06; letter-spacing: -0.025em; font-weight: 500; max-width: 18ch; margin-bottom: 26px; }
+.hub-intro .lead { font-size: 19px; color: var(--w-ink-500); max-width: 60ch; line-height: 1.65; }
+
+.hub-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+.hub-note { background: #fff; padding: 28px; border-top: 3px solid var(--w-gold); }
+.hub-note h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--w-ink-500); font-weight: 600; margin-bottom: 16px; }
+.hub-note ul { display: grid; gap: 11px; }
+.hub-note li { font-size: 14.5px; color: var(--w-ink-700); line-height: 1.5; padding-left: 18px; position: relative; }
+.hub-note li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; background: var(--w-red); }
+.hub-note li strong { color: var(--w-navy); font-weight: 600; }
+
+.hub-cards { padding-bottom: clamp(64px, 8vw, 110px); }
+.hub-cards-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 36px; gap: 24px; flex-wrap: wrap; }
+.hub-cards-head h2 { font-family: var(--font-serif); color: var(--w-navy); font-size: clamp(26px, 3vw, 38px); font-weight: 500; letter-spacing: -0.02em; }
+.hub-cards-head p { font-size: 15px; color: var(--w-ink-500); }
+.featured { background: #fff; box-shadow: 0 2px 10px rgba(28,43,74,0.05); display: grid; grid-template-columns: 1.25fr 1fr; margin-bottom: 32px; border-top: 3px solid var(--w-red); transition: box-shadow .25s var(--ease); }
+.featured:hover { box-shadow: 0 18px 50px rgba(28,43,74,0.14); }
+.featured .card-frame { aspect-ratio: auto; height: 100%; min-height: 360px; border-bottom: 0; border-right: 1px solid var(--w-ink-100); }
+.featured .card-body { padding: 44px 44px 44px; justify-content: center; }
+.featured .rec { display: inline-flex; align-items: center; gap: 9px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--w-red); font-weight: 700; margin-bottom: 16px; }
+.featured .rec::before { content: ""; width: 8px; height: 8px; background: var(--w-red); }
+.featured h3 { font-family: var(--font-serif); font-size: 34px; color: var(--w-navy); font-weight: 500; letter-spacing: -0.015em; margin-bottom: 14px; }
+.featured p { font-size: 15.5px; color: var(--w-ink-500); line-height: 1.6; margin-bottom: 24px; max-width: 46ch; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.card { background: #fff; box-shadow: 0 2px 10px rgba(28,43,74,0.05); display: flex; flex-direction: column; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(28,43,74,0.14); }
+.card-frame { position: relative; aspect-ratio: 16 / 10.5; overflow: hidden; border-bottom: 1px solid var(--w-ink-100); background: var(--w-stone); }
+.card-frame iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 1150px; border: 0; transform-origin: top left; pointer-events: none; }
+.card-frame .overlay { position: absolute; inset: 0; z-index: 2; }
+.card-frame .badge { position: absolute; top: 16px; left: 16px; z-index: 3; background: var(--w-navy); color: #fff; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; padding: 7px 12px; }
+.card-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+.card-body .ref { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--w-gold); font-weight: 600; margin-bottom: 10px; }
+.card-body h3 { font-family: var(--font-serif); font-size: 26px; color: var(--w-navy); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 12px; }
+.card-body p { font-size: 14.5px; color: var(--w-ink-500); line-height: 1.55; margin-bottom: 22px; }
+.card-body .feats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.card-body .feats span { font-size: 11.5px; color: var(--w-ink-700); background: var(--w-stone); padding: 5px 10px; letter-spacing: 0.02em; }
+.card-body .btn { margin-top: auto; justify-content: center; }
+
+.hub-foot { padding-block: 40px 60px; border-top: 1px solid var(--w-ink-200); }
+.hub-foot h4 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--w-ink-500); font-weight: 600; margin-bottom: 14px; }
+.hub-foot ol { padding-left: 20px; display: grid; gap: 8px; color: var(--w-ink-700); font-size: 14.5px; max-width: 70ch; }
+.hub-foot ol li { line-height: 1.5; }
+
+@media (max-width: 980px) {
+  .hub-notes, .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hub-top">
+  <div class="wrap">
+    <img class="logo-negative" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+    <span class="tag">Website · concept · 3 richtingen</span>
+  </div>
+</div>
+
+<section class="hub-intro">
+  <div class="wrap">
+    <span class="sup">Voorstel · homepage</span>
+    <h1>Drie richtingen voor de nieuwe Wealtheon-website.</h1>
+    <p class="lead">Op basis van het opbouwdocument, de huisstijl uit de presentatie en de referenties (Degroof Petercam, Alluvion) heb ik drie homepage-concepten uitgewerkt — plus een <strong style="color:var(--w-navy)">aanbevolen combinatie</strong> van Premium en Editorial. Alle zijn in het Nederlands, klikbaar, en zetten de drie strategieën — Value, Growth, High&nbsp;Conviction — centraal met een duidelijk doorklikpad.</p>
+
+    <div class="hub-notes">
+      <div class="hub-note">
+        <h4>Aannames</h4>
+        <ul>
+          <li>Taal van de mock: <strong>Nederlands</strong> (NL/FR/EN-switcher zichtbaar)</li>
+          <li>Focus op de <strong>homepage</strong>; overige pagina's volgen na keuze</li>
+          <li><strong>EU/CH</strong>-keuze opgenomen in de utility-balk</li>
+          <li>Desktop-first; lay-outs schalen mee naar tablet</li>
+        </ul>
+      </div>
+      <div class="hub-note">
+        <h4>Wat ik gebruikte</h4>
+        <ul>
+          <li>Cijfers en strategieën uit uw <strong>presentatie</strong></li>
+          <li>Navy serif + goud + rood, <strong>moderner</strong> vertaald naar web</li>
+          <li>Officieel <strong>logo</strong>; beeld als invulbare placeholders</li>
+          <li>Sitemap uit het <strong>opbouwdocument</strong> in de navigatie</li>
+        </ul>
+      </div>
+      <div class="hub-note">
+        <h4>Het systeem</h4>
+        <ul>
+          <li><strong>Source Serif 4</strong> (Palatino-fallback) voor titels</li>
+          <li><strong>Inter</strong> voor tekst en data</li>
+          <li>Goud voor cijfers, rood als <strong>spaarzaam</strong> accent</li>
+          <li>Rustige witruimte, scherpe rasters, geen ronde hoeken</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hub-cards">
+  <div class="wrap">
+    <div class="hub-cards-head">
+      <h2>De richtingen</h2>
+      <p>Klik op een kaart om de volledige, klikbare homepage te openen.</p>
+    </div>
+
+    <div class="featured">
+      <a class="card-frame" href="Homepage — Premium Editorial.html">
+        <span class="badge">D · Premium Editorial</span>
+        <iframe src="Homepage — Premium Editorial.html" scrolling="no" tabindex="-1" title="Premium Editorial preview"></iframe>
+        <span class="overlay"></span>
+      </a>
+      <div class="card-body">
+        <div class="rec">Aanbevolen · de combinatie</div>
+        <h3>Premium Editorial</h3>
+        <p>Het beste van twee richtingen: de donkere, premium navy hero en gestructureerde elementen van C, gecombineerd met de redactionele warmte, strategiekaarten en fotografie van A. Een private-bank-uitstraling met een menselijke, editoriale toon.</p>
+        <div class="feats" style="margin-bottom:24px"><span>Navy premium hero</span><span>Strategie­kaarten</span><span>Editoriale «waarom»</span><span>Kantorenraster</span><span>Inzichten</span></div>
+        <a class="btn btn--red" href="Homepage — Premium Editorial.html" style="align-self:flex-start">Open de combinatie →</a>
+      </div>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <a class="card-frame" href="Homepage — Editorial.html">
+          <span class="badge">A · Editorial</span>
+          <iframe src="Homepage — Editorial.html" scrolling="no" tabindex="-1" title="Editorial preview"></iframe>
+          <span class="overlay"></span>
+        </a>
+        <div class="card-body">
+          <div class="ref">Richting Degroof Petercam</div>
+          <h3>Editorial Heritage</h3>
+          <p>Redactioneel en fotografisch. Split hero, strategieën als kaarten, een warme erfgoed-toon. Vertrouwd en institutioneel.</p>
+          <div class="feats"><span>Fotografische hero</span><span>Strategie­kaarten</span><span>Navy cijferband</span></div>
+          <a class="btn btn--primary" href="Homepage — Editorial.html">Open homepage A →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="card-frame" href="Homepage — Minimal.html">
+          <span class="badge">B · Minimal</span>
+          <iframe src="Homepage — Minimal.html" scrolling="no" tabindex="-1" title="Minimal preview"></iframe>
+          <span class="overlay"></span>
+        </a>
+        <div class="card-body">
+          <div class="ref">Richting Alluvion</div>
+          <h3>Bold Minimal</h3>
+          <p>Grote typografie, veel witruimte, een interactieve strategie-index. Modern, zelfverzekerd, weinig maar krachtig beeld.</p>
+          <div class="feats"><span>Typografische hero</span><span>Interactieve index</span><span>Manifest in navy</span></div>
+          <a class="btn btn--primary" href="Homepage — Minimal.html">Open homepage B →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="card-frame" href="Homepage — Premium.html">
+          <span class="badge">C · Premium</span>
+          <iframe src="Homepage — Premium.html" scrolling="no" tabindex="-1" title="Premium preview"></iframe>
+          <span class="overlay"></span>
+        </a>
+        <div class="card-body">
+          <div class="ref">Hybride · private bank</div>
+          <h3>Premium Structured</h3>
+          <p>Donkere, premium hero en een gestructureerde strategie-matrix. Een private-bank-gevoel met een raster voor de kantoren.</p>
+          <div class="feats"><span>Navy hero</span><span>Strategie-matrix</span><span>Kantorenraster</span></div>
+          <a class="btn btn--primary" href="Homepage — Premium.html">Open homepage C →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hub-foot">
+      <h4>Volgende stappen</h4>
+      <ol>
+        <li>Kies een richting (of een combinatie — de elementen zijn uitwisselbaar).</li>
+        <li>Beeldmateriaal aanleveren: hero, kantoren, portretten — sleep ze in de placeholders.</li>
+        <li>Daarna werk ik de doorklikpagina's uit: strategie-detail, fondsen, over ons, contact.</li>
+        <li>Tot slot de EU/CH-keuzepagina en de FR/EN-vertalingen.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<script src="wealtheon-site/css/site.js"></script>
+<script>
+(function(){
+  function fit(){
+    document.querySelectorAll('.card-frame').forEach(function(fr){
+      var ifr = fr.querySelector('iframe');
+      if(!ifr) return;
+      var s = fr.clientWidth / 1440;
+      ifr.style.transform = 'scale(' + s + ')';
+    });
+  }
+  window.addEventListener('load', fit);
+  window.addEventListener('resize', fit);
+  fit(); setTimeout(fit, 300);
+})();
+</script>
+</body>
+</html>

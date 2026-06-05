@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Voorbij de ruis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { serif: ['"Source Serif 4"', 'Palatino', 'Georgia', 'serif'], sans: ['Inter', 'sans-serif'] },
+      colors: { background: '#FAF8F5', navy: '#1C2B4A', gold: '#B8976A', wred: '#C0392B', muted: '#6A6E78' }
+    } }
+  };
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: #FAF8F5; color: #1C2B4A; margin: 0; }
+  @keyframes fadeRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  .animate-fade-rise { animation: fadeRise 0.8s ease-out both; }
+  .animate-fade-rise-delay { animation: fadeRise 0.8s ease-out 0.2s both; }
+  .animate-fade-rise-delay-2 { animation: fadeRise 0.8s ease-out 0.4s both; }
+  @media (prefers-reduced-motion: reduce) { .animate-fade-rise, .animate-fade-rise-delay, .animate-fade-rise-delay-2 { animation: none; } }
+  /* placeholder cinematic ground until a real video is supplied */
+  .video-fallback { position: absolute; inset: 300px 0 0 0; background:
+      radial-gradient(75% 60% at 72% 18%, rgba(184,151,106,0.18), transparent 60%),
+      linear-gradient(180deg, #EEF0F2 0%, #E5E7EA 55%, #DCDEE2 100%); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useRef, useEffect } = React;
+
+function HeroBg() {
+  return (
+    <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0" style={{
+        backgroundImage: 'url("wealtheon-site/assets/hero-bg.jpg")',
+        backgroundSize: 'cover', backgroundPosition: 'center'
+      }}></div>
+      <div className="absolute inset-0" style={{
+        background: 'linear-gradient(to bottom, rgba(250,248,245,0.88) 0%, rgba(250,248,245,0.44) 42%, rgba(250,248,245,0.55) 70%, #FAF8F5 100%)'
+      }}></div>
+    </div>
+  );
+}
+
+function Nav() {
+  const items = [
+    ['Home', 'Wealtheon Hero v3 (minimal).html', true],
+    ['Diensten', 'Diensten.html', false],
+    ['Over ons', 'Over ons.html', false],
+    ['Nieuws', 'Over ons.html#nieuws', false],
+    ['Contact', 'Contact.html', false],
+  ];
+  return (
+    <nav className="relative z-10 flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+      <a href="Wealtheon Hero v3 (minimal).html" className="flex items-center">
+        <img src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon" style={{ height: '34px', width: 'auto', display: 'block' }} />
+      </a>
+      <div className="hidden md:flex items-center gap-9">
+        {items.map(function (it) {
+          return (
+            <a key={it[0]} href={it[1]} className="text-sm transition-colors"
+               style={{ color: it[2] ? '#1C2B4A' : '#6A6E78' }}
+               onMouseEnter={(e) => { e.currentTarget.style.color = '#1C2B4A'; }}
+               onMouseLeave={(e) => { e.currentTarget.style.color = it[2] ? '#1C2B4A' : '#6A6E78'; }}>{it[0]}</a>
+          );
+        })}
+      </div>
+      <a href="Contact.html"
+         className="rounded-full px-6 py-2.5 text-sm font-medium transition-colors inline-block"
+         style={{ background: '#1C2B4A', color: '#fff' }}
+         onMouseEnter={(e) => { e.currentTarget.style.background = '#142039'; }}
+         onMouseLeave={(e) => { e.currentTarget.style.background = '#1C2B4A'; }}>
+        Plan een gesprek
+      </a>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden bg-background">
+      <HeroBg />
+
+      <div className="relative z-10">
+        <Nav />
+
+        <section className="flex flex-col items-center justify-center text-center px-6 pb-40"
+                 style={{ paddingTop: 'calc(8rem - 75px)' }}>
+          <div className="animate-fade-rise flex items-center gap-3 mb-7">
+            <span style={{ width: '9px', height: '9px', background: '#B8976A', display: 'inline-block' }}></span>
+            <span className="text-xs font-semibold uppercase whitespace-nowrap" style={{ letterSpacing: '0.2em', color: '#6A6E78' }}>Onafhankelijk vermogensbeheer · sinds 1971</span>
+          </div>
+          <h1 className="animate-fade-rise font-serif font-normal max-w-7xl text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
+              style={{ lineHeight: 0.98, letterSpacing: '-1.6px', color: '#1C2B4A' }}>
+            Voorbij de <span className="italic">ruis</span>, beheren wij <span className="italic">wat blijft.</span>
+          </h1>
+
+          <p className="animate-fade-rise-delay text-base sm:text-lg max-w-2xl mt-8 leading-relaxed"
+             style={{ color: '#6A6E78' }}>
+            Een onafhankelijke Belgische vermogensbeheerder in familiehanden, sinds 1971. Fee-only, gedreven door overtuiging — wij beheren uw patrimonium met de rust en de horizon van generaties.
+          </p>
+
+          <a href="Diensten.html"
+             className="animate-fade-rise-delay-2 rounded-full px-14 py-5 text-base mt-12 font-medium transition-colors inline-block"
+             style={{ background: '#1C2B4A', color: '#FFFFFF' }}
+             onMouseEnter={(e) => { e.currentTarget.style.background = '#142039'; }}
+             onMouseLeave={(e) => { e.currentTarget.style.background = '#1C2B4A'; }}>
+            Onze strategieën
+          </a>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Hero />);
+</script>
+</body>
+</html>

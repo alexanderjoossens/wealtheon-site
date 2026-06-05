@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Private asset management</title>
+<link rel="stylesheet" href="wealtheon-site/css/brand.css"/>
+<style>
+/* ====================== HOMEPAGE C — PREMIUM STRUCTURED ====================== */
+body.c { background: var(--w-white); }
+
+/* Header — transparent over navy hero, solid on scroll */
+.c-header { position: fixed; inset: 0 0 auto 0; z-index: 60; transition: background .3s var(--ease), box-shadow .3s var(--ease); }
+.c-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 86px; }
+.c-header .logo-dark { display: none; }
+.c-logo img { height: 32px; }
+.c-nav { display: flex; gap: 32px; }
+.c-nav a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.82); transition: color .18s var(--ease); }
+.c-nav a:hover { color: #fff; }
+.c-utils { display: flex; align-items: center; gap: 24px; }
+.c-lang { display: flex; gap: 3px; }
+.c-lang button { background: none; border: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); padding: 3px 5px; transition: color .18s var(--ease); }
+.c-lang button[data-active] { color: var(--w-gold); }
+.c-login { font-size: 13px; font-weight: 600; color: #fff; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.3); transition: background .18s var(--ease), border-color .18s; }
+.c-login:hover { background: rgba(255,255,255,0.1); }
+/* scrolled state */
+.c-header[data-scrolled] { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 6px 30px rgba(28,43,74,0.08); }
+.c-header[data-scrolled] .logo-light { display: none; }
+.c-header[data-scrolled] .logo-dark { display: block; }
+.c-header[data-scrolled] .c-nav a { color: var(--w-ink-700); }
+.c-header[data-scrolled] .c-nav a:hover { color: var(--w-red); }
+.c-header[data-scrolled] .c-lang button { color: var(--w-ink-400); }
+.c-header[data-scrolled] .c-lang button[data-active] { color: var(--w-navy); }
+.c-header[data-scrolled] .c-login { color: var(--w-navy); border-color: var(--w-ink-300); }
+.c-header[data-scrolled] .c-login:hover { background: var(--w-navy); color: #fff; border-color: var(--w-navy); }
+
+/* Hero — navy premium */
+.c-hero { background: var(--w-navy); color: #fff; position: relative; overflow: hidden; }
+.c-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 80% 0%, rgba(184,151,106,0.16), transparent 60%); }
+.c-hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 88px); align-items: center; padding-top: 150px; padding-bottom: clamp(70px, 9vw, 120px); min-height: 88vh; }
+.c-hero .sup { margin-bottom: 30px; }
+.c-hero h1 { font-family: var(--font-serif); font-size: clamp(40px, 5.2vw, 76px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 500; margin-bottom: 30px; text-wrap: balance; }
+.c-hero h1 em { font-style: italic; color: var(--w-gold); }
+.c-hero .lead { font-size: 19px; line-height: 1.65; color: rgba(255,255,255,0.72); max-width: 36ch; margin-bottom: 40px; }
+.c-hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.c-hero-media { position: relative; }
+.c-hero-media image-slot { width: 100%; height: 560px; }
+.c-hero-media .frame { position: absolute; inset: -14px -14px auto auto; width: 70%; height: 70%; border: 1px solid var(--w-gold); pointer-events: none; }
+.c-hero-stat { position: absolute; left: 0; bottom: 0; background: var(--w-white); color: var(--w-navy); padding: 22px 26px; }
+.c-hero-stat .n { font-family: var(--font-serif); font-size: 34px; line-height: 1; color: var(--w-gold); font-weight: 500; white-space: nowrap; }
+.c-hero-stat .l { font-size: 12px; color: var(--w-ink-500); margin-top: 8px; letter-spacing: 0.02em; }
+
+/* Section base */
+.c-sec { padding-block: clamp(72px, 9vw, 130px); }
+.c-sec-head { max-width: 720px; margin-bottom: 56px; }
+.c-sec-head .sup { margin-bottom: 22px; }
+.c-sec-head h2 { font-family: var(--font-serif); color: var(--w-navy); font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -0.02em; }
+.c-sec-head p { font-size: 18px; color: var(--w-ink-500); margin-top: 18px; line-height: 1.6; }
+
+/* Strategy matrix */
+.c-matrix { border: 1px solid var(--w-ink-200); border-radius: 4px; overflow: hidden; }
+.c-matrix-head { display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); }
+.c-matrix-head > div { padding: 30px 28px; border-left: 1px solid var(--w-ink-200); }
+.c-matrix-head > div:first-child { border-left: 0; background: var(--w-stone); }
+.c-mh { position: relative; transition: background .25s var(--ease); }
+.c-mh::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--w-gold); }
+.c-mh .no { font-size: 12px; color: var(--w-gold); font-weight: 600; letter-spacing: 0.1em; }
+.c-mh h3 { font-family: var(--font-serif); font-size: 26px; color: var(--w-navy); font-weight: 500; margin-top: 8px; }
+.c-mh .role { font-size: 13px; color: var(--w-red); font-weight: 600; margin-top: 6px; }
+.c-matrix-row { display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); border-top: 1px solid var(--w-ink-200); }
+.c-matrix-row > div { padding: 20px 28px; border-left: 1px solid var(--w-ink-200); font-size: 15px; color: var(--w-ink-700); }
+.c-matrix-row > div:first-child { border-left: 0; background: var(--w-stone); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--w-ink-500); font-weight: 600; display: flex; align-items: center; }
+.c-matrix-foot { display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); border-top: 1px solid var(--w-ink-200); }
+.c-matrix-foot > div { padding: 22px 28px; border-left: 1px solid var(--w-ink-200); }
+.c-matrix-foot > div:first-child { border-left: 0; background: var(--w-stone); }
+.c-matrix-foot a { font-size: 13.5px; }
+.c-col-2 { background: var(--w-cream); }
+
+/* Why strip */
+.c-why { background: var(--w-stone); }
+.c-why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--w-ink-200); }
+.c-why-grid > div { padding: 36px 28px 0 0; border-right: 1px solid var(--w-ink-200); }
+.c-why-grid > div:last-child { border-right: 0; padding-right: 0; }
+.c-why-grid .n { font-family: var(--font-serif); font-size: 18px; color: var(--w-gold); margin-bottom: 18px; }
+.c-why-grid h4 { font-size: 18px; color: var(--w-navy); font-weight: 600; margin-bottom: 10px; }
+.c-why-grid p { font-size: 14.5px; color: var(--w-ink-500); line-height: 1.55; }
+.c-why-grid em { font-style: italic; color: var(--w-ink-700); }
+
+/* Offices */
+.c-off-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.c-off { display: flex; flex-direction: column; }
+.c-off image-slot { width: 100%; height: 280px; margin-bottom: 20px; }
+.c-off h3 { font-family: var(--font-serif); font-size: 24px; color: var(--w-navy); font-weight: 500; }
+.c-off .region { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--w-gold); font-weight: 600; margin-top: 6px; }
+.c-off p { font-size: 14px; color: var(--w-ink-500); margin-top: 12px; line-height: 1.6; }
+
+/* CTA */
+.c-cta { background: var(--w-navy); color: #fff; position: relative; overflow: hidden; }
+.c-cta::after { content: ""; position: absolute; right: -10%; top: -40%; width: 60%; height: 180%; background: radial-gradient(circle, rgba(184,151,106,0.14), transparent 65%); }
+.c-cta .wrap { position: relative; z-index: 1; padding-block: clamp(72px, 9vw, 120px); display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
+.c-cta h2 { font-family: var(--font-serif); font-size: clamp(30px, 3.8vw, 50px); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; max-width: 18ch; }
+.c-cta h2 em { font-style: italic; color: var(--w-gold); }
+.c-cta p { font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 18px; line-height: 1.6; }
+.c-cta-actions { display: flex; flex-direction: column; gap: 14px; }
+.c-cta-actions .btn { justify-content: center; }
+
+/* Footer */
+.c-footer { background: var(--w-navy-deep); color: rgba(255,255,255,0.6); font-size: 14px; }
+.c-footer .wrap { padding-block: 68px 32px; }
+.c-foot-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.c-footer img { height: 30px; margin-bottom: 20px; }
+.c-footer h5 { color: #fff; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
+.c-footer li { margin-bottom: 11px; }
+.c-footer a:hover { color: #fff; }
+.c-footer .col p { line-height: 1.7; max-width: 30ch; }
+.c-foot-bot { display: flex; justify-content: space-between; padding-top: 26px; font-size: 12.5px; color: rgba(255,255,255,0.4); flex-wrap: wrap; gap: 18px; }
+.c-foot-bot .legal { display: flex; gap: 20px; flex-wrap: wrap; }
+
+@media (max-width: 1080px) {
+  .c-hero .wrap { grid-template-columns: 1fr; }
+  .c-hero-media image-slot { height: 380px; }
+  .c-matrix-head, .c-matrix-row, .c-matrix-foot { grid-template-columns: 1fr; }
+  .c-matrix-head > div, .c-matrix-row > div, .c-matrix-foot > div { border-left: 0; }
+  .c-why-grid, .c-off-grid { grid-template-columns: 1fr 1fr; }
+  .c-cta .wrap { grid-template-columns: 1fr; }
+  .c-nav { display: none; }
+  .c-foot-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body class="c">
+
+<header class="c-header" data-header data-screen-label="Homepage C — header">
+  <div class="wrap">
+    <a class="c-logo" href="index.html">
+      <img class="logo-light logo-negative" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+      <img class="logo-dark" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+    </a>
+    <nav class="c-nav">
+      <a href="#aanpak">Diensten</a>
+      <a href="#waarom">Over ons</a>
+      <a href="#kantoren">Impact</a>
+      <a href="#contact">Nieuws</a>
+    </nav>
+    <div class="c-utils">
+      <div class="c-lang" data-lang><button data-active>NL</button><button>FR</button><button>EN</button></div>
+      <a class="c-login" href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="c-hero" data-screen-label="Homepage C — hero">
+  <div class="wrap">
+    <div class="c-hero-copy">
+      <span class="sup sup--light">Private asset management · sinds 1971</span>
+      <h1>Een vermogen vraagt om <em>discretie</em> en discipline.</h1>
+      <p class="lead">Wealtheon is een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd in vijf markten, gedreven door overtuiging.</p>
+      <div class="c-hero-cta">
+        <a class="btn btn--red" href="#aanpak">Onze aanpak</a>
+        <a class="btn btn--light" href="#contact">Maak een afspraak</a>
+      </div>
+    </div>
+    <div class="c-hero-media">
+      <image-slot id="c-hero" shape="rect" placeholder="Sleep een hero-beeld"></image-slot>
+      <div class="frame"></div>
+      <div class="c-hero-stat"><div class="n tnum">±1 Md€</div><div class="l">beheerd vermogen</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Strategy matrix -->
+<section class="c-sec" id="aanpak" data-screen-label="Homepage C — aanpak">
+  <div class="wrap">
+    <div class="c-sec-head reveal">
+      <span class="sup">Drie complementaire strategieën</span>
+      <h2>Eén filosofie. Drie wegen naar uw doel.</h2>
+      <p>Value, Growth en High Conviction dekken samen elke marktcyclus en elk beleggersprofiel — toegankelijk via directe lijnen of fondsen.</p>
+    </div>
+    <div class="c-matrix reveal">
+      <div class="c-matrix-head">
+        <div></div>
+        <div class="c-mh"><div class="no">01</div><h3>Value</h3><div class="role">Patrimoniale ankerpositie</div></div>
+        <div class="c-mh"><div class="no">02</div><h3>Growth</h3><div class="role">Kern van de portefeuille</div></div>
+        <div class="c-mh"><div class="no">03</div><h3>High Conviction</h3><div class="role">Offensieve satelliet</div></div>
+      </div>
+      <div class="c-matrix-row"><div>Doelstelling</div><div>Waardecreatie op lange termijn</div><div>Structurele groei</div><div>Gerichte overperformance</div></div>
+      <div class="c-matrix-row"><div>Aanpak</div><div>Bottom-up</div><div>Top-down</div><div>Bottom-up</div></div>
+      <div class="c-matrix-row"><div>Universum</div><div>20 lijnen + 5 fondsen</div><div>40+ lijnen + trackers</div><div>25 lijnen</div></div>
+      <div class="c-matrix-row"><div>Risicoprofiel</div><div class="tnum">5 – 6</div><div class="tnum">2 – 6</div><div class="tnum">7</div></div>
+      <div class="c-matrix-row"><div>Stijl</div><div>Buy-and-hold · contrair</div><div>Actief · risicobeheer</div><div>Altijd belegd · geconcentreerd</div></div>
+      <div class="c-matrix-foot">
+        <div></div>
+        <div><a class="arrow-link" href="#aanpak">Ontdek Value <span class="ar">→</span></a></div>
+        <div><a class="arrow-link" href="#aanpak">Ontdek Growth <span class="ar">→</span></a></div>
+        <div><a class="arrow-link" href="#aanpak">Ontdek High Conviction <span class="ar">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="c-sec c-why" id="waarom" data-screen-label="Homepage C — waarom">
+  <div class="wrap">
+    <div class="c-sec-head reveal">
+      <span class="sup">Waarom Wealtheon</span>
+      <h2>De principes achter elke beslissing.</h2>
+    </div>
+    <div class="c-why-grid reveal">
+      <div><div class="n tnum">01</div><h4>100% onafhankelijk</h4><p>Een pure player zonder commerciële druk. Enkel vermogensbeheer.</p></div>
+      <div><div class="n tnum">02</div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart. <em>Generaties, geen kwartalen.</em></p></div>
+      <div><div class="n tnum">03</div><h4>Fee-only</h4><p>Eén bron van inkomsten. <em>Geen retrocessies sinds 1971.</em></p></div>
+      <div><div class="n tnum">04</div><h4>Gereguleerd</h4><p>FSMA · FINMA · AFM · AMF · BaFin — strikte naleving in vijf markten.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Offices -->
+<section class="c-sec" id="kantoren" data-screen-label="Homepage C — kantoren">
+  <div class="wrap">
+    <div class="c-sec-head reveal">
+      <span class="sup">Onze kantoren</span>
+      <h2>Dichtbij, in vier Europese steden.</h2>
+    </div>
+    <div class="c-off-grid reveal">
+      <div class="c-off"><image-slot id="c-off1" shape="rect" placeholder="Brussel"></image-slot><h3>Brussel</h3><div class="region">België · EU</div><p>Hoofdkantoor en investment committee.</p></div>
+      <div class="c-off"><image-slot id="c-off2" shape="rect" placeholder="Waregem"></image-slot><h3>Waregem</h3><div class="region">België · EU</div><p>Cliëntenbeheer West-Vlaanderen.</p></div>
+      <div class="c-off"><image-slot id="c-off3" shape="rect" placeholder="Eindhoven"></image-slot><h3>Eindhoven</h3><div class="region">Nederland · EU</div><p>Nederlandse cliënten en partners.</p></div>
+      <div class="c-off"><image-slot id="c-off4" shape="rect" placeholder="Genève"></image-slot><h3>Genève</h3><div class="region">Zwitserland · CH</div><p>Zwitserse vermogensbeheeractiviteit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="c-cta" id="contact" data-screen-label="Homepage C — contact">
+  <div class="wrap">
+    <div>
+      <span class="sup sup--light" style="margin-bottom:24px">Contact</span>
+      <h2>Een gesprek dat begint bij <em>luisteren</em>.</h2>
+      <p>Vrijblijvend en vertrouwelijk. Beheer vanaf 500 k€ (300 k€ via verzekeringscontract).</p>
+    </div>
+    <div class="c-cta-actions">
+      <a class="btn btn--light" href="#contact">Plan een gesprek</a>
+      <a class="btn btn--ghost" style="color:#fff;border-color:rgba(255,255,255,0.3)" href="#">Werken bij Wealtheon</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="c-footer">
+  <div class="wrap">
+    <div class="c-foot-grid">
+      <div class="col">
+        <img class="logo-negative" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+        <p>Onafhankelijke Belgische vermogensbeheerder sinds 1971. Fee-only, in familiehanden.</p>
+      </div>
+      <div><h5>Diensten</h5><ul><li><a href="#aanpak">Directe lijnen</a></li><li><a href="#aanpak">Fondsen</a></li><li><a href="#aanpak">Tussenpersonen</a></li></ul></div>
+      <div><h5>Wealtheon</h5><ul><li><a href="#waarom">Over ons</a></li><li><a href="#">Impact</a></li><li><a href="#">Nieuws</a></li><li><a href="#">Careers</a></li></ul></div>
+      <div><h5>Kantoren</h5><ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li><li>Genève</li></ul></div>
+    </div>
+    <div class="c-foot-bot">
+      <span>© 2026 Wealtheon Asset Management · www.wealtheon.eu</span>
+      <span class="legal"><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">ESG-beleid</a><a href="#">Klachten</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="wealtheon-site/css/site.js"></script>
+</body>
+</html>

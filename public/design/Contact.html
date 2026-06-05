@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Contact</title>
+<link rel="stylesheet" href="wealtheon-site/css/brand.css"/>
+<link rel="stylesheet" href="wealtheon-site/css/pages.css"/>
+<style>
+  .cf-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+  .cf-form { display: grid; gap: 20px; }
+  .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cf-field { display: flex; flex-direction: column; gap: 8px; }
+  .cf-field label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .cf-field input, .cf-field select, .cf-field textarea {
+    font-family: var(--font-sans); font-size: 15px; color: #fff;
+    padding: 13px 15px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); border-radius: 2px;
+    transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+  }
+  .cf-field input::placeholder, .cf-field textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .cf-field select option { color: #16181D; }
+  .cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus { outline: none; border-color: var(--w-gold); box-shadow: 0 0 0 3px rgba(184,151,106,0.18); }
+  .cf-field textarea { resize: vertical; min-height: 120px; }
+  .cf-note { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .cf-aside { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 36px 34px; }
+  .cf-aside h3 { font-family: var(--font-serif); font-size: 22px; color: #fff; font-weight: 500; margin-bottom: 18px; }
+  .cf-aside .line { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 10px; }
+  .cf-aside .line a:hover { color: var(--w-gold); }
+  .cf-aside .div { height: 1px; background: rgba(255,255,255,0.12); margin: 24px 0; }
+  .off-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .off image-slot { width: 100%; height: 200px; margin-bottom: 16px; }
+  .off h4 { font-family: var(--font-serif); font-size: 21px; color: #fff; font-weight: 500; }
+  .off .reg { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--w-gold); font-weight: 600; margin-top: 5px; }
+  .off p { font-size: 13.5px; color: rgba(255,255,255,0.6); margin-top: 10px; line-height: 1.55; }
+  .ok-msg { display: none; background: var(--w-positive); color: #fff; padding: 14px 18px; font-size: 14px; font-weight: 500; }
+  .ok-msg.show { display: block; }
+  @media (max-width: 980px) { .cf-grid { grid-template-columns: 1fr; } .off-grid { grid-template-columns: 1fr 1fr; } .cf-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+
+<!-- Hero -->
+<section class="pg-hero" data-screen-label="Contact — hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="Wealtheon Hero.html">Home</a><span class="sep">›</span><span>Contact</span></div>
+    <span class="sup sup--light">Contact</span>
+    <h1>Een gesprek dat begint bij <em>luisteren</em>.</h1>
+    <p class="lead">Vrijblijvend en vertrouwelijk. Laat uw gegevens achter en een van onze beheerders neemt contact met u op. Beheer vanaf 500 k€ (300 k€ via verzekeringscontract).</p>
+  </div>
+</section>
+
+<!-- Form -->
+<section class="pg-sec" data-screen-label="Contact — formulier">
+  <div class="wrap cf-grid reveal">
+    <div>
+      <div class="pg-head" style="margin-bottom:30px"><span class="sup">Plan een gesprek</span><h2>Vertel ons kort uw situatie</h2></div>
+      <div class="ok-msg" id="okMsg">Bedankt. Uw aanvraag is verzonden — wij nemen spoedig contact op.</div>
+      <form class="cf-form" id="contactForm" novalidate>
+        <div class="cf-row">
+          <div class="cf-field"><label for="vn">Voornaam</label><input id="vn" name="vn" type="text" required/></div>
+          <div class="cf-field"><label for="an">Achternaam</label><input id="an" name="an" type="text" required/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label for="em">E-mail</label><input id="em" name="em" type="email" required/></div>
+          <div class="cf-field"><label for="tel">Telefoon</label><input id="tel" name="tel" type="tel"/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label for="reg">Regio</label><select id="reg" name="reg"><option>Europa (EU)</option><option>Zwitserland (CH)</option></select></div>
+          <div class="cf-field"><label for="int">Interesse</label><select id="int" name="int"><option>Value</option><option>Growth</option><option>High Conviction</option><option>Fondsen</option><option>Tussenpersoon worden</option><option>Anders</option></select></div>
+        </div>
+        <div class="cf-field"><label for="msg">Bericht</label><textarea id="msg" name="msg" placeholder="Waarmee kunnen wij u helpen?"></textarea></div>
+        <p class="cf-note">Uw gegevens worden vertrouwelijk behandeld conform ons privacybeleid. Geen verplichtingen.</p>
+        <div><button class="btn btn--primary" type="submit">Verstuur aanvraag</button></div>
+      </form>
+    </div>
+    <aside class="cf-aside">
+      <h3>Direct contact</h3>
+      <div class="line">Telefoon · <a href="tel:+3220000000">+32 2 000 00 00</a></div>
+      <div class="line">E-mail · <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a></div>
+      <div class="line">Cliëntenlogin · <a href="#">portaal</a></div>
+      <div class="div"></div>
+      <h3>Hoofdkantoor</h3>
+      <div class="line">Wealtheon Asset Management</div>
+      <div class="line">Brussel, België</div>
+      <div class="div"></div>
+      <h3>Openingsuren</h3>
+      <div class="line">Ma – Vr · 09:00 – 18:00</div>
+    </aside>
+  </div>
+</section>
+
+<!-- Offices -->
+<section class="pg-sec pg-sec--stone" data-screen-label="Contact — kantoren">
+  <div class="wrap">
+    <div class="pg-head reveal"><span class="sup">Onze kantoren</span><h2>Vier steden, twee regio's</h2></div>
+    <div class="off-grid reveal">
+      <div class="off"><image-slot id="ct-o1" shape="rect" placeholder="Brussel"></image-slot><h4>Brussel</h4><div class="reg">België · EU</div><p>Hoofdkantoor · Investment Committee</p></div>
+      <div class="off"><image-slot id="ct-o2" shape="rect" placeholder="Waregem"></image-slot><h4>Waregem</h4><div class="reg">België · EU</div><p>Cliëntenbeheer West-Vlaanderen</p></div>
+      <div class="off"><image-slot id="ct-o3" shape="rect" placeholder="Eindhoven"></image-slot><h4>Eindhoven</h4><div class="reg">Nederland · EU</div><p>Nederlandse cliënten &amp; partners</p></div>
+      <div class="off"><image-slot id="ct-o4" shape="rect" placeholder="Genève"></image-slot><h4>Genève</h4><div class="reg">Zwitserland · CH</div><p>Zwitserse activiteit</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Careers -->
+<section class="pg-sec" id="careers" data-screen-label="Contact — careers">
+  <div class="wrap cols-2 reveal">
+    <div>
+      <div class="pg-head" style="margin-bottom:30px"><span class="sup">Careers</span><h2>Werken bij Wealtheon</h2></div>
+      <div class="prose">
+        <p>Wij zijn een hecht team van specialisten dat denkt in generaties. Wie bij Wealtheon werkt, werkt zonder commerciële druk — met focus op vakmanschap en de lange termijn.</p>
+        <p>Open sollicitaties zijn welkom. <strong>Stuur uw kandidatuur</strong> en wij gaan graag in gesprek.</p>
+      </div>
+      <div style="margin-top:30px"><a class="btn btn--primary" href="mailto:careers@wealtheon.eu">Stuur uw kandidatuur</a></div>
+    </div>
+    <div class="flist">
+      <div class="it"><span class="idx">01</span><div><h4>Cultuur</h4><p>Familiaal, integer, en gericht op de cliënt. Geen verkoopdruk.</p></div></div>
+      <div class="it"><span class="idx">02</span><div><h4>Vakmanschap</h4><p>Ruimte om te verdiepen in beleggen en vermogensbeheer.</p></div></div>
+      <div class="it"><span class="idx">03</span><div><h4>Procedure</h4><p>Een transparant, persoonlijk traject met korte lijnen.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="image-slot.js"></script>
+<script src="wealtheon-site/css/chrome.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var req = ['vn','an','em']; var ok = true;
+    req.forEach(function (id) { var el = document.getElementById(id); if (!el.value.trim()) { el.style.borderColor = 'var(--w-red)'; ok = false; } else { el.style.borderColor = ''; } });
+    var em = document.getElementById('em'); if (em.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)) { em.style.borderColor = 'var(--w-red)'; ok = false; }
+    if (!ok) return;
+    document.getElementById('okMsg').classList.add('show');
+    this.reset();
+    document.getElementById('okMsg').scrollIntoView({ block: 'nearest' });
+  });
+</script>
+</body>
+</html>

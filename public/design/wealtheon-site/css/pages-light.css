@@ -1,0 +1,96 @@
+/* ============================================================
+   WEALTHEON — LIGHT THEME OVERRIDES (original colours).
+   Load AFTER brand.css + pages.css. Re-skins the dark VEX theme
+   to the classic light deck palette: white/stone grounds, navy
+   serif, gold numerals, red accent. Navy bands kept as accents.
+   ============================================================ */
+
+body { background: #FBFBF9; color: var(--w-ink-700); }
+
+/* PPT palette remap (Value_Update deck): off-white · near-black serif · vivid red.
+   Only affects pages that link this file (v2). No navy, no gold. */
+:root {
+  --w-navy: #1A1A1A;
+  --w-navy-deep: #000000;
+  --w-red: #E11B22;
+  --w-red-deep: #B8141B;
+  --w-gold: #E11B22;
+  --w-gold-deep: #B8141B;
+  --w-stone: #F3F1EC;
+  --w-cream: #F6F3EE;
+}
+
+/* Floating nav → white glass pill */
+.wc-bar { background: rgba(255,255,255,0.82); border-color: var(--w-ink-200);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), 0 10px 34px rgba(28,43,74,0.08); }
+.wc-header[data-scrolled] .wc-bar { background: rgba(255,255,255,0.96); box-shadow: 0 12px 36px rgba(28,43,74,0.1); }
+.wc-logo img { filter: none; }
+.wc-navitem > a { color: var(--w-ink-700); }
+.wc-navitem > a:hover, .wc-navitem > a[data-active] { color: var(--w-navy); }
+.wc-caret { color: var(--w-ink-400); }
+.wc-lang button { color: var(--w-ink-400); }
+.wc-lang button[data-active] { color: var(--w-navy); }
+.wc-lang button:hover { color: var(--w-navy); }
+.wc-cta { background: var(--w-navy); color: #fff; }
+.wc-cta:hover { background: var(--w-red); color: #fff; }
+.wc-dd-inner { background: #fff; border-color: var(--w-ink-100); box-shadow: 0 18px 50px rgba(28,43,74,0.14); }
+.wc-dd-label { color: var(--w-navy); }
+.wc-dd-note { color: var(--w-ink-500); }
+.wc-dd-item:hover { background: var(--w-stone); border-left-color: var(--w-gold); }
+
+/* Sections — light */
+.pg-sec { background: #FBFBF9; }
+.pg-sec--stone { background: var(--w-stone); color: var(--w-ink-700); }
+.pg-sec--cream { background: var(--w-cream); color: var(--w-ink-700); }
+.pg-head h2 { color: var(--w-navy); }
+.pg-head p { color: var(--w-ink-500); }
+.sup { color: var(--w-ink-500); }
+.prose p { color: var(--w-ink-700); }
+.prose strong { color: var(--w-navy); }
+.arrow-link { color: var(--w-navy); }
+.arrow-link:hover { color: var(--w-red); }
+.btn--ghost { color: var(--w-navy); border-color: var(--w-ink-300); }
+.btn--ghost:hover { background: var(--w-navy); color: #fff; border-color: var(--w-navy); }
+
+.flist .it { border-bottom-color: var(--w-ink-200); }
+.flist h4 { color: var(--w-navy); }
+.flist p { color: var(--w-ink-500); }
+.flist em { color: var(--w-ink-700); }
+
+.steps { border-top-color: var(--w-ink-200); }
+.steps .step { border-right-color: var(--w-ink-200); }
+.steps h4 { color: var(--w-navy); }
+.steps p { color: var(--w-ink-500); }
+
+.tile { background: #fff; border-color: var(--w-ink-200); }
+.tile:hover { background: #fff; border-color: var(--w-gold); box-shadow: 0 16px 44px rgba(28,43,74,0.1); }
+.tile h3 { color: var(--w-navy); }
+.tile p { color: var(--w-ink-500); }
+.tile .role { color: var(--w-red); }
+.tile .arrow-link { color: var(--w-navy); }
+
+.docs { border-top-color: var(--w-ink-200); }
+.docs a { border-bottom-color: var(--w-ink-200); }
+.docs .doc-name { color: var(--w-navy); }
+.docs .doc-meta { color: var(--w-ink-400); }
+
+.chart-ph { background: var(--w-stone); border-color: var(--w-ink-200); }
+.chart-ph .note { color: var(--w-ink-400); }
+
+/* Navy accent bands stay navy (cijfers / CTA), gold/white on them */
+.pg-cta { background: var(--w-navy); }
+.wc-footer { background: #1A1A1A; }
+
+/* Generic .pg-hero band → light (if used) */
+.pg-hero { background: linear-gradient(180deg, #fff 0%, var(--w-stone) 100%); color: var(--w-navy); }
+.pg-hero::after { color: rgba(28,43,74,0.05); }
+.pg-hero::before { background: radial-gradient(115% 85% at 84% -8%, rgba(184,151,106,0.14), transparent 55%); }
+.pg-hero h1 { color: var(--w-navy); }
+.pg-hero h1 em { color: var(--w-red); }
+.pg-hero .lead { color: var(--w-ink-500); }
+.crumbs { color: var(--w-ink-400); }
+.crumbs a:hover { color: var(--w-navy); }
+.pg-hero-aside { background: #fff; border-color: var(--w-ink-200); }
+.pg-hero-aside .row { border-bottom-color: var(--w-ink-100); }
+.pg-hero-aside .k { color: var(--w-ink-400); }
+.pg-hero-aside .v { color: var(--w-navy); }
