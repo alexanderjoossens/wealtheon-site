@@ -15,9 +15,46 @@
   <div class="nav-inner">
     <a href="/home" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="/home">Welcome</a></li>
       <li>
-        <button class="nav-dropdown-btn" id="services-btn" aria-expanded="false" aria-haspopup="true">
+        <button class="nav-dropdown-btn" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">
+          Welcome <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown" id="welcome-dropdown" role="menu">
+          <div class="dropdown-grid">
+            <div>
+              <div class="dropdown-col-title">Homepage variations</div>
+              <a href="/home" role="menuitem"><div><strong>Home</strong><span>Current homepage</span></div></a>
+              <a href="/home1" role="menuitem"><div><strong>Home 1</strong><span>Skyline — bold &amp; centered</span></div></a>
+              <a href="/home2" role="menuitem"><div><strong>Home 2</strong><span>Growth — long-term vision</span></div></a>
+              <a href="/home3" role="menuitem"><div><strong>Home 3</strong><span>Horizon — stats-driven</span></div></a>
+              <a href="/home4" role="menuitem"><div><strong>Home 4</strong><span>Partnership — brand red</span></div></a>
+              <a href="/home5" role="menuitem"><div><strong>Home 5</strong><span>Minimal — elegant &amp; light</span></div></a>
+              <a href="/home6" role="menuitem"><div><strong>Home 6</strong><span>Cinematic — video hero</span></div></a>
+              <a href="/home7" role="menuitem"><div><strong>Home 7</strong><span>Cinematic — blue accents</span></div></a>
+              <div class="dropdown-col-title" style="margin-top:0.75rem;">Design drafts</div>
+              <a href="/design/" role="menuitem"><div><strong>Design hub</strong><span>Compare all design directions</span></div></a>
+              <a href="/design/Homepage — Premium Editorial.html" role="menuitem"><div><strong>Premium Editorial</strong><span>Recommended combination</span></div></a>
+              <a href="/design/Homepage — Editorial.html" role="menuitem"><div><strong>Editorial Heritage</strong><span>Photographic &amp; refined</span></div></a>
+              <a href="/design/Homepage — Minimal.html" role="menuitem"><div><strong>Bold Minimal</strong><span>Typographic &amp; minimal</span></div></a>
+              <a href="/design/Homepage — Premium.html" role="menuitem"><div><strong>Premium Structured</strong><span>Navy hero &amp; matrix</span></div></a>
+            </div>
+            <div>
+              <div class="dropdown-col-title">Design drafts — hero variations</div>
+              <a href="/design/Wealtheon Hero.html" role="menuitem"><div><strong>Hero v1</strong><span>Dark cinematic — video</span></div></a>
+              <a href="/design/Wealtheon Hero v2 (licht).html" role="menuitem"><div><strong>Hero v2</strong><span>Licht — deck zwart/rood</span></div></a>
+              <a href="/design/Wealtheon Hero v3 (minimal).html" role="menuitem"><div><strong>Hero v3</strong><span>Minimal — navy/goud/cream</span></div></a>
+              <a href="/design/Wealtheon Hero v4 (origineel).html" role="menuitem"><div><strong>Hero v4</strong><span>Minimal — navy/rood origineel</span></div></a>
+              <a href="/design/Wealtheon Hero v5 (rood-creme).html" role="menuitem"><div><strong>Hero v5</strong><span>Minimal — rood/crème</span></div></a>
+              <a href="/design/Wealtheon Hero v6 (fintech).html" role="menuitem"><div><strong>Hero v6</strong><span>Fintech — navy</span></div></a>
+              <a href="/design/Wealtheon Hero v7 (rood-creme).html" role="menuitem"><div><strong>Hero v7</strong><span>Fintech — rood/crème</span></div></a>
+              <a href="/design/Wealtheon Hero v8 (video rood-creme).html" role="menuitem"><div><strong>Hero v8</strong><span>Video — rood/crème</span></div></a>
+              <a href="/design/VEX Hero.html" role="menuitem"><div><strong>VEX Hero</strong><span>Original spec reference</span></div></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <button class="nav-dropdown-btn" data-dropdown="services-dropdown" aria-expanded="false" aria-haspopup="true">
           Services <span class="nav-arrow">▾</span>
         </button>
         <div class="dropdown" id="services-dropdown" role="menu">
@@ -36,14 +73,35 @@
               <a href="/services#funds"><div><strong>DBI-RDT Value Fund</strong><span>Tax-efficient value fund</span></div></a>
               <div class="dropdown-col-title" style="margin-top:0.75rem;">Partners</div>
               <a href="/services#financial-intermediaries"><div><strong>Financial Intermediaries</strong><span>Partnership &amp; support model</span></div></a>
+              <div class="dropdown-col-title" style="margin-top:0.75rem;">Design drafts</div>
+              <a href="/design/Diensten.html"><div><strong>Diensten</strong><span>Services overview — design draft</span></div></a>
+              <a href="/design/Strategie — Value.html"><div><strong>Strategie — Value</strong><span>Design draft</span></div></a>
+              <a href="/design/Strategie — Growth.html"><div><strong>Strategie — Growth</strong><span>Design draft</span></div></a>
+              <a href="/design/Strategie — High Conviction.html"><div><strong>Strategie — High Conviction</strong><span>Design draft</span></div></a>
             </div>
           </div>
         </div>
       </li>
-      <li><a href="/about">About Us</a></li>
+      <li>
+        <button class="nav-dropdown-btn" data-dropdown="about-dropdown" aria-expanded="false" aria-haspopup="true">
+          About Us <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown dropdown-narrow" id="about-dropdown" role="menu">
+          <a href="/about" role="menuitem"><div><strong>About Us</strong><span>Company, team &amp; offices</span></div></a>
+          <a href="/design/Over ons.html" role="menuitem"><div><strong>Over ons</strong><span>Design draft</span></div></a>
+        </div>
+      </li>
       <li><a href="/impact">Impact</a></li>
       <li><a href="/news">News</a></li>
-      <li><a href="/contact">Contact</a></li>
+      <li>
+        <button class="nav-dropdown-btn" data-dropdown="contact-dropdown" aria-expanded="false" aria-haspopup="true">
+          Contact <span class="nav-arrow">▾</span>
+        </button>
+        <div class="dropdown dropdown-narrow" id="contact-dropdown" role="menu">
+          <a href="/contact" role="menuitem"><div><strong>Contact</strong><span>Form &amp; offices</span></div></a>
+          <a href="/design/Contact.html" role="menuitem"><div><strong>Contact</strong><span>Design draft</span></div></a>
+        </div>
+      </li>
       <li><a href="/careers">Careers</a></li>
     </ul>
     <div class="nav-right">
@@ -189,22 +247,27 @@ loadData();
 </script>
 
 <script>
-  var btn = document.getElementById('services-btn');
-  var dropdown = document.getElementById('services-dropdown');
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var open = dropdown.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    var arrow = btn.querySelector('.nav-arrow');
-    if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+  // Generalised dropdown handling for all nav dropdowns
+  document.querySelectorAll('.nav-dropdown-btn').forEach(function (btn) {
+    var dd = document.getElementById(btn.getAttribute('data-dropdown'));
+    if (!dd) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      document.querySelectorAll('.dropdown.open').forEach(function (d) { if (d !== dd) d.classList.remove('open'); });
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var arrow = btn.querySelector('.nav-arrow');
+      if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
+    });
+    dd.addEventListener('click', function (e) { e.stopPropagation(); });
   });
   document.addEventListener('click', function () {
-    dropdown.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    var arrow = btn.querySelector('.nav-arrow');
-    if (arrow) arrow.style.transform = '';
+    document.querySelectorAll('.dropdown.open').forEach(function (d) { d.classList.remove('open'); });
+    document.querySelectorAll('.nav-dropdown-btn').forEach(function (b) {
+      b.setAttribute('aria-expanded', 'false');
+      var a = b.querySelector('.nav-arrow'); if (a) a.style.transform = '';
+    });
   });
-  dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
   document.getElementById('nav-toggle').addEventListener('click', function () {
     document.getElementById('nav-links').classList.toggle('open');
   });

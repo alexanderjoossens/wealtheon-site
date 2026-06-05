@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Uw vermogen aan het werk (rood/crème)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { serif: ['"Source Serif 4"', 'Palatino', 'Georgia', 'serif'], sans: ['Inter', 'sans-serif'] },
+      colors: { navy: '#1A1A1A', navydeep: '#000000', gold: '#E11B22', wred: '#C0392B' }
+    } }
+  };
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: #FAF8F5; color: #1A1A1A; margin: 0; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .marquee-track { display: flex; width: max-content; animation: marquee 24s linear infinite; }
+  .backers-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track, .backers-track { animation: none; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useRef, useEffect } = React;
+
+function Arrow({ cls }) {
+  return (
+    <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  );
+}
+
+function VideoLayer({ src, fallback }) {
+  return (
+    <div className="absolute inset-0">
+      <div className="absolute inset-0" style={{ backgroundImage: 'url("' + fallback + '")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+      <video className="absolute inset-0 w-full h-full object-cover" autoPlay muted loop playsInline src={src}></video>
+    </div>
+  );
+}
+
+function Navbar() {
+  const links = [['Diensten','Diensten.html'],['Over ons','Over ons.html'],['Impact','Over ons.html#impact'],['Nieuws','Over ons.html#nieuws'],['Contact','Contact.html']];
+  return (
+    <nav className="absolute top-0 left-0 right-0 z-20 px-6 md:px-10 py-5">
+      <div className="max-w-[88rem] mx-auto flex items-center justify-between">
+        <a href="Wealtheon Hero v7 (rood-creme).html" className="flex items-center">
+          <img src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon" style={{ height: '32px', width: 'auto' }}/>
+        </a>
+        <div className="hidden md:flex items-center gap-8">
+          {links.map(function (it) {
+            return <a key={it[0]} href={it[1]} className="text-[15px] text-navy/70 hover:text-navy font-medium transition-colors duration-200">{it[0]}</a>;
+          })}
+        </div>
+        <a href="Contact.html" className="bg-[#E11B22] text-white text-[15px] font-medium px-7 py-2.5 rounded-full hover:bg-[#B8141B] transition-colors duration-200">Plan een gesprek</a>
+      </div>
+    </nav>
+  );
+}
+
+function PillArrow({ href, children, size }) {
+  return (
+    <a href={href} className={"inline-flex items-center gap-3 bg-[#E11B22] text-white font-medium pl-8 pr-2 py-2 rounded-full hover:bg-[#B8141B] transition-colors duration-200 " + (size || 'text-base md:text-lg')}>
+      {children}
+      <span className="bg-white rounded-full p-2 inline-flex"><Arrow cls="w-5 h-5 text-[#E11B22]" /></span>
+    </a>
+  );
+}
+
+function Hero() {
+  const brands = [
+    { t: 'FSMA', s: { fontFamily: 'Georgia, serif', fontWeight: 700, letterSpacing: '-0.02em', fontSize: '15px' } },
+    { t: 'FINMA', s: { fontFamily: 'Arial, sans-serif', fontWeight: 900, letterSpacing: '0.08em', fontSize: '13px', textTransform: 'uppercase' } },
+    { t: 'AFM', s: { fontFamily: '"Trebuchet MS", sans-serif', fontWeight: 600, letterSpacing: '0.01em', fontSize: '15px', fontStyle: 'italic' } },
+    { t: 'AMF', s: { fontFamily: '"Courier New", monospace', fontWeight: 700, letterSpacing: '0.12em', fontSize: '13px', textTransform: 'uppercase' } },
+    { t: 'BaFin', s: { fontFamily: 'Palatino, "Book Antiqua", serif', fontWeight: 400, letterSpacing: '-0.01em', fontSize: '16px' } },
+    { t: 'Brussel', s: { fontFamily: 'Verdana, sans-serif', fontWeight: 700, letterSpacing: '-0.03em', fontSize: '13px' } },
+  ];
+  return (
+    <div className="flex-1 px-6 pt-20 pb-6 flex items-end">
+      <div className="relative w-full max-w-[88rem] mx-auto rounded-2xl overflow-hidden" style={{ height: 'calc(100vh - 112px)' }}>
+        <VideoLayer src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4" fallback="wealtheon-site/assets/hero-bg-cream.jpg" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(110deg, rgba(250,248,245,0.92) 0%, rgba(250,248,245,0.55) 38%, rgba(250,248,245,0.1) 70%)' }}></div>
+        <div className="relative z-10 flex flex-col items-start justify-start h-full p-8 md:p-12 pt-28 md:pt-32">
+          <div className="flex items-center gap-3 mb-7">
+            <span style={{ width: '9px', height: '9px', background: '#E11B22', display: 'inline-block' }}></span>
+            <span className="text-xs font-semibold uppercase" style={{ letterSpacing: '0.2em', color: '#6A6E78' }}>Onafhankelijk vermogensbeheer · sinds 1971</span>
+          </div>
+          <h1 className="font-serif text-navy text-5xl md:text-6xl font-medium leading-tight max-w-xl mb-4" style={{ letterSpacing: '-0.03em' }}>
+            Uw vermogen<br/>aan het werk
+          </h1>
+          <p className="text-navy/70 text-base md:text-lg max-w-md mb-8 leading-relaxed">
+            Onafhankelijk, fee-only beheer in familiehanden. Drie strategieën, één belang: het uwe — gedreven door overtuiging, niet door commissie.
+          </p>
+          <PillArrow href="Diensten.html">Onze strategieën</PillArrow>
+
+          <div className="mt-16 md:mt-24 w-full max-w-md overflow-hidden">
+            <div className="marquee-track">
+              {brands.concat(brands).map(function (b, i) {
+                return <span key={i} className="mx-7 shrink-0 whitespace-nowrap" style={Object.assign({ color: 'rgba(26,26,26,0.55)' }, b.s)}>{b.t}</span>;
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InfoSection() {
+  return (
+    <section className="px-6 py-24">
+      <div className="max-w-[88rem] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start">
+          <div>
+            <h2 className="font-serif text-navy text-4xl md:text-5xl font-medium leading-tight mb-8" style={{ letterSpacing: '-0.03em' }}>Maak kennis met Wealtheon.</h2>
+            <PillArrow href="Over ons.html" size="text-base">Ontdek ons</PillArrow>
+          </div>
+          <p className="text-navy/70 text-2xl md:text-3xl leading-relaxed">
+            Een Belgische vermogensbeheerder die uw patrimonium beheert zoals het zijne — met de rust en de horizon van generaties.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="lg:col-span-2 rounded-2xl overflow-hidden relative min-h-80" style={{ backgroundImage: 'url("wealtheon-site/assets/hero-bg-cream.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(250,248,245,0.82), rgba(250,248,245,0.35))' }}></div>
+            <div className="relative z-10 p-7 min-h-80 flex flex-col justify-between">
+              <h3 className="font-serif text-navy text-2xl font-medium leading-snug" style={{ letterSpacing: '-0.02em' }}>Beheer met overtuiging</h3>
+              <p className="text-navy/70 text-base max-w-xs">Value, Growth en High Conviction dekken samen elke marktcyclus — bottom-up en top-down, zonder index om te volgen.</p>
+            </div>
+          </div>
+          <div className="rounded-2xl p-7 min-h-80 flex flex-col justify-between" style={{ background: '#1A1A1A' }}>
+            <h3 className="font-serif text-white text-2xl font-medium leading-snug">Altijd<br/>onafhankelijk</h3>
+            <p className="text-white/60 text-base">Pure player, fee-only. Eén bron van inkomsten — geen retrocessies sinds 1971.</p>
+          </div>
+          <div className="rounded-2xl p-7 min-h-80 flex flex-col justify-between" style={{ background: '#1A1A1A' }}>
+            <h3 className="font-serif text-white text-2xl font-medium leading-snug">Een<br/>familiebedrijf</h3>
+            <p className="text-white/60 text-base">Geleid door de tweede generatie. Wij denken in generaties, niet in kwartalen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BackedBy() {
+  const backers = [
+    { t: 'FSMA', s: { fontFamily: '"Times New Roman", serif', fontWeight: 400, letterSpacing: '0.02em', fontSize: '15px' } },
+    { t: 'FINMA', s: { fontFamily: '"Arial Black", sans-serif', fontWeight: 900, letterSpacing: '0.08em', fontSize: '16px' } },
+    { t: 'AFM', s: { fontFamily: 'Impact, sans-serif', fontWeight: 700, letterSpacing: '0.05em', fontSize: '18px' } },
+    { t: 'AMF', s: { fontFamily: 'Georgia, serif', fontWeight: 600, letterSpacing: '-0.02em', fontSize: '17px' } },
+    { t: 'BaFin', s: { fontFamily: 'Helvetica, sans-serif', fontWeight: 700, letterSpacing: '-0.01em', fontSize: '15px' } },
+    { t: 'Brussel', s: { fontFamily: 'Verdana, sans-serif', fontWeight: 700, letterSpacing: '0.06em', fontSize: '14px', textTransform: 'uppercase' } },
+    { t: 'Genève', s: { fontFamily: '"Courier New", monospace', fontWeight: 700, letterSpacing: '0.16em', fontSize: '14px' } },
+    { t: 'Eindhoven', s: { fontFamily: 'Palatino, serif', fontWeight: 500, letterSpacing: '0.03em', fontSize: '15px' } },
+  ];
+  return (
+    <section className="px-6 py-12">
+      <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+        <div className="text-navy/70 text-base leading-relaxed">Gereguleerd in vijf markten,<br/>aanwezig in vier steden.</div>
+        <div className="md:col-span-3 overflow-hidden">
+          <div className="backers-track">
+            {backers.concat(backers).map(function (b, i) {
+              return <span key={i} className="mx-10 shrink-0 whitespace-nowrap" style={Object.assign({ color: 'rgba(26,26,26,0.5)' }, b.s)}>{b.t}</span>;
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UseCases() {
+  return (
+    <section className="px-6 py-24">
+      <div className="max-w-[88rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="md:pr-12 md:pt-2">
+          <div className="text-navy/60 text-sm mb-2">Wealtheon in de praktijk</div>
+          <h2 className="font-serif text-navy text-5xl md:text-6xl font-medium leading-none mb-6" style={{ letterSpacing: '-0.04em' }}>Strategieën</h2>
+          <p className="text-navy/60 text-base leading-relaxed max-w-sm">Drie complementaire benaderingen voor families, ondernemers en intermediairs die op zoek zijn naar onafhankelijk, overtuigingsgedreven beheer.</p>
+          <div className="mt-8"><PillArrow href="Diensten.html" size="text-base">Alle strategieën</PillArrow></div>
+        </div>
+        <div className="relative rounded-3xl overflow-hidden min-h-[560px] md:min-h-[720px]">
+          <VideoLayer src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_183428_ab5e672a-f608-4dcb-b319-f3e040f02e2d.mp4" fallback="wealtheon-site/assets/hero-bg-cream.jpg" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(250,248,245,0.9) 0%, rgba(250,248,245,0.5) 45%, rgba(250,248,245,0.2) 100%)' }}></div>
+          <div className="relative z-10 p-10 md:p-12">
+            <h3 className="font-serif text-navy text-4xl md:text-5xl font-medium leading-tight mb-5" style={{ letterSpacing: '-0.03em' }}>Value</h3>
+            <p className="text-navy/70 text-base max-w-md mb-8">Waardecreatie op de lange termijn. Buy-and-hold, contrair en geduldig — de patrimoniale ankerpositie van elke portefeuille. Risicoprofiel 5–6.</p>
+            <a href="Strategie — Value.html" className="group inline-flex items-center gap-3 text-navy font-medium">
+              <span className="w-9 h-9 rounded-full bg-white/80 backdrop-blur flex items-center justify-center group-hover:bg-white transition-colors"><Arrow cls="w-4 h-4 text-[#E11B22]" /></span>
+              Meer weten
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const cols = [
+    ['Diensten', [['Value','Strategie — Value.html'],['Growth','Strategie — Growth.html'],['High Conviction','Strategie — High Conviction.html'],['Fondsen','Diensten.html#fondsen']]],
+    ['Wealtheon', [['Over ons','Over ons.html'],['Impact','Over ons.html#impact'],['Nieuws','Over ons.html#nieuws'],['Careers','Contact.html#careers']]],
+    ['Kantoren', [['Brussel','#'],['Waregem','#'],['Eindhoven','#'],['Genève','#']]],
+  ];
+  return (
+    <footer className="px-6 pt-20 pb-10" style={{ background: '#1A1A1A', color: 'rgba(255,255,255,0.62)' }}>
+      <div className="max-w-[88rem] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12" style={{ borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+          <div>
+            <img src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon" style={{ height: '30px', filter: 'brightness(0) invert(1)', marginBottom: '20px' }}/>
+            <p className="text-sm leading-relaxed" style={{ maxWidth: '30ch' }}>Onafhankelijke Belgische vermogensbeheerder sinds 1971. Fee-only, in familiehanden.</p>
+          </div>
+          {cols.map(function (col) {
+            return (
+              <div key={col[0]}>
+                <h5 className="text-white text-xs font-semibold uppercase mb-5" style={{ letterSpacing: '0.14em' }}>{col[0]}</h5>
+                <ul className="space-y-3">
+                  {col[1].map(function (l) { return <li key={l[0]}><a href={l[1]} className="text-sm hover:text-white transition-colors">{l[0]}</a></li>; })}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex flex-wrap justify-between gap-4 pt-7 text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <span>© 2026 Wealtheon Asset Management · www.wealtheon.eu</span>
+          <span className="flex gap-5"><a href="#" className="hover:text-white">Privacy</a><a href="#" className="hover:text-white">Disclaimer</a><a href="#" className="hover:text-white">ESG-beleid</a></span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <div className="flex flex-col" style={{ background: '#FAF8F5' }}>
+      <div className="h-screen flex flex-col overflow-hidden relative">
+        <Navbar />
+        <Hero />
+      </div>
+      <InfoSection />
+      <BackedBy />
+      <UseCases />
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

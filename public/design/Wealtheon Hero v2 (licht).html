@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Onafhankelijk vermogensbeheer (lichte versie)</title>
+<link rel="stylesheet" href="wealtheon-site/css/brand.css"/>
+<link rel="stylesheet" href="wealtheon-site/css/pages.css"/>
+<link rel="stylesheet" href="wealtheon-site/css/pages-light.css"/>
+<style>
+  /* v2 light editorial hero (original Wealtheon colours) */
+  .v2-hero { background: linear-gradient(180deg, #fff 0%, var(--w-stone) 100%); position: relative; overflow: hidden; }
+  .v2-hero::after { content: "W"; position: absolute; right: -2%; bottom: -40%; font-family: var(--font-serif); font-size: 460px; line-height: 1; font-weight: 500; color: rgba(28,43,74,0.04); }
+  .v2-hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(40px, 6vw, 92px); align-items: center; padding-block: clamp(130px, 14vw, 180px) clamp(64px, 8vw, 104px); }
+  .v2-redbar { display: inline-flex; gap: 6px; margin-bottom: 26px; }
+  .v2-redbar i { display: block; height: 5px; width: 34px; background: var(--w-red); }
+  .v2-redbar i:nth-child(2){ background: var(--w-ink-300); width: 20px; }
+  .v2-redbar i:nth-child(3){ background: var(--w-gold); width: 14px; }
+  .v2-hero h1 { font-family: var(--font-serif); color: var(--w-navy); font-size: clamp(38px, 4.6vw, 64px); line-height: 1.06; letter-spacing: -0.025em; font-weight: 500; margin-bottom: 26px; text-wrap: balance; }
+  .v2-hero h1 em { font-style: italic; color: var(--w-red); }
+  .v2-hero .lead { font-size: 19px; line-height: 1.65; color: var(--w-ink-500); max-width: 34ch; margin-bottom: 38px; }
+  .v2-hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .v2-hero-media { position: relative; }
+  .v2-hero-media image-slot { width: 100%; height: 540px; box-shadow: 0 26px 64px rgba(28,43,74,0.16); }
+  .v2-hero-media .frame { position: absolute; inset: -14px -14px auto auto; width: 64%; height: 64%; border: 1px solid var(--w-gold); pointer-events: none; }
+  .v2-hero-tag { position: absolute; left: -28px; bottom: 40px; background: #fff; padding: 22px 28px; box-shadow: 0 18px 44px rgba(28,43,74,0.14); border-left: 3px solid var(--w-gold); }
+  .v2-hero-tag .n { font-family: var(--font-serif); font-size: 42px; line-height: 1; color: var(--w-gold); font-weight: 500; }
+  .v2-hero-tag .l { font-size: 13px; color: var(--w-ink-500); margin-top: 7px; max-width: 17ch; line-height: 1.4; }
+  @media (max-width: 1080px) { .v2-hero .wrap { grid-template-columns: 1fr; } .v2-hero-media image-slot { height: 380px; } }
+</style>
+</head>
+<body data-page="home">
+<div id="site-header"></div>
+
+<!-- Hero (light, original colours) -->
+<section class="v2-hero" data-screen-label="Home v2 — hero">
+  <div class="wrap">
+    <div>
+      <div class="v2-redbar"><i></i><i></i><i></i></div>
+      <span class="sup">Onafhankelijk vermogensbeheer · sinds 1971</span>
+      <h1 style="margin-top:18px">Wij beheren uw vermogen zoals wij <em>het onze</em> beheren.</h1>
+      <p class="lead">Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd in vijf markten, gedreven door overtuiging.</p>
+      <div class="v2-hero-cta">
+        <a class="btn btn--primary" href="Diensten.html" style="background:var(--w-navy)">Onze strategieën</a>
+        <a class="btn btn--ghost" href="Over ons.html">Maak kennis met ons</a>
+      </div>
+    </div>
+    <div class="v2-hero-media">
+      <image-slot id="v2-hero" shape="rect" placeholder="Sleep een hero-beeld — architectuur, licht, sereniteit"></image-slot>
+      <div class="frame"></div>
+      <div class="v2-hero-tag"><div class="n tnum">55</div><div class="l">jaar onafhankelijk beheer, in tweede generatie</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Strategieën (white) -->
+<section class="pg-sec" data-screen-label="Home v2 — strategieën">
+  <div class="wrap">
+    <div class="pg-head reveal">
+      <span class="sup">Onze strategieën</span>
+      <h2>Drie complementaire benaderingen</h2>
+      <p>Eén filosofie, drie wegen. Samen dekken ze elke marktcyclus en elk beleggersprofiel — via directe lijnen of via onze fondsen.</p>
+    </div>
+    <div class="cgrid cgrid--3 reveal">
+      <a class="tile" href="Strategie — Value.html"><div class="no">01</div><h3>Value</h3><div class="role">Patrimoniale ankerpositie</div><p>Waardecreatie op lange termijn. Buy-and-hold, contrair, geduldig. Risicoprofiel 5–6.</p><span class="arrow-link">Ontdek Value <span class="ar">→</span></span></a>
+      <a class="tile" href="Strategie — Growth.html"><div class="no">02</div><h3>Growth</h3><div class="role">Kern van de portefeuille</div><p>Structurele groei via kwaliteitsbedrijven. Top-down, actief risicobeheer. Risicoprofiel 2–6.</p><span class="arrow-link">Ontdek Growth <span class="ar">→</span></span></a>
+      <a class="tile" href="Strategie — High Conviction.html"><div class="no">03</div><h3>High Conviction</h3><div class="role">Offensieve satelliet</div><p>Gerichte overperformance, geconcentreerd. Altijd belegd, bottom-up. Risicoprofiel 7.</p><span class="arrow-link">Ontdek High Conviction <span class="ar">→</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Cijfers (navy accent band) -->
+<section class="pg-cta" data-screen-label="Home v2 — cijfers">
+  <div class="wrap" style="display:block">
+    <span class="sup sup--light reveal" style="margin-bottom:40px">Wealtheon in cijfers</span>
+    <div class="kpis reveal">
+      <div class="kpi"><div class="n tnum">4</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven · Genève</div></div>
+      <div class="kpi"><div class="n tnum">23</div><div class="l">Specialisten</div><div class="s">Eén toegewijd team</div></div>
+      <div class="kpi"><div class="n tnum">±1 Md€</div><div class="l">Beheerd vermogen</div><div class="s">Verdubbeld sinds 2020</div></div>
+      <div class="kpi"><div class="n tnum">505+</div><div class="l">Portefeuilles</div><div class="s">Families &amp; ondernemers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Waarom (stone) -->
+<section class="pg-sec pg-sec--stone" data-screen-label="Home v2 — waarom">
+  <div class="wrap">
+    <div class="pg-head reveal"><span class="sup">Waarom Wealtheon</span><h2>Een huis dat denkt in generaties.</h2></div>
+    <div class="cgrid cgrid--2 reveal">
+      <div class="flist">
+        <div class="it"><span class="idx">01</span><div><h4>100% onafhankelijk · pure player</h4><p>Geen commerciële druk, geen productverkoop. Enkel vermogensbeheer.</p></div></div>
+        <div class="it"><span class="idx">02</span><div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart. <em>Generaties, geen kwartalen.</em></p></div></div>
+      </div>
+      <div class="flist">
+        <div class="it"><span class="idx">03</span><div><h4>Fee-only</h4><p>Eén bron van inkomsten. <em>Geen retrocessies sinds 1971. Nooit.</em></p></div></div>
+        <div class="it"><span class="idx">04</span><div><h4>Gereguleerd in vijf markten</h4><p>FSMA · FINMA · AFM · AMF · BaFin.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA (navy) -->
+<section class="pg-cta" data-screen-label="Home v2 — cta">
+  <div class="wrap">
+    <div>
+      <span class="sup sup--light" style="margin-bottom:22px">Contact</span>
+      <h2>Laten we praten over wat <em>blijvend</em> telt.</h2>
+      <p>Een vertrouwelijk gesprek met een van onze beheerders, vrijblijvend. Beheer vanaf 500 k€ (300 k€ via verzekeringscontract).</p>
+    </div>
+    <div class="pg-cta-actions">
+      <a class="btn btn--light" href="Contact.html">Plan een gesprek</a>
+      <a class="btn btn--ghost" href="Diensten.html" style="color:#fff;border-color:rgba(255,255,255,0.3)">Onze diensten</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="image-slot.js"></script>
+<script src="wealtheon-site/css/chrome.js"></script>
+</body>
+</html>

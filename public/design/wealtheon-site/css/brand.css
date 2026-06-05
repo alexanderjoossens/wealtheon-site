@@ -1,0 +1,136 @@
+/* ============================================================
+   WEALTHEON — WEB BRAND FOUNDATION
+   Web-scaled evolution of the Wealtheon design system.
+   Navy Palatino/Source-Serif headlines · gold + red accents
+   on white / cool-stone grounds. Modern, institutional, calm.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* ---- Brand core ---- */
+  --w-red:        #C0392B;
+  --w-red-deep:   #9E2E22;
+  --w-navy:       #1C2B4A;
+  --w-navy-deep:  #142039;
+  --w-gold:       #B8976A;
+  --w-gold-deep:  #9B7E54;
+  --w-cream:      #FAF8F5;
+  --w-cream-2:    #F2EEE6;
+  --w-stone:      #EEF0F2;
+  --w-stone-2:    #E2E4E8;
+  --w-white:      #FFFFFF;
+
+  /* ---- Neutral scale (warm-cool gray) ---- */
+  --w-ink-900:    #16181D;
+  --w-ink-700:    #34373E;
+  --w-ink-500:    #6A6E78;
+  --w-ink-400:    #8E929B;
+  --w-ink-300:    #B7BAC2;
+  --w-ink-200:    #DBDDE2;
+  --w-ink-100:    #ECEEF1;
+
+  --w-positive:   #2E7D5B;
+  --w-negative:   #C0392B;
+
+  /* ---- Type stacks ---- */
+  --font-serif: "Source Serif 4", "Palatino Linotype", "Palatino", "Book Antiqua", Georgia, serif;
+  --font-sans:  "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- Tracking ---- */
+  --tr-sup:  0.22em;
+  --tr-tight:-0.02em;
+
+  /* ---- Layout ---- */
+  --maxw: 1280px;
+  --gut: clamp(24px, 5vw, 88px);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--w-ink-700);
+  background: var(--w-white);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* ---- Shared type primitives ---- */
+.serif { font-family: var(--font-serif); color: var(--w-navy); letter-spacing: var(--tr-tight); line-height: 1.08; }
+.sup {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: var(--tr-sup);
+  text-transform: uppercase;
+  color: var(--w-ink-500);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.sup::before {
+  content: "";
+  width: 9px; height: 9px;
+  background: var(--w-gold);
+  flex: none;
+}
+.sup.sup--red::before { background: var(--w-red); }
+.sup.sup--light { color: rgba(255,255,255,0.7); }
+
+.tnum { font-variant-numeric: lining-nums tabular-nums; }
+
+/* ---- Container ---- */
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gut); }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: 14px 26px;
+  border: 1px solid transparent;
+  transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--w-navy); color: #fff; }
+.btn--primary:hover { background: var(--w-navy-deep); }
+.btn--red { background: var(--w-red); color: #fff; }
+.btn--red:hover { background: var(--w-red-deep); }
+.btn--ghost { background: transparent; color: var(--w-navy); border-color: var(--w-ink-300); }
+.btn--ghost:hover { border-color: var(--w-navy); }
+.btn--light { background: #fff; color: var(--w-navy); }
+.btn--light:hover { background: var(--w-cream); }
+
+.arrow-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 600; font-size: 14px; letter-spacing: 0.02em; color: var(--w-navy);
+  transition: gap .2s var(--ease), color .18s var(--ease);
+}
+.arrow-link .ar { transition: transform .2s var(--ease); }
+.arrow-link:hover { color: var(--w-red); }
+.arrow-link:hover .ar { transform: translateX(4px); }
+
+/* ---- Logo recolor helper (red wordmark → white for dark grounds) ---- */
+.logo-negative { filter: brightness(0) invert(1); }
+
+/* ---- Reveal on scroll ---- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}

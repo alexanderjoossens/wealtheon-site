@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Onafhankelijk vermogensbeheer sinds 1971</title>
+<link rel="stylesheet" href="wealtheon-site/css/brand.css"/>
+<style>
+/* ====================== HOMEPAGE D — PREMIUM EDITORIAL (C × A) ====================== */
+body.pe { background: var(--w-white); }
+
+/* Utility bar */
+.pe-utility { background: var(--w-navy-deep); color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 0.04em; position: relative; z-index: 61; }
+.pe-utility .wrap { display: flex; align-items: center; justify-content: space-between; height: 38px; }
+.pe-region { display: flex; align-items: center; }
+.pe-region button { background: none; border: 0; color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 0.08em; font-weight: 600; padding: 4px 10px; text-transform: uppercase; transition: color .18s var(--ease); }
+.pe-region button[data-active] { color: #fff; }
+.pe-region button:hover { color: #fff; }
+.pe-region .sep { width: 1px; height: 12px; background: rgba(255,255,255,0.2); }
+.pe-util-right { display: flex; align-items: center; gap: 22px; }
+.pe-util-lang { display: flex; gap: 2px; }
+.pe-util-lang button { background: none; border: 0; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; padding: 2px 6px; text-transform: uppercase; transition: color .18s var(--ease); }
+.pe-util-lang button[data-active] { color: var(--w-gold); }
+.pe-login { color: rgba(255,255,255,0.85); font-weight: 500; }
+.pe-login:hover { color: #fff; }
+
+/* Header — transparent over navy hero, solid on scroll */
+.pe-header { position: sticky; top: 0; z-index: 60; transition: background .3s var(--ease), box-shadow .3s var(--ease); }
+.pe-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+.pe-logo { display: flex; }
+.pe-logo img { height: 33px; }
+.pe-logo .logo-dark { display: none; }
+.pe-nav { display: flex; gap: 34px; }
+.pe-nav a { font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.85); position: relative; padding: 6px 0; transition: color .18s var(--ease); }
+.pe-nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--w-red); transition: width .22s var(--ease); }
+.pe-nav a:hover::after { width: 100%; }
+.pe-nav a:hover { color: #fff; }
+.pe-headcta { display: inline-flex; align-items: center; }
+.pe-headcta .btn { border-color: rgba(255,255,255,0.32); color: #fff; }
+.pe-headcta .btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+/* scrolled */
+.pe-header[data-scrolled] { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 6px 30px rgba(28,43,74,0.08); }
+.pe-header[data-scrolled] .logo-light { display: none; }
+.pe-header[data-scrolled] .logo-dark { display: block; }
+.pe-header[data-scrolled] .pe-nav a { color: var(--w-ink-700); }
+.pe-header[data-scrolled] .pe-nav a:hover { color: var(--w-navy); }
+.pe-header[data-scrolled] .pe-headcta .btn { color: var(--w-navy); border-color: var(--w-ink-300); }
+.pe-header[data-scrolled] .pe-headcta .btn:hover { background: var(--w-navy); color: #fff; border-color: var(--w-navy); }
+
+/* Hero — navy premium + editorial split */
+.pe-hero { background: var(--w-navy); color: #fff; position: relative; overflow: hidden; margin-top: -84px; padding-top: 84px; }
+.pe-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(110% 80% at 82% -5%, rgba(184,151,106,0.18), transparent 58%); }
+.pe-hero::after { content: "W"; position: absolute; right: -3%; bottom: -36%; font-family: var(--font-serif); font-size: 520px; color: rgba(255,255,255,0.035); line-height: 1; font-weight: 500; }
+.pe-hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(40px, 6vw, 92px); align-items: center; padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(64px, 8vw, 110px); }
+.pe-hero .sup { margin-bottom: 30px; }
+.pe-hero h1 { font-family: var(--font-serif); font-size: clamp(40px, 5vw, 70px); line-height: 1.04; letter-spacing: -0.025em; font-weight: 500; margin-bottom: 28px; text-wrap: balance; }
+.pe-hero h1 em { font-style: italic; color: var(--w-gold); }
+.pe-hero .lead { font-size: 19px; line-height: 1.65; color: rgba(255,255,255,0.72); max-width: 34ch; margin-bottom: 40px; }
+.pe-hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.pe-hero-cta .btn--ghost { color: #fff; border-color: rgba(255,255,255,0.3); }
+.pe-hero-cta .btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+.pe-hero-media { position: relative; }
+.pe-hero-media image-slot { width: 100%; height: 560px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
+.pe-hero-media .frame { position: absolute; inset: -14px -14px auto auto; width: 64%; height: 64%; border: 1px solid var(--w-gold); pointer-events: none; }
+.pe-hero-tag { position: absolute; left: -30px; bottom: 44px; background: #fff; color: var(--w-navy); padding: 22px 28px; box-shadow: 0 18px 44px rgba(0,0,0,0.28); border-left: 3px solid var(--w-gold); }
+.pe-hero-tag .n { font-family: var(--font-serif); font-size: 42px; line-height: 1; color: var(--w-gold); font-weight: 500; }
+.pe-hero-tag .l { font-size: 13px; color: var(--w-ink-500); margin-top: 7px; max-width: 17ch; line-height: 1.4; }
+
+/* Section base */
+.pe-sec { padding-block: clamp(72px, 9vw, 130px); }
+.pe-head { max-width: 760px; margin-bottom: 56px; }
+.pe-head .sup { margin-bottom: 22px; }
+.pe-head h2 { font-family: var(--font-serif); color: var(--w-navy); font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -0.02em; }
+.pe-head p { font-size: 18px; color: var(--w-ink-500); margin-top: 18px; line-height: 1.6; max-width: 58ch; }
+
+/* Strategies — editorial cards */
+.pe-strat { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--w-ink-200); }
+.pe-card { padding: 44px 38px 38px; border-right: 1px solid var(--w-ink-200); position: relative; transition: background .3s var(--ease); display: flex; flex-direction: column; min-height: 460px; }
+.pe-card:last-child { border-right: 0; }
+.pe-card::before { content: ""; position: absolute; top: -1px; left: 0; width: 56px; height: 3px; background: var(--w-gold); }
+.pe-card:hover { background: var(--w-cream); }
+.pe-card .no { font-family: var(--font-serif); font-size: 15px; color: var(--w-gold); letter-spacing: 0.1em; margin-bottom: 24px; }
+.pe-card h3 { font-family: var(--font-serif); color: var(--w-navy); font-size: 30px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
+.pe-card .role { font-size: 14px; color: var(--w-red); font-weight: 600; margin-bottom: 22px; }
+.pe-card .desc { font-size: 15.5px; color: var(--w-ink-500); line-height: 1.6; margin-bottom: 26px; }
+.pe-card .meta { display: grid; gap: 12px; margin-top: auto; margin-bottom: 28px; }
+.pe-card .meta .row { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--w-ink-100); padding-bottom: 11px; }
+.pe-card .meta .k { color: var(--w-ink-400); letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; font-weight: 600; }
+.pe-card .meta .v { color: var(--w-ink-700); font-weight: 500; font-size: 13.5px; }
+
+/* Stats — navy band */
+.pe-stats { background: var(--w-navy); color: #fff; position: relative; overflow: hidden; }
+.pe-stats::after { content: ""; position: absolute; right: -8%; top: -60%; width: 50%; height: 220%; background: radial-gradient(circle, rgba(184,151,106,0.12), transparent 62%); }
+.pe-stats .wrap { position: relative; z-index: 1; padding-block: clamp(56px, 7vw, 92px); }
+.pe-stats .sup { margin-bottom: 44px; }
+.pe-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.pe-stat { padding: 0 36px; border-left: 1px solid rgba(255,255,255,0.14); }
+.pe-stat:first-child { padding-left: 0; border-left: 0; }
+.pe-stat .n { font-family: var(--font-serif); font-size: clamp(46px, 4.8vw, 72px); line-height: 1; color: var(--w-gold); font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; }
+.pe-stat .l { font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 16px; font-weight: 500; }
+.pe-stat .s { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; line-height: 1.45; }
+
+/* Why — editorial split */
+.pe-why { background: var(--w-stone); }
+.pe-why .wrap { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+.pe-why-media image-slot { width: 100%; height: 580px; }
+.pe-why-list { display: grid; }
+.pe-why-item { padding: 28px 0; border-bottom: 1px solid var(--w-ink-200); display: grid; grid-template-columns: 56px 1fr; gap: 20px; }
+.pe-why-item:first-child { padding-top: 0; }
+.pe-why-item .idx { font-family: var(--font-serif); font-size: 20px; color: var(--w-gold); }
+.pe-why-item h4 { font-size: 19px; font-weight: 600; color: var(--w-navy); margin-bottom: 8px; }
+.pe-why-item p { font-size: 15px; color: var(--w-ink-500); line-height: 1.55; }
+.pe-why-item em { font-style: italic; color: var(--w-ink-700); }
+
+/* Offices */
+.pe-off-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.pe-off { display: flex; flex-direction: column; }
+.pe-off image-slot { width: 100%; height: 280px; margin-bottom: 20px; }
+.pe-off h3 { font-family: var(--font-serif); font-size: 24px; color: var(--w-navy); font-weight: 500; }
+.pe-off .reg { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--w-gold); font-weight: 600; margin-top: 6px; }
+.pe-off p { font-size: 14px; color: var(--w-ink-500); margin-top: 12px; line-height: 1.6; }
+
+/* Insights */
+.pe-ins-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; gap: 24px; flex-wrap: wrap; }
+.pe-ins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.pe-ins-card { display: flex; flex-direction: column; }
+.pe-ins-card image-slot { width: 100%; height: 220px; margin-bottom: 22px; }
+.pe-ins-card .meta { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--w-gold); font-weight: 600; margin-bottom: 12px; }
+.pe-ins-card h3 { font-family: var(--font-serif); font-size: 22px; color: var(--w-navy); font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; transition: color .18s var(--ease); }
+.pe-ins-card:hover h3 { color: var(--w-red); }
+.pe-ins-card .date { font-size: 13px; color: var(--w-ink-400); margin-top: 14px; }
+
+/* CTA */
+.pe-cta { background: var(--w-navy); color: #fff; position: relative; overflow: hidden; }
+.pe-cta::after { content: ""; position: absolute; right: -10%; top: -40%; width: 60%; height: 180%; background: radial-gradient(circle, rgba(184,151,106,0.13), transparent 64%); }
+.pe-cta .wrap { position: relative; z-index: 1; padding-block: clamp(72px, 9vw, 120px); display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
+.pe-cta h2 { font-family: var(--font-serif); font-size: clamp(30px, 3.8vw, 52px); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; max-width: 16ch; }
+.pe-cta h2 em { font-style: italic; color: var(--w-gold); }
+.pe-cta p { font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 18px; line-height: 1.6; }
+.pe-cta-actions { display: flex; flex-direction: column; gap: 14px; }
+.pe-cta-actions .btn { justify-content: center; }
+.pe-cta-actions .btn--ghost { color: #fff; border-color: rgba(255,255,255,0.3); }
+.pe-cta-actions .btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+/* Footer */
+.pe-footer { background: var(--w-navy-deep); color: rgba(255,255,255,0.6); font-size: 14px; }
+.pe-footer .wrap { padding-block: 72px 34px; }
+.pe-foot-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.pe-footer .col img { height: 30px; margin-bottom: 22px; }
+.pe-footer .col p { line-height: 1.7; max-width: 30ch; }
+.pe-footer h5 { color: #fff; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+.pe-footer li { margin-bottom: 12px; }
+.pe-footer a:hover { color: #fff; }
+.pe-foot-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; font-size: 12.5px; color: rgba(255,255,255,0.4); gap: 20px; flex-wrap: wrap; }
+.pe-foot-bot .legal { display: flex; gap: 22px; flex-wrap: wrap; }
+
+@media (max-width: 1080px) {
+  .pe-hero .wrap, .pe-why .wrap, .pe-cta .wrap { grid-template-columns: 1fr; }
+  .pe-hero-media image-slot, .pe-why-media image-slot { height: 400px; }
+  .pe-strat { grid-template-columns: 1fr; }
+  .pe-card { border-right: 0; border-bottom: 1px solid var(--w-ink-200); min-height: 0; }
+  .pe-stats-grid { grid-template-columns: 1fr 1fr; gap: 36px 0; }
+  .pe-off-grid { grid-template-columns: 1fr 1fr; }
+  .pe-ins-grid { grid-template-columns: 1fr; }
+  .pe-nav { display: none; }
+  .pe-foot-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body class="pe">
+
+<!-- Utility -->
+<div class="pe-utility">
+  <div class="wrap">
+    <div class="pe-region"><button data-active>Europa</button><span class="sep"></span><button>Zwitserland</button></div>
+    <div class="pe-util-right">
+      <div class="pe-util-lang" data-lang><button data-active>NL</button><button>FR</button><button>EN</button></div>
+      <a class="pe-login" href="#">Cliëntenlogin →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="pe-header" data-header data-screen-label="Homepage D — header">
+  <div class="wrap">
+    <a class="pe-logo" href="index.html">
+      <img class="logo-light logo-negative" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+      <img class="logo-dark" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+    </a>
+    <nav class="pe-nav">
+      <a href="#strategien">Diensten</a>
+      <a href="#over">Over ons</a>
+      <a href="#kantoren">Impact</a>
+      <a href="#nieuws">Nieuws</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact">Careers</a>
+    </nav>
+    <div class="pe-headcta"><a class="btn btn--ghost" href="#contact">Contact</a></div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="pe-hero" data-screen-label="Homepage D — hero">
+  <div class="wrap">
+    <div class="pe-hero-copy">
+      <span class="sup sup--light">Onafhankelijk vermogensbeheer · sinds 1971</span>
+      <h1>Wij beheren uw vermogen zoals wij <em>het onze</em> beheren.</h1>
+      <p class="lead">Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd in vijf markten, gedreven door overtuiging — niet door commissie.</p>
+      <div class="pe-hero-cta">
+        <a class="btn btn--red" href="#strategien">Onze strategieën</a>
+        <a class="btn btn--ghost" href="#over">Maak kennis met ons</a>
+      </div>
+    </div>
+    <div class="pe-hero-media">
+      <image-slot id="pe-hero" shape="rect" placeholder="Sleep een hero-beeld — architectuur, licht, sereniteit"></image-slot>
+      <div class="frame"></div>
+      <div class="pe-hero-tag"><div class="n tnum">55</div><div class="l">jaar onafhankelijk beheer, in tweede generatie</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Strategies -->
+<section class="pe-sec" id="strategien" data-screen-label="Homepage D — strategieën">
+  <div class="wrap">
+    <div class="pe-head reveal">
+      <span class="sup">Onze strategieën</span>
+      <h2>Drie complementaire benaderingen</h2>
+      <p>Eén filosofie, drie wegen. Samen dekken ze elke marktcyclus en elk beleggersprofiel — toegankelijk via directe lijnen of via onze fondsen.</p>
+    </div>
+    <div class="pe-strat reveal">
+      <a class="pe-card" href="#strategien">
+        <div class="no">01</div>
+        <h3>Value</h3>
+        <div class="role">Patrimoniale ankerpositie</div>
+        <p class="desc">Waardecreatie op lange termijn. Buy-and-hold, contrair, geduldig — de stabiele basis van het patrimonium.</p>
+        <div class="meta">
+          <div class="row"><span class="k">Aanpak</span><span class="v">Bottom-up</span></div>
+          <div class="row"><span class="k">Universum</span><span class="v">20 lijnen + 5 fondsen</span></div>
+          <div class="row"><span class="k">Risicoprofiel</span><span class="v tnum">5 – 6</span></div>
+        </div>
+        <span class="arrow-link">Ontdek Value <span class="ar">→</span></span>
+      </a>
+      <a class="pe-card" href="#strategien">
+        <div class="no">02</div>
+        <h3>Growth</h3>
+        <div class="role">Kern van de portefeuille</div>
+        <p class="desc">Structurele groei via kwaliteitsbedrijven. Top-down, actief risicobeheer, gegradueerde afbouw bij macro-verslechtering.</p>
+        <div class="meta">
+          <div class="row"><span class="k">Aanpak</span><span class="v">Top-down</span></div>
+          <div class="row"><span class="k">Universum</span><span class="v">40+ lijnen + trackers</span></div>
+          <div class="row"><span class="k">Risicoprofiel</span><span class="v tnum">2 – 6</span></div>
+        </div>
+        <span class="arrow-link">Ontdek Growth <span class="ar">→</span></span>
+      </a>
+      <a class="pe-card" href="#strategien">
+        <div class="no">03</div>
+        <h3>High Conviction</h3>
+        <div class="role">Offensieve satelliet</div>
+        <p class="desc">Gerichte overperformance via een geconcentreerde selectie. Altijd belegd, bottom-up, hoogste overtuiging.</p>
+        <div class="meta">
+          <div class="row"><span class="k">Aanpak</span><span class="v">Bottom-up</span></div>
+          <div class="row"><span class="k">Universum</span><span class="v">25 lijnen</span></div>
+          <div class="row"><span class="k">Risicoprofiel</span><span class="v tnum">7</span></div>
+        </div>
+        <span class="arrow-link">Ontdek High Conviction <span class="ar">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="pe-stats" data-screen-label="Homepage D — cijfers">
+  <div class="wrap">
+    <span class="sup sup--light reveal">Wealtheon in cijfers</span>
+    <div class="pe-stats-grid reveal">
+      <div class="pe-stat"><div class="n tnum">4</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven · Genève</div></div>
+      <div class="pe-stat"><div class="n tnum">23</div><div class="l">Specialisten</div><div class="s">Eén toegewijd team</div></div>
+      <div class="pe-stat"><div class="n tnum">±1 Md€</div><div class="l">Beheerd vermogen</div><div class="s">Verdubbeld sinds 2020</div></div>
+      <div class="pe-stat"><div class="n tnum">505+</div><div class="l">Beheerde portefeuilles</div><div class="s">Voor families en ondernemers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="pe-sec pe-why" id="over" data-screen-label="Homepage D — over ons">
+  <div class="wrap">
+    <div class="pe-why-media reveal"><image-slot id="pe-why" shape="rect" placeholder="Sleep een portret of kantoorbeeld"></image-slot></div>
+    <div class="reveal">
+      <div class="pe-head" style="margin-bottom:36px">
+        <span class="sup">Waarom Wealtheon</span>
+        <h2>Een huis dat denkt in generaties.</h2>
+      </div>
+      <div class="pe-why-list">
+        <div class="pe-why-item"><span class="idx">01</span><div><h4>100% onafhankelijk · pure player</h4><p>Geen commerciële druk, geen productverkoop. Enkel vermogensbeheer.</p></div></div>
+        <div class="pe-why-item"><span class="idx">02</span><div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart. <em>Gedacht in generaties, niet in kwartalen.</em></p></div></div>
+        <div class="pe-why-item"><span class="idx">03</span><div><h4>Fee-only</h4><p>Eén bron van inkomsten. <em>Geen retrocessies sinds 1971. Nooit.</em></p></div></div>
+        <div class="pe-why-item"><span class="idx">04</span><div><h4>Gereguleerd in vijf markten</h4><p>FSMA · FINMA · AFM · AMF · BaFin — strikte naleving.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Offices -->
+<section class="pe-sec" id="kantoren" data-screen-label="Homepage D — kantoren">
+  <div class="wrap">
+    <div class="pe-head reveal">
+      <span class="sup">Onze kantoren</span>
+      <h2>Dichtbij, in vier Europese steden.</h2>
+    </div>
+    <div class="pe-off-grid reveal">
+      <div class="pe-off"><image-slot id="pe-off1" shape="rect" placeholder="Brussel"></image-slot><h3>Brussel</h3><div class="reg">België · EU</div><p>Hoofdkantoor en investment committee.</p></div>
+      <div class="pe-off"><image-slot id="pe-off2" shape="rect" placeholder="Waregem"></image-slot><h3>Waregem</h3><div class="reg">België · EU</div><p>Cliëntenbeheer West-Vlaanderen.</p></div>
+      <div class="pe-off"><image-slot id="pe-off3" shape="rect" placeholder="Eindhoven"></image-slot><h3>Eindhoven</h3><div class="reg">Nederland · EU</div><p>Nederlandse cliënten en partners.</p></div>
+      <div class="pe-off"><image-slot id="pe-off4" shape="rect" placeholder="Genève"></image-slot><h3>Genève</h3><div class="reg">Zwitserland · CH</div><p>Zwitserse vermogensbeheeractiviteit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Insights -->
+<section class="pe-sec pe-ins" id="nieuws" style="background:var(--w-cream)" data-screen-label="Homepage D — nieuws">
+  <div class="wrap">
+    <div class="pe-ins-head reveal">
+      <div class="pe-head" style="margin-bottom:0">
+        <span class="sup">Inzichten</span>
+        <h2>Marktvisie &amp; analyses</h2>
+      </div>
+      <a class="arrow-link" href="#nieuws">Alle inzichten <span class="ar">→</span></a>
+    </div>
+    <div class="pe-ins-grid reveal">
+      <a class="pe-ins-card" href="#nieuws"><image-slot id="pe-ins1" shape="rect" placeholder="Beeld"></image-slot><div class="meta">Marktupdate</div><h3>Rente, inflatie en de positionering voor 2026</h3><div class="date">28 februari 2026</div></a>
+      <a class="pe-ins-card" href="#nieuws"><image-slot id="pe-ins2" shape="rect" placeholder="Beeld"></image-slot><div class="meta">Strategie</div><h3>Waarom kwaliteit het verschil maakt in volatiele markten</h3><div class="date">14 februari 2026</div></a>
+      <a class="pe-ins-card" href="#nieuws"><image-slot id="pe-ins3" shape="rect" placeholder="Beeld"></image-slot><div class="meta">Wealtheon Foundation</div><h3>Impact als verlengstuk van langetermijndenken</h3><div class="date">3 februari 2026</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="pe-cta" id="contact" data-screen-label="Homepage D — contact">
+  <div class="wrap">
+    <div>
+      <span class="sup sup--light" style="margin-bottom:24px">Contact</span>
+      <h2>Laten we praten over wat <em>blijvend</em> telt.</h2>
+      <p>Een vertrouwelijk gesprek met een van onze beheerders, vrijblijvend. Beheer vanaf 500 k€ (300 k€ via verzekeringscontract).</p>
+    </div>
+    <div class="pe-cta-actions">
+      <a class="btn btn--light" href="#contact">Plan een gesprek</a>
+      <a class="btn btn--ghost" href="#contact">Werken bij Wealtheon</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="pe-footer">
+  <div class="wrap">
+    <div class="pe-foot-grid">
+      <div class="col">
+        <img class="logo-negative" src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"/>
+        <p>Onafhankelijke Belgische vermogensbeheerder sinds 1971. Fee-only, in familiehanden.</p>
+      </div>
+      <div><h5>Diensten</h5><ul><li><a href="#strategien">Directe lijnen</a></li><li><a href="#strategien">Fondsen</a></li><li><a href="#strategien">Financiële tussenpersonen</a></li></ul></div>
+      <div><h5>Wealtheon</h5><ul><li><a href="#over">Over ons</a></li><li><a href="#kantoren">Impact</a></li><li><a href="#nieuws">Nieuws</a></li><li><a href="#contact">Careers</a></li></ul></div>
+      <div><h5>Kantoren</h5><ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li><li>Genève</li></ul></div>
+    </div>
+    <div class="pe-foot-bot">
+      <span>© 2026 Wealtheon Asset Management · www.wealtheon.eu</span>
+      <span class="legal"><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">ESG-beleid</a><a href="#">Klachten</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="wealtheon-site/css/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wealtheon — Vermogensbeheer met overtuiging</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wealtheon-site/css/brand.css"/>
+<link rel="stylesheet" href="wealtheon-site/css/pages.css"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['"Source Serif 4"', 'Palatino', 'serif'] },
+      colors: { navy: '#1C2B4A', gold: '#B8976A', wred: '#C0392B' }
+    } }
+  };
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #1C2B4A;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* ---- Liquid glass (brand-tuned: cool navy tint) ---- */
+  .liquid-glass {
+    background: rgba(20, 32, 57, 0.42);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.12) 20%,
+      rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+      rgba(184,151,106,0.18) 80%, rgba(184,151,106,0.4) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ---- Cinematic placeholder background (until a real video is supplied) ---- */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 90% at 80% 8%, rgba(184,151,106,0.32), transparent 50%),
+      radial-gradient(100% 80% at 8% 96%, rgba(54,72,108,0.5), transparent 62%),
+      linear-gradient(158deg, #33405C 0%, #2B3850 40%, #252E42 74%, #222C3F 100%);
+    overflow: hidden;
+  }
+  .hero-bg::after {
+    content: "W";
+    position: absolute; right: -4%; bottom: -34%;
+    font-family: 'Source Serif 4', serif; font-weight: 500;
+    font-size: 60vh; line-height: 1; color: rgba(255,255,255,0.04);
+  }
+  .hero-bg .sweep {
+    position: absolute; top: -30%; left: -40%;
+    width: 60%; height: 160%;
+    background: linear-gradient(105deg, transparent, rgba(184,151,106,0.12), transparent);
+    transform: rotate(8deg);
+    animation: sweep 9s ease-in-out infinite;
+  }
+  @keyframes sweep { 0% { left: -50%; } 50% { left: 110%; } 100% { left: 110%; } }
+  .hero-bg .lines { position: absolute; inset: 0; opacity: 0.5;
+    background-image: repeating-linear-gradient(90deg, transparent 0 119px, rgba(255,255,255,0.035) 119px 120px); }
+
+  /* Legibility wash (subtle, brand navy — keeps serif readable over any footage) */
+  .hero-wash { position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(26,34,48,0.5) 0%, rgba(26,34,48,0.15) 45%, transparent 70%),
+                linear-gradient(0deg, rgba(26,34,48,0.5) 0%, transparent 38%); }
+
+  #root { margin-top: 0; }
+
+  @media (prefers-reduced-motion: reduce) { .hero-bg .sweep { animation: none; } }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<div id="root"></div>
+
+<main class="home-body" style="color:rgba(255,255,255,0.8);background:#222C3F;position:relative;z-index:1">
+
+  <!-- Strategieën -->
+  <section class="pg-sec pg-sec--stone" data-screen-label="Home — strategieën">
+    <div class="wrap">
+      <div class="pg-head reveal">
+        <span class="sup">Onze strategieën</span>
+        <h2>Drie complementaire benaderingen</h2>
+        <p>Eén filosofie, drie wegen. Samen dekken ze elke marktcyclus en elk beleggersprofiel — toegankelijk via directe lijnen of via onze fondsen.</p>
+      </div>
+      <div class="cgrid cgrid--3 reveal">
+        <a class="tile" href="Strategie — Value.html"><div class="no">01</div><h3>Value</h3><div class="role">Patrimoniale ankerpositie</div><p>Waardecreatie op lange termijn. Buy-and-hold, contrair, geduldig. Risicoprofiel 5–6.</p><span class="arrow-link">Ontdek Value <span class="ar">→</span></span></a>
+        <a class="tile" href="Strategie — Growth.html"><div class="no">02</div><h3>Growth</h3><div class="role">Kern van de portefeuille</div><p>Structurele groei via kwaliteitsbedrijven. Top-down, actief risicobeheer. Risicoprofiel 2–6.</p><span class="arrow-link">Ontdek Growth <span class="ar">→</span></span></a>
+        <a class="tile" href="Strategie — High Conviction.html"><div class="no">03</div><h3>High Conviction</h3><div class="role">Offensieve satelliet</div><p>Gerichte overperformance, geconcentreerd. Altijd belegd, bottom-up. Risicoprofiel 7.</p><span class="arrow-link">Ontdek High Conviction <span class="ar">→</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cijfers -->
+  <section class="pg-cta" style="background:var(--w-navy)" data-screen-label="Home — cijfers">
+    <div class="wrap" style="display:block">
+      <span class="sup sup--light reveal" style="margin-bottom:40px">Wealtheon in cijfers</span>
+      <div class="kpis reveal">
+        <div class="kpi"><div class="n tnum">4</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven · Genève</div></div>
+        <div class="kpi"><div class="n tnum">23</div><div class="l">Specialisten</div><div class="s">Eén toegewijd team</div></div>
+        <div class="kpi"><div class="n tnum">±1 Md€</div><div class="l">Beheerd vermogen</div><div class="s">Verdubbeld sinds 2020</div></div>
+        <div class="kpi"><div class="n tnum">505+</div><div class="l">Portefeuilles</div><div class="s">Families &amp; ondernemers</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waarom -->
+  <section class="pg-sec pg-sec--stone" data-screen-label="Home — waarom">
+    <div class="wrap">
+      <div class="pg-head reveal"><span class="sup">Waarom Wealtheon</span><h2>Een huis dat denkt in generaties.</h2></div>
+      <div class="cgrid cgrid--2 reveal">
+        <div class="flist">
+          <div class="it"><span class="idx">01</span><div><h4>100% onafhankelijk · pure player</h4><p>Geen commerciële druk, geen productverkoop. Enkel vermogensbeheer.</p></div></div>
+          <div class="it"><span class="idx">02</span><div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart. <em>Generaties, geen kwartalen.</em></p></div></div>
+        </div>
+        <div class="flist">
+          <div class="it"><span class="idx">03</span><div><h4>Fee-only</h4><p>Eén bron van inkomsten. <em>Geen retrocessies sinds 1971. Nooit.</em></p></div></div>
+          <div class="it"><span class="idx">04</span><div><h4>Gereguleerd in vijf markten</h4><p>FSMA · FINMA · AFM · AMF · BaFin.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pg-cta" data-screen-label="Home — cta">
+    <div class="wrap">
+      <div>
+        <span class="sup sup--light" style="margin-bottom:22px">Contact</span>
+        <h2>Laten we praten over wat <em>blijvend</em> telt.</h2>
+        <p>Een vertrouwelijk gesprek met een van onze beheerders, vrijblijvend. Beheer vanaf 500 k€ (300 k€ via verzekeringscontract).</p>
+      </div>
+      <div class="pg-cta-actions">
+        <a class="btn btn--light" href="Contact.html">Plan een gesprek</a>
+        <a class="btn btn--ghost" href="Diensten.html">Onze diensten</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+/* ---- FadeIn ---- */
+function FadeIn({ delay = 0, duration = 1000, className = '', children, style = {} }) {
+  const [shown, setShown] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setShown(true), delay); return () => clearTimeout(t); }, [delay]);
+  return (
+    <div className={`transition-opacity ${className}`}
+      style={{ opacity: shown ? 1 : 0, transitionDuration: `${duration}ms`, ...style }}>
+      {children}
+    </div>
+  );
+}
+
+/* ---- AnimatedHeading: per-character staggered entrance ---- */
+function AnimatedHeading({ text, className = '', style = {}, charDelay = 30, initialDelay = 200, charDuration = 500 }) {
+  const [started, setStarted] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setStarted(true), 40); return () => clearTimeout(t); }, []);
+  const lines = text.split('\n');
+  return (
+    <h1 className={className} style={style}>
+      {lines.map((line, lineIndex) => {
+        const lineLength = line.length;
+        return (
+          <span key={lineIndex} style={{ display: 'block' }}>
+            {line.split('').map((ch, charIndex) => {
+              const delay = initialDelay + (lineIndex * lineLength * charDelay) + (charIndex * charDelay);
+              return (
+                <span key={charIndex} style={{
+                  display: 'inline-block',
+                  opacity: started ? 1 : 0,
+                  transform: started ? 'translateX(0)' : 'translateX(-18px)',
+                  transition: `opacity ${charDuration}ms ease, transform ${charDuration}ms ease`,
+                  transitionDelay: `${delay}ms`,
+                  whiteSpace: 'pre',
+                }}>{ch === ' ' ? '\u00A0' : ch}</span>
+              );
+            })}
+          </span>
+        );
+      })}
+    </h1>
+  );
+}
+
+function Navbar() {
+  const links = [['Diensten','Diensten.html'], ['Over ons','Over ons.html'], ['Impact','Over ons.html#impact'], ['Nieuws','Over ons.html#nieuws']];
+  return (
+    <div className="px-6 md:px-12 lg:px-16 pt-6">
+      <nav className="liquid-glass rounded-xl pl-6 pr-3 py-3 flex items-center justify-between">
+        <a href="Wealtheon Hero.html" className="flex items-center">
+          <img src="wealtheon-site/assets/logo-wealtheon.png" alt="Wealtheon"
+               style={{ height: '42px', filter: 'brightness(0) invert(1)' }} />
+        </a>
+        <div className="hidden md:flex items-center gap-8">
+          {links.map(function (it) { return (
+            <a key={it[0]} href={it[1]} className="text-sm text-white/85 hover:text-white transition-colors">{it[0]}</a>
+          ); })}
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-1 text-xs font-semibold tracking-wider">
+            <button className="text-gold px-1.5 py-1">NL</button>
+            <button className="text-white/45 hover:text-white px-1.5 py-1 transition-colors">FR</button>
+            <button className="text-white/45 hover:text-white px-1.5 py-1 transition-colors">EN</button>
+          </div>
+          <a href="Contact.html" className="bg-white text-navy px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-gold hover:text-white transition-colors">
+            Plan een gesprek
+          </a>
+        </div>
+      </nav>
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <div className="relative w-full overflow-hidden" style={{ height: '100vh' }}>
+      {/* Cinematic placeholder background */}
+      <div className="hero-bg">
+        <div className="lines"></div>
+        <div className="sweep"></div>
+      </div>
+
+      {/* Real video — add your own URL via the `src` attribute to replace the
+          placeholder. Autoplay/loop/muted/playsInline, object-cover.
+          e.g. <video ... src="https://.../wealtheon.mp4"> */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay loop muted playsInline
+      ></video>
+
+      {/* Subtle brand-navy legibility wash */}
+      <div className="hero-wash"></div>
+
+      {/* Foreground */}
+      <div className="relative z-10 flex flex-col h-full">
+
+        <div className="px-6 md:px-12 lg:px-16 flex-1 flex flex-col justify-end pb-12 lg:pb-16">
+          <div className="lg:grid lg:grid-cols-2 lg:items-end gap-8">
+            {/* Left column */}
+            <div>
+              <FadeIn delay={150} duration={900}>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="inline-block" style={{ width: '9px', height: '9px', background: '#B8976A' }}></span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
+                    Onafhankelijk vermogensbeheer · sinds 1971
+                  </span>
+                </div>
+              </FadeIn>
+
+              <AnimatedHeading
+                text={"Wij beheren uw vermogen\nzoals wij het onze beheren."}
+                className="font-serif font-medium mb-5 text-3xl md:text-5xl lg:text-6xl xl:text-[68px]"
+                style={{ letterSpacing: '-0.025em', lineHeight: 1.04 }}
+              />
+
+              <FadeIn delay={900} duration={1000}>
+                <p className="text-base md:text-lg text-white/75 mb-6 max-w-xl">
+                  Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd in vijf markten — gedreven door overtuiging, niet door commissie.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={1300} duration={1000}>
+                <div className="flex flex-wrap gap-4">
+                  <a href="Diensten.html" className="bg-white text-navy px-8 py-3 rounded-lg font-medium hover:bg-gold hover:text-white transition-colors">
+                    Onze strategieën
+                  </a>
+                  <a href="Over ons.html" className="liquid-glass text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-navy transition-colors">
+                    Maak kennis met ons
+                  </a>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Right column — strategies tag */}
+            <div className="flex items-end justify-start lg:justify-end mt-8 lg:mt-0">
+              <FadeIn delay={1500} duration={1000}>
+                <div className="liquid-glass px-6 py-3.5 rounded-xl">
+                  <span className="font-serif font-light text-lg md:text-xl lg:text-2xl">
+                    Value <span className="text-gold">·</span> Growth <span className="text-gold">·</span> High&nbsp;Conviction
+                  </span>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Hero />);
+</script>
+<script src="wealtheon-site/css/chrome.js"></script>
+</body>
+</html>
