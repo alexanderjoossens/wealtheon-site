@@ -36,9 +36,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// Home page
+// Home page — defaults to the Home 6 (cinematic video hero) variation
 app.get('/home', (req, res) => {
-  res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
+  res.sendFile(path.join(PUBLIC_DIR, 'home6.html'));
 });
 
 // Homepage variations (home1–home7) — selectable from the "Welcome" dropdown
