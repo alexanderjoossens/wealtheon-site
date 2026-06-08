@@ -401,8 +401,42 @@
             </div>
           </div>
         </div>
-        <div class="g-navitem"><a href="/services">Diensten</a></div>
-        <div class="g-navitem"><a href="/about">Over ons</a></div>
+        <div class="g-navitem">
+          <button aria-expanded="false" aria-haspopup="true">Diensten <span class="g-caret">▾</span></button>
+          <div class="g-dd" role="menu">
+            <div class="g-dd-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:0 14px; min-width:560px; max-height:72vh; overflow-y:auto;">
+              <div>
+                <div class="g-dd-title">Direct Lines</div>
+                <a class="g-dd-item" href="/services#growth"><span class="g-dd-label">Growth</span><span class="g-dd-note">High-growth equity strategy</span></a>
+                <a class="g-dd-item" href="/services#high-conviction"><span class="g-dd-label">High Conviction</span><span class="g-dd-note">Concentrated best-ideas portfolio</span></a>
+                <a class="g-dd-item" href="/services#value"><span class="g-dd-label">Value</span><span class="g-dd-note">Defensive, quality-at-discount</span></a>
+              </div>
+              <div>
+                <div class="g-dd-title">Funds</div>
+                <a class="g-dd-item" href="/services#funds"><span class="g-dd-label">High Conviction Fund</span><span class="g-dd-note">Concentrated multi-asset</span></a>
+                <a class="g-dd-item" href="/services#funds"><span class="g-dd-label">Value Fund</span><span class="g-dd-note">Defensive equity fund</span></a>
+                <a class="g-dd-item" href="/services#funds"><span class="g-dd-label">Protea Fund Growth World Equity</span><span class="g-dd-note">Global growth exposure</span></a>
+                <a class="g-dd-item" href="/services#funds"><span class="g-dd-label">DBI-RDT Value Fund</span><span class="g-dd-note">Tax-efficient value fund</span></a>
+                <div class="g-dd-title" style="margin-top:8px;">Partners</div>
+                <a class="g-dd-item" href="/services#financial-intermediaries"><span class="g-dd-label">Financial Intermediaries</span><span class="g-dd-note">Partnership &amp; support model</span></a>
+                <div class="g-dd-title" style="margin-top:8px;">Design drafts</div>
+                <a class="g-dd-item" href="/design/Diensten.html"><span class="g-dd-label">Diensten</span><span class="g-dd-note">Services overview — design draft</span></a>
+                <a class="g-dd-item" href="/design/Strategie — Value.html"><span class="g-dd-label">Strategie — Value</span><span class="g-dd-note">Design draft</span></a>
+                <a class="g-dd-item" href="/design/Strategie — Growth.html"><span class="g-dd-label">Strategie — Growth</span><span class="g-dd-note">Design draft</span></a>
+                <a class="g-dd-item" href="/design/Strategie — High Conviction.html"><span class="g-dd-label">Strategie — High Conviction</span><span class="g-dd-note">Design draft</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="g-navitem">
+          <button aria-expanded="false" aria-haspopup="true">Over ons <span class="g-caret">▾</span></button>
+          <div class="g-dd" role="menu">
+            <div class="g-dd-inner">
+              <a class="g-dd-item" href="/about"><span class="g-dd-label">Over ons</span><span class="g-dd-note">Bedrijf, team &amp; kantoren</span></a>
+              <a class="g-dd-item" href="/design/Over ons.html"><span class="g-dd-label">Over ons</span><span class="g-dd-note">Design draft</span></a>
+            </div>
+          </div>
+        </div>
         <div class="g-navitem"><a href="/impact">Impact</a></div>
         <div class="g-navitem"><a href="/news">Nieuws</a></div>
       </div>
@@ -631,20 +665,29 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
 
-  // ---- Welcome dropdown ----
+  // ---- Nav dropdowns (Welcome, Diensten, Over ons) ----
   (function () {
-    var btn = document.getElementById('welcome-btn');
-    var dd = document.getElementById('welcome-dd');
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    function closeAll(except) {
+      document.querySelectorAll('.g-dd.open').forEach(function (d) {
+        if (d === except) return;
+        d.classList.remove('open');
+        var b = d.parentElement.querySelector('button');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+    document.querySelectorAll('.g-navitem > button').forEach(function (btn) {
+      var dd = btn.parentElement.querySelector('.g-dd');
+      if (!dd) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = !dd.classList.contains('open');
+        closeAll(dd);
+        dd.classList.toggle('open', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+      dd.addEventListener('click', function (e) { e.stopPropagation(); });
     });
-    document.addEventListener('click', function () {
-      dd.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-    dd.addEventListener('click', function (e) { e.stopPropagation(); });
+    document.addEventListener('click', function () { closeAll(); });
   })();
 
   // ---- Language switcher (visual only) ----
