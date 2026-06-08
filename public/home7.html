@@ -76,6 +76,7 @@
       display: flex; align-items: center; justify-content: space-between; gap: 28px;
       padding: 11px 12px 11px 24px; border-radius: 14px;
       transition: background 0.3s var(--ease);
+      overflow: visible; /* let the Welcome dropdown escape the glass bar */
     }
     .g-header[data-scrolled] .g-bar { background: rgba(18,20,25,0.78); }
     .g-logo img { height: 42px; width: auto; filter: brightness(0) invert(1); }
@@ -126,6 +127,7 @@
     .g-dd-item:hover { background: rgba(255,255,255,0.06); border-left-color: var(--red); }
     .g-dd-label { display: block; font-size: 15px; font-weight: 600; color: #fff; font-family: var(--serif); }
     .g-dd-note { display: block; font-size: 12.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+    .g-dd-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.42); padding: 10px 16px 6px; }
 
     @media (max-width: 1024px) { .g-nav { display: none; } }
     @media (max-width: 560px) { .g-lang { display: none; } }
@@ -365,15 +367,36 @@
         <div class="g-navitem">
           <button id="welcome-btn" aria-expanded="false" aria-haspopup="true">Welcome <span class="g-caret">▾</span></button>
           <div class="g-dd" id="welcome-dd" role="menu">
-            <div class="g-dd-inner">
-              <a class="g-dd-item" href="/home1"><span class="g-dd-label">Home 1</span><span class="g-dd-note">Skyline — bold &amp; centered</span></a>
-              <a class="g-dd-item" href="/home2"><span class="g-dd-label">Home 2</span><span class="g-dd-note">Growth — long-term vision</span></a>
-              <a class="g-dd-item" href="/home3"><span class="g-dd-label">Home 3</span><span class="g-dd-note">Horizon — stats-driven</span></a>
-              <a class="g-dd-item" href="/home4"><span class="g-dd-label">Home 4</span><span class="g-dd-note">Partnership — brand red</span></a>
-              <a class="g-dd-item" href="/home5"><span class="g-dd-label">Home 5</span><span class="g-dd-note">Minimal — elegant &amp; light</span></a>
-              <a class="g-dd-item" href="/home6"><span class="g-dd-label">Home 6</span><span class="g-dd-note">Cinematic — video hero</span></a>
-              <a class="g-dd-item" href="/home7"><span class="g-dd-label">Home 7</span><span class="g-dd-note">Cinematic — video hero (blauw)</span></a>
-              <a class="g-dd-item" href="/design/"><span class="g-dd-label">Design hub</span><span class="g-dd-note">Alle design-varianten vergelijken</span></a>
+            <div class="g-dd-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:0 14px; min-width:600px; max-height:72vh; overflow-y:auto;">
+              <div>
+                <div class="g-dd-title">Homepage variations</div>
+                <a class="g-dd-item" href="/home"><span class="g-dd-label">Home</span><span class="g-dd-note">Current homepage</span></a>
+                <a class="g-dd-item" href="/home1"><span class="g-dd-label">Home 1</span><span class="g-dd-note">Skyline — bold &amp; centered</span></a>
+                <a class="g-dd-item" href="/home2"><span class="g-dd-label">Home 2</span><span class="g-dd-note">Growth — long-term vision</span></a>
+                <a class="g-dd-item" href="/home3"><span class="g-dd-label">Home 3</span><span class="g-dd-note">Horizon — stats-driven</span></a>
+                <a class="g-dd-item" href="/home4"><span class="g-dd-label">Home 4</span><span class="g-dd-note">Partnership — brand red</span></a>
+                <a class="g-dd-item" href="/home5"><span class="g-dd-label">Home 5</span><span class="g-dd-note">Minimal — elegant &amp; light</span></a>
+                <a class="g-dd-item" href="/home6"><span class="g-dd-label">Home 6</span><span class="g-dd-note">Cinematic — video hero</span></a>
+                <a class="g-dd-item" href="/home7"><span class="g-dd-label">Home 7</span><span class="g-dd-note">Cinematic — blue accents</span></a>
+                <div class="g-dd-title" style="margin-top:8px;">Design drafts</div>
+                <a class="g-dd-item" href="/design/"><span class="g-dd-label">Design hub</span><span class="g-dd-note">Compare all design directions</span></a>
+                <a class="g-dd-item" href="/design/Homepage — Premium Editorial.html"><span class="g-dd-label">Premium Editorial</span><span class="g-dd-note">Recommended combination</span></a>
+                <a class="g-dd-item" href="/design/Homepage — Editorial.html"><span class="g-dd-label">Editorial Heritage</span><span class="g-dd-note">Photographic &amp; refined</span></a>
+                <a class="g-dd-item" href="/design/Homepage — Minimal.html"><span class="g-dd-label">Bold Minimal</span><span class="g-dd-note">Typographic &amp; minimal</span></a>
+                <a class="g-dd-item" href="/design/Homepage — Premium.html"><span class="g-dd-label">Premium Structured</span><span class="g-dd-note">Navy hero &amp; matrix</span></a>
+              </div>
+              <div>
+                <div class="g-dd-title">Design drafts — hero variations</div>
+                <a class="g-dd-item" href="/design/Wealtheon Hero.html"><span class="g-dd-label">Hero v1</span><span class="g-dd-note">Dark cinematic — video</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v2 (licht).html"><span class="g-dd-label">Hero v2</span><span class="g-dd-note">Licht — deck zwart/rood</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v3 (minimal).html"><span class="g-dd-label">Hero v3</span><span class="g-dd-note">Minimal — navy/goud/cream</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v4 (origineel).html"><span class="g-dd-label">Hero v4</span><span class="g-dd-note">Minimal — navy/rood origineel</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v5 (rood-creme).html"><span class="g-dd-label">Hero v5</span><span class="g-dd-note">Minimal — rood/crème</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v6 (fintech).html"><span class="g-dd-label">Hero v6</span><span class="g-dd-note">Fintech — navy</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v7 (rood-creme).html"><span class="g-dd-label">Hero v7</span><span class="g-dd-note">Fintech — rood/crème</span></a>
+                <a class="g-dd-item" href="/design/Wealtheon Hero v8 (video rood-creme).html"><span class="g-dd-label">Hero v8</span><span class="g-dd-note">Video — rood/crème</span></a>
+                <a class="g-dd-item" href="/design/VEX Hero.html"><span class="g-dd-label">VEX Hero</span><span class="g-dd-note">Original spec reference</span></a>
+              </div>
             </div>
           </div>
         </div>
