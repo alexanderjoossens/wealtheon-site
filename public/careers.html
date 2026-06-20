@@ -40,8 +40,8 @@
      ═══════════════════════════════════════════════════════════ -->
 <section class="page-hero">
   <div class="container">
-    <h1>Careers</h1>
-    <p>
+    <h1 data-i18n="h1">Careers</h1>
+    <p data-i18n="intro">
       Wealtheon is a family-owned, independent asset manager. The people who work here stay here —
       and that long-term mindset is exactly what we look for in every new colleague.
     </p>
@@ -54,14 +54,14 @@
 <section class="section section-white">
   <div class="container">
     <div class="careers-block">
-      <span class="careers-status">No open positions right now</span>
-      <h2>We have no vacancies open at the moment</h2>
-      <p>
+      <span class="careers-status" data-i18n="badge">No open positions right now</span>
+      <h2 data-i18n="heading">We have no vacancies open at the moment</h2>
+      <p data-i18n="body">
         We are not actively recruiting today. But we are always happy to meet talented, driven people
         who share our values. If you believe you could add something to our team, send us a spontaneous
         application — we read every one, and we will reach out when the right opportunity arises.
       </p>
-      <a href="mailto:info@wealtheon.eu?subject=Spontaneous%20application" class="btn btn-primary">Send a spontaneous application</a>
+      <a id="careers-cta" href="mailto:info@wealtheon.eu?subject=Spontaneous%20application" class="btn btn-primary" data-i18n="cta">Send a spontaneous application</a>
     </div>
   </div>
 </section>
@@ -93,9 +93,9 @@
       <h4>Company</h4>
       <ul>
         <li><a href="/about">About Us</a></li>
-        <li><a href="/impact">Impact &amp; ESG</a></li>
-        <li><a href="/news">News</a></li>
+        <li><a href="/foundation">Foundation</a></li>
         <li><a href="/careers">Careers</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -131,6 +131,87 @@
     Wealtheon SA is regulated under Belgian financial services law. Wealtheon SA (Geneva) is authorised by FINMA, supervised by AOOS, member of SAAM, ombudsman OFS.
   </p>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LANGUAGE — EN / FR / NL (wired to the header EN|FR|NL switcher)
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  var STRINGS = {
+    en: {
+      title:  'Careers — Wealtheon',
+      h1:     'Careers',
+      intro:  'Wealtheon is a family-owned, independent asset manager. The people who work here stay here — and that long-term mindset is exactly what we look for in every new colleague.',
+      badge:  'No open positions right now',
+      heading:'We have no vacancies open at the moment',
+      body:   'We are not actively recruiting today. But we are always happy to meet talented, driven people who share our values. If you believe you could add something to our team, send us a spontaneous application — we read every one, and we will reach out when the right opportunity arises.',
+      cta:    'Send a spontaneous application',
+      subject:'Spontaneous application'
+    },
+    fr: {
+      title:  'Carrières — Wealtheon',
+      h1:     'Carrières',
+      intro:  'Wealtheon est un gestionnaire de patrimoine indépendant et familial. Ceux qui travaillent ici y restent — et c’est précisément cet état d’esprit de long terme que nous recherchons chez chaque nouveau collègue.',
+      badge:  'Aucun poste ouvert actuellement',
+      heading:'Nous n’avons aucune offre d’emploi pour le moment',
+      body:   'Nous ne recrutons pas activement aujourd’hui. Mais nous sommes toujours heureux de rencontrer des personnes talentueuses et motivées qui partagent nos valeurs. Si vous pensez pouvoir apporter quelque chose à notre équipe, envoyez-nous une candidature spontanée — nous les lisons toutes et nous vous recontacterons dès qu’une opportunité se présentera.',
+      cta:    'Envoyer une candidature spontanée',
+      subject:'Candidature spontanée'
+    },
+    nl: {
+      title:  'Vacatures — Wealtheon',
+      h1:     'Vacatures',
+      intro:  'Wealtheon is een onafhankelijke vermogensbeheerder in familiehanden. Wie hier werkt, blijft hier — en die langetermijnvisie is precies wat we zoeken in elke nieuwe collega.',
+      badge:  'Geen vacatures op dit moment',
+      heading:'Momenteel hebben we geen openstaande vacatures',
+      body:   'We werven op dit moment niet actief. Maar we ontmoeten altijd graag getalenteerde, gedreven mensen die onze waarden delen. Denkt u iets toe te voegen aan ons team? Stuur ons dan een spontane sollicitatie — we lezen ze allemaal en nemen contact op zodra er een geschikte kans is.',
+      cta:    'Stuur een spontane sollicitatie',
+      subject:'Spontane sollicitatie'
+    }
+  };
+  var LANG_KEY = 'wealtheon_lang';
+  function read() {
+    var l; try { l = localStorage.getItem(LANG_KEY); } catch (e) {}
+    return STRINGS[l] ? l : 'en';
+  }
+  function apply(lang) {
+    if (!STRINGS[lang]) lang = 'en';
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    var s = STRINGS[lang];
+    document.documentElement.setAttribute('lang', lang);
+    document.title = s.title;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (s[k]) el.textContent = s[k];
+    });
+    var cta = document.getElementById('careers-cta');
+    if (cta) cta.setAttribute('href', 'mailto:info@wealtheon.eu?subject=' + encodeURIComponent(s.subject));
+    markNav(lang);
+  }
+  /* Highlight the matching EN/FR/NL link in the header switcher */
+  function markNav(lang) {
+    var map = { en: 'EN', fr: 'FR', nl: 'NL' };
+    document.querySelectorAll('.lang-switcher a').forEach(function (a) {
+      var on = a.textContent.trim().toUpperCase() === map[lang];
+      a.classList.toggle('active', on);
+    });
+  }
+  /* The header is injected by site-nav.js — delegate clicks so it works
+     regardless of when the nav renders. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('.lang-switcher a');
+    if (!a) return;
+    var code = { EN: 'en', FR: 'fr', NL: 'nl' }[a.textContent.trim().toUpperCase()];
+    if (!code) return;
+    e.preventDefault();
+    apply(code);
+  });
+  apply(read());
+  /* Re-apply nav highlight once the injected nav exists */
+  document.addEventListener('DOMContentLoaded', function () { markNav(read()); });
+  setTimeout(function () { markNav(read()); }, 120);
+})();
+</script>
 
 </body>
 </html>
