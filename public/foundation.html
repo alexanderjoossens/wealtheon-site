@@ -14,92 +14,7 @@
 <!-- ═══════════════════════════════════════════════════════════
      NAVIGATION
      ═══════════════════════════════════════════════════════════ -->
-<nav class="site-nav" id="main-nav">
-  <div class="nav-inner">
-    <a href="/home" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>
-    <ul class="nav-links" id="nav-links">
-      <li>
-        <button class="nav-dropdown-btn" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">
-          Welcome <span class="nav-arrow">▾</span>
-        </button>
-        <div class="dropdown" id="welcome-dropdown" role="menu">
-          <div class="dropdown-grid">
-            <div>
-              <div class="dropdown-col-title">Homepage variations</div>
-              <a href="/home" role="menuitem"><div><strong>Home</strong><span>Current homepage</span></div></a>
-              <a href="/home1" role="menuitem"><div><strong>Home 1</strong><span>Skyline — bold &amp; centered</span></div></a>
-              <a href="/home2" role="menuitem"><div><strong>Home 2</strong><span>Growth — long-term vision</span></div></a>
-              <a href="/home3" role="menuitem"><div><strong>Home 3</strong><span>Horizon — stats-driven</span></div></a>
-              <a href="/home4" role="menuitem"><div><strong>Home 4</strong><span>Partnership — brand red</span></div></a>
-              <a href="/home5" role="menuitem"><div><strong>Home 5</strong><span>Minimal — elegant &amp; light</span></div></a>
-              <a href="/home6" role="menuitem"><div><strong>Home 6</strong><span>Cinematic — video hero</span></div></a>
-              <a href="/home7" role="menuitem"><div><strong>Home 7</strong><span>Cinematic — blue accents</span></div></a>
-            </div>
-            <div>
-              <div class="dropdown-col-title">Design drafts</div>
-              <a href="/design/" role="menuitem"><div><strong>Design hub</strong><span>Compare all design directions</span></div></a>
-              <a href="/design/Homepage — Premium Editorial.html" role="menuitem"><div><strong>Premium Editorial</strong><span>Recommended combination</span></div></a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <button class="nav-dropdown-btn" data-dropdown="services-dropdown" aria-expanded="false" aria-haspopup="true">
-          Services <span class="nav-arrow">▾</span>
-        </button>
-        <div class="dropdown" id="services-dropdown" role="menu">
-          <div class="dropdown-grid">
-            <div>
-              <div class="dropdown-col-title">Direct Lines</div>
-              <a href="/services#growth"><div><strong>Growth</strong><span>High-growth equity strategy</span></div></a>
-              <a href="/services#high-conviction"><div><strong>High Conviction</strong><span>Concentrated best-ideas portfolio</span></div></a>
-              <a href="/services#value"><div><strong>Value</strong><span>Defensive, quality-at-discount</span></div></a>
-            </div>
-            <div>
-              <div class="dropdown-col-title">Funds</div>
-              <a href="/services#funds"><div><strong>High Conviction Fund</strong><span>Concentrated multi-asset</span></div></a>
-              <a href="/services#funds"><div><strong>Value Fund</strong><span>Defensive equity fund</span></div></a>
-              <a href="/services#financial-intermediaries"><div><strong>Financial Intermediaries</strong><span>Partnership &amp; support model</span></div></a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <button class="nav-dropdown-btn" data-dropdown="about-dropdown" aria-expanded="false" aria-haspopup="true">
-          About Us <span class="nav-arrow">▾</span>
-        </button>
-        <div class="dropdown dropdown-narrow" id="about-dropdown" role="menu">
-          <a href="/about" role="menuitem"><div><strong>About Us</strong><span>Company, team &amp; offices</span></div></a>
-          <a href="/design/Over ons.html" role="menuitem"><div><strong>Over ons</strong><span>Design draft</span></div></a>
-        </div>
-      </li>
-      <li><a href="/impact">Impact</a></li>
-      <li><a href="/foundation" class="active">Foundation</a></li>
-      <li><a href="/news">News</a></li>
-      <li>
-        <button class="nav-dropdown-btn" data-dropdown="contact-dropdown" aria-expanded="false" aria-haspopup="true">
-          Contact <span class="nav-arrow">▾</span>
-        </button>
-        <div class="dropdown dropdown-narrow" id="contact-dropdown" role="menu">
-          <a href="/contact" role="menuitem"><div><strong>Contact</strong><span>Form &amp; offices</span></div></a>
-          <a href="/design/Contact.html" role="menuitem"><div><strong>Contact</strong><span>Design draft</span></div></a>
-        </div>
-      </li>
-      <li><a href="/careers">Careers</a></li>
-    </ul>
-    <div class="nav-right">
-      <div class="lang-switcher">
-        <a href="#" class="active">EN</a><span class="lang-sep">|</span>
-        <a href="#">FR</a><span class="lang-sep">|</span>
-        <a href="#">NL</a>
-      </div>
-      <a href="/contact" class="btn btn-primary nav-contact-btn">Become a donor</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
+<div id="site-nav"></div>
 
 <!-- ═══════════════════════════════════════════════════════════
      PAGE HERO
@@ -562,33 +477,6 @@
     regulatory provision. You may inspect, modify or delete your personal data on request.
   </p>
 </footer>
-
-<script>
-  // Generalised dropdown handling for all nav dropdowns
-  document.querySelectorAll('.nav-dropdown-btn').forEach(function (btn) {
-    var dd = document.getElementById(btn.getAttribute('data-dropdown'));
-    if (!dd) return;
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      document.querySelectorAll('.dropdown.open').forEach(function (d) { if (d !== dd) d.classList.remove('open'); });
-      var open = dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      var arrow = btn.querySelector('.nav-arrow');
-      if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : '';
-    });
-    dd.addEventListener('click', function (e) { e.stopPropagation(); });
-  });
-  document.addEventListener('click', function () {
-    document.querySelectorAll('.dropdown.open').forEach(function (d) { d.classList.remove('open'); });
-    document.querySelectorAll('.nav-dropdown-btn').forEach(function (b) {
-      b.setAttribute('aria-expanded', 'false');
-      var a = b.querySelector('.nav-arrow'); if (a) a.style.transform = '';
-    });
-  });
-  document.getElementById('nav-toggle').addEventListener('click', function () {
-    document.getElementById('nav-links').classList.toggle('open');
-  });
-</script>
 
 </body>
 </html>
