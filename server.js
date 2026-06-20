@@ -52,6 +52,12 @@ app.get('/home-blue', (req, res) => {
 app.get('/home-white', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home-white.html'));
 });
+app.get('/home6', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'home6.html'));
+});
+app.get('/home7', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'home7.html'));
+});
 
 // Services page
 app.get('/services', (req, res) => {
