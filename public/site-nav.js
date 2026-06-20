@@ -26,7 +26,9 @@
     ['/home',       'home',       'Home',      'Red — independent asset management'],
     ['/home1',      'home1',      'Buildings', 'Skyline — bold &amp; centered'],
     ['/home-blue',  'home-blue',  'Blue',      'Cinematic — navy hero'],
-    ['/home-white', 'home-white', 'White',     'Light editorial']
+    ['/home-white', 'home-white', 'White',     'Light editorial'],
+    ['/home6',      'home6',      'Cinematic Red',  'Dark cinematic — video hero'],
+    ['/home7',      'home7',      'Cinematic Blue', 'Cinematic — blue accents']
   ];
 
   function homepageLinks() {
@@ -108,7 +110,7 @@
   }
 
   /* ── Active highlighting ── */
-  var HOME_PAGES = { home:1, home1:1, 'home-blue':1, 'home-white':1 };
+  var HOME_PAGES = { home:1, home1:1, 'home-blue':1, 'home-white':1, home6:1, home7:1 };
 
   function markActive(root, page) {
     if (!page) return;
