@@ -285,7 +285,7 @@
     .arrow-link:hover .ar { transform: translateX(4px); }
 
     /* KPI band */
-    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 40px; }
+    .kpis { display: flex; flex-wrap: wrap; margin-top: 40px; }
     .kpi { padding: 0 34px; border-left: 1px solid rgba(255,255,255,0.14); }
     .kpi:first-child { padding-left: 0; border-left: 0; }
     .kpi .n {
@@ -423,8 +423,7 @@
         <h1 id="hero-heading" data-text="Wij beheren uw vermogen&#10;zoals wij het onze beheren."></h1>
 
         <p class="hero-sub fade fade-2">
-          Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only en gereguleerd
-          in vijf markten, zodat ons advies enkel uw belang dient.
+          Een onafhankelijke Belgische vermogensbeheerder in familiehanden.
         </p>
 
         <div class="hero-actions fade fade-3">
@@ -486,10 +485,8 @@
   <div class="wrap">
     <span class="sup reveal">Wealtheon in cijfers</span>
     <div class="kpis reveal">
-      <div class="kpi"><div class="n">4</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven · Genève</div></div>
+      <div class="kpi"><div class="n">3</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven</div></div>
       <div class="kpi"><div class="n">23</div><div class="l">Specialisten</div><div class="s">Eén toegewijd team</div></div>
-      <div class="kpi"><div class="n">±1&nbsp;Md€</div><div class="l">Beheerd vermogen</div><div class="s">Verdubbeld sinds 2020</div></div>
-      <div class="kpi"><div class="n">505+</div><div class="l">Portefeuilles</div><div class="s">Families &amp; ondernemers</div></div>
     </div>
   </div>
 </section>
@@ -503,14 +500,9 @@
       <span class="sup">Waarom Wealtheon</span>
       <h2>Vermogensbeheer met een langetermijnvisie.</h2>
     </div>
-    <div class="why-grid reveal">
+    <div class="why-grid reveal" style="grid-template-columns:1fr; max-width:680px;">
       <div>
         <div class="fit"><span class="idx">01</span><div><h4>100% onafhankelijk · pure player</h4><p>Geen commerciële druk, geen productverkoop. Enkel vermogensbeheer.</p></div></div>
-        <div class="fit"><span class="idx">02</span><div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart, met een langetermijnvisie.</p></div></div>
-      </div>
-      <div>
-        <div class="fit"><span class="idx">03</span><div><h4>Fee-only</h4><p>Eén bron van inkomsten: onze vergoeding. Geen retrocessies sinds 1971.</p></div></div>
-        <div class="fit"><span class="idx">04</span><div><h4>Gereguleerd in vijf markten</h4><p>FSMA · FINMA · AFM · AMF · BaFin.</p></div></div>
       </div>
     </div>
   </div>
@@ -564,7 +556,7 @@
       </div>
       <div>
         <h5>Kantoren</h5>
-        <ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li><li>Genève</li></ul>
+        <ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li></ul>
       </div>
     </div>
     <div class="foot-bot">
