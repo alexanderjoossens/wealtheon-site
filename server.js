@@ -41,12 +41,17 @@ app.get('/home', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
 });
 
-// Homepage variations (home1–home7) — selectable from the "Welcome" dropdown
-for (let i = 1; i <= 7; i++) {
-  app.get(`/home${i}`, (req, res) => {
-    res.sendFile(path.join(PUBLIC_DIR, `home${i}.html`));
-  });
-}
+// Homepage variations in the "Welcome" dropdown
+// (home = red/default, home1 = buildings, home-blue, home-white)
+app.get('/home1', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'home1.html'));
+});
+app.get('/home-blue', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'home-blue.html'));
+});
+app.get('/home-white', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'home-white.html'));
+});
 
 // Services page
 app.get('/services', (req, res) => {
@@ -61,6 +66,11 @@ app.get('/about', (req, res) => {
 // Contact page
 app.get('/contact', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'contact.html'));
+});
+
+// Foundation page
+app.get('/foundation', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'foundation.html'));
 });
 
 // Data page
