@@ -1,0 +1,373 @@
+/* ============================================================
+   WEALTHEON — Shared site navigation (self-contained)
+   Loaded by every page (main site + design-system homepages).
+   All values are literal so this file works WITHOUT style.css —
+   it must not collide with the design system's brand.css/pages.css.
+   Everything is scoped under .site-nav / its dropdown classes.
+   ============================================================ */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #ffffff;
+  border-bottom: 1px solid #E5DEDE;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.site-nav *, .site-nav *::before, .site-nav *::after { box-sizing: border-box; }
+
+.nav-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.nav-logo {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #1A1A1A;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.nav-logo span { color: #AD0000; }
+.nav-logo-img { height: 40px; width: auto; display: block; }
+
+/* Main nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links > li { position: relative; }
+
+.nav-links > li > a,
+.nav-links > li > button {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6B6B6B;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > button:hover,
+.nav-links > li > a.active,
+.nav-links > li > button.active {
+  color: #AD0000;
+  background: rgba(173,0,0,0.08);
+}
+
+.nav-arrow {
+  font-size: 0.65rem;
+  transition: transform 0.2s;
+}
+
+/* Dropdown mega-menu */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 1px solid #E5DEDE;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 1.25rem;
+  min-width: 520px;
+  display: none;
+  z-index: 300;
+}
+
+.dropdown.open { display: block; }
+
+.dropdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 2rem;
+}
+
+.dropdown-col-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9A9A9A;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid #E5DEDE;
+}
+
+.dropdown a {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dropdown a:hover { background: #F5F2F2; color: #AD0000; }
+
+.dropdown a strong {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.1rem;
+}
+
+.dropdown a span {
+  font-size: 0.8rem;
+  color: #9A9A9A;
+}
+
+/* Welcome / narrow single-column dropdown */
+.dropdown-narrow { min-width: 290px; }
+.dropdown-narrow .dropdown-col-title { margin-bottom: 0.45rem; }
+
+/* Nav right: lang + contact */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6B6B6B;
+}
+.lang-switcher a {
+  padding: 0.25rem 0.4rem;
+  border-radius: 3px;
+  color: #6B6B6B;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lang-switcher a:hover,
+.lang-switcher a.active { color: #AD0000; }
+.lang-switcher .lang-sep { color: #E5DEDE; font-weight: 300; }
+
+/* Contact button (self-contained — no dependency on .btn) */
+.nav-contact-btn {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #AD0000;
+  color: #ffffff;
+  border: 2px solid #AD0000;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.nav-contact-btn:hover { background: #8a0000; border-color: #8a0000; color: #fff; }
+
+/* Mobile hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #1A1A1A;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+/* ════════════════════════════════════════════════════════════
+   NAV BAR STYLE VARIANTS (set via data-navstyle / ?nav=…)
+   classic (default) · red · glass-light · glass-dark · glass-pill
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Variant: solid Wealtheon red ── */
+html.navstyle-red .site-nav { background: #AD0000; border-bottom: none; }
+html.navstyle-red .nav-logo-img {
+  content: url('/uploads/Wealtheon_logo_white.png');
+  filter: brightness(0) invert(1);
+}
+html.navstyle-red .nav-links > li > a,
+html.navstyle-red .nav-links > li > button { color: rgba(255,255,255,0.85); }
+html.navstyle-red .nav-links > li > a:hover,
+html.navstyle-red .nav-links > li > button:hover,
+html.navstyle-red .nav-links > li > a.active,
+html.navstyle-red .nav-links > li > button.active {
+  color: #fff;
+  background: rgba(255,255,255,0.14);
+}
+html.navstyle-red .lang-switcher a { color: rgba(255,255,255,0.6); }
+html.navstyle-red .lang-switcher a:hover,
+html.navstyle-red .lang-switcher a.active { color: #fff; }
+html.navstyle-red .lang-switcher .lang-sep { color: rgba(255,255,255,0.3); }
+html.navstyle-red .nav-contact-btn { background: #fff; color: #AD0000; border-color: #fff; }
+html.navstyle-red .nav-contact-btn:hover { background: rgba(255,255,255,0.85); color: #AD0000; }
+html.navstyle-red .nav-toggle span { background: #fff; }
+
+/* ── Glass variants: shared (fixed, overlay the hero) ── */
+html.navstyle-glass-light .site-nav,
+html.navstyle-glass-dark .site-nav,
+html.navstyle-glass-pill .site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* ── Variant: glass, light frost ── */
+html.navstyle-glass-light .site-nav {
+  background: rgba(255,255,255,0.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+html.navstyle-glass-light.is-scrolled .site-nav {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+html.navstyle-glass-light .nav-logo-img { content: url('/uploads/Wealtheon_logo_transparent.png'); }
+
+/* ── Variant: glass, dark — white text/logo ── */
+html.navstyle-glass-dark .site-nav {
+  background: rgba(20,16,16,0.38);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+html.navstyle-glass-dark.is-scrolled .site-nav { background: rgba(20,16,16,0.8); }
+
+/* ── Variant: glass, floating pill ── */
+html.navstyle-glass-pill .site-nav {
+  background: transparent;
+  padding: 14px clamp(16px, 3vw, 40px) 0;
+}
+html.navstyle-glass-pill .nav-inner {
+  max-width: 1240px;
+  height: 62px;
+  padding: 0 1.4rem;
+  border-radius: 16px;
+  background: rgba(22,19,19,0.42);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.12);
+  transition: background 0.3s ease;
+}
+html.navstyle-glass-pill.is-scrolled .nav-inner { background: rgba(22,19,19,0.82); }
+
+/* ── Dark glass variants: white text/logo/toggle ── */
+html.navstyle-glass-dark .nav-logo-img,
+html.navstyle-glass-pill .nav-logo-img {
+  content: url('/uploads/Wealtheon_logo_white.png');
+  filter: brightness(0) invert(1);
+}
+html.navstyle-glass-dark .nav-links > li > a,
+html.navstyle-glass-dark .nav-links > li > button,
+html.navstyle-glass-pill .nav-links > li > a,
+html.navstyle-glass-pill .nav-links > li > button { color: rgba(255,255,255,0.85); }
+html.navstyle-glass-dark .nav-links > li > a:hover,
+html.navstyle-glass-dark .nav-links > li > button:hover,
+html.navstyle-glass-dark .nav-links > li > a.active,
+html.navstyle-glass-dark .nav-links > li > button.active,
+html.navstyle-glass-pill .nav-links > li > a:hover,
+html.navstyle-glass-pill .nav-links > li > button:hover,
+html.navstyle-glass-pill .nav-links > li > a.active,
+html.navstyle-glass-pill .nav-links > li > button.active {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+html.navstyle-glass-dark .lang-switcher a,
+html.navstyle-glass-pill .lang-switcher a { color: rgba(255,255,255,0.55); }
+html.navstyle-glass-dark .lang-switcher a:hover,
+html.navstyle-glass-dark .lang-switcher a.active,
+html.navstyle-glass-pill .lang-switcher a:hover,
+html.navstyle-glass-pill .lang-switcher a.active { color: #fff; }
+html.navstyle-glass-dark .lang-switcher .lang-sep,
+html.navstyle-glass-pill .lang-switcher .lang-sep { color: rgba(255,255,255,0.2); }
+html.navstyle-glass-dark .nav-toggle span,
+html.navstyle-glass-pill .nav-toggle span { background: #fff; }
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — mobile menu
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-contact-btn { display: none; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0; right: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #E5DEDE;
+    padding: 1rem 6%;
+    gap: 0.25rem;
+  }
+
+  .dropdown {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    min-width: unset;
+    background: #F5F2F2;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+  }
+
+  .dropdown-grid { grid-template-columns: 1fr; gap: 0; }
+
+  html.navstyle-glass-pill .site-nav { padding: 10px 12px 0; }
+
+  /* open mobile menu panel is white → restore dark link colors */
+  html.navstyle-red .nav-links.open > li > a,
+  html.navstyle-red .nav-links.open > li > button,
+  html.navstyle-glass-dark .nav-links.open > li > a,
+  html.navstyle-glass-dark .nav-links.open > li > button,
+  html.navstyle-glass-pill .nav-links.open > li > a,
+  html.navstyle-glass-pill .nav-links.open > li > button { color: #6B6B6B; }
+}
