@@ -36,7 +36,9 @@ app.use(express.static(PUBLIC_DIR, {
     if (/\.(jpg|jpeg|png|gif|webp|svg|ico|woff2?|ttf|eot)$/i.test(filePath)) {
       res.setHeader('Cache-Control', 'public, max-age=2592000'); // 30d for assets
     } else if (/\.(css|js)$/i.test(filePath)) {
-      res.setHeader('Cache-Control', 'public, max-age=86400');   // 1d for css/js
+      // Revalidate every time so edits to css/js show up immediately
+      // (browser still caches but must check via ETag → cheap 304s).
+      res.setHeader('Cache-Control', 'no-cache');
     } else if (/\.html$/i.test(filePath)) {
       res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     }
