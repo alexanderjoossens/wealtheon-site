@@ -26,8 +26,22 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }
 });
 
-// Serve static assets from /public (css, js, images, etc.)
-app.use(express.static(PUBLIC_DIR));
+// Production base URL for canonical / hreflang / sitemap (override via env).
+const BASE_URL = (process.env.BASE_URL || 'https://www.wealtheon.eu').replace(/\/$/, '');
+const LANGS = ['en', 'fr', 'nl'];
+
+// Serve static assets from /public (css, js, images, etc.) with cache headers.
+app.use(express.static(PUBLIC_DIR, {
+  setHeaders: (res, filePath) => {
+    if (/\.(jpg|jpeg|png|gif|webp|svg|ico|woff2?|ttf|eot)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=2592000'); // 30d for assets
+    } else if (/\.(css|js)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=86400');   // 1d for css/js
+    } else if (/\.html$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    }
+  }
+}));
 
 // ── Page routes ──────────────────────────────────────────────
 

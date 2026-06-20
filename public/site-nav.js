@@ -68,6 +68,42 @@
   function onScroll() { docEl.classList.toggle('is-scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  /* ── Language (EN at root, FR at /fr/…, NL at /nl/…) ──────────
+     Single source of truth for all in-nav links + the EN|FR|NL
+     switcher. Translated pages are real files (good for SEO);
+     the switcher links are real <a href> to the same page in the
+     other language. ── */
+  var NAV_I18N = {
+    en: { welcome:'Welcome', homepages:'Homepages', services:'Services', about:'About Us',
+          foundation:'Foundation', careers:'Careers', contact:'Contact', contactUs:'Contact Us',
+          directLines:'Direct Lines', directLinesDesc:'Growth, Value &amp; High Conviction strategies',
+          funds:'Funds', fundsDesc:'Our regulated investment funds',
+          partners:'Partners', partnersDesc:'How we work with advisers &amp; intermediaries',
+          contactDesc:'Form &amp; offices' },
+    fr: { welcome:'Accueil', homepages:'Pages d’accueil', services:'Services', about:'À propos',
+          foundation:'Fondation', careers:'Carrières', contact:'Contact', contactUs:'Nous contacter',
+          directLines:'Lignes directes', directLinesDesc:'Stratégies Croissance, Valeur &amp; Haute Conviction',
+          funds:'Fonds', fundsDesc:'Nos fonds d’investissement réglementés',
+          partners:'Partenaires', partnersDesc:'Notre collaboration avec conseillers &amp; intermédiaires',
+          contactDesc:'Formulaire &amp; bureaux' },
+    nl: { welcome:'Welkom', homepages:'Homepagina’s', services:'Diensten', about:'Over ons',
+          foundation:'Stichting', careers:'Vacatures', contact:'Contact', contactUs:'Contacteer ons',
+          directLines:'Directe lijnen', directLinesDesc:'Groei-, Waarde- &amp; High Conviction-strategieën',
+          funds:'Fondsen', fundsDesc:'Onze gereglementeerde beleggingsfondsen',
+          partners:'Partners', partnersDesc:'Hoe we samenwerken met adviseurs &amp; tussenpersonen',
+          contactDesc:'Formulier &amp; kantoren' }
+  };
+  var _p = window.location.pathname;
+  var _lm = _p.match(/^\/(fr|nl)(?=\/|$)/);
+  var LANG = _lm ? _lm[1] : 'en';
+  var BASEPATH = _lm ? (_p.slice(3) || '/') : _p;   /* canonical EN path, e.g. /about */
+  var T = NAV_I18N[LANG] || NAV_I18N.en;
+  if (!docEl.getAttribute('lang')) docEl.setAttribute('lang', LANG);
+  /* Build an in-language href for a canonical EN path */
+  function L(p) { if (LANG === 'en') return p; if (p === '/') return '/' + LANG + '/'; return '/' + LANG + p; }
+  /* Build the href to switch the current page into another language */
+  function switchHref(code) { if (code === 'en') return BASEPATH; if (BASEPATH === '/') return '/' + code + '/'; return '/' + code + BASEPATH; }
+
   /* ── Markup ── */
   var HOMEPAGES = [
     ['/home',       'home',       'Home',      'Cinematic — toggle red/blue style'],
@@ -78,53 +114,61 @@
 
   function homepageLinks() {
     return HOMEPAGES.map(function (h) {
-      return '<a href="' + h[0] + '" data-page="' + h[1] + '" role="menuitem">' +
+      return '<a href="' + L(h[0]) + '" data-page="' + h[1] + '" role="menuitem">' +
         '<div><strong>' + h[2] + '</strong><span>' + h[3] + '</span></div></a>';
     }).join('');
+  }
+
+  function langSwitcher() {
+    function a(code, label) {
+      return '<a href="' + switchHref(code) + '" hreflang="' + code + '" lang="' + code + '"' +
+        (LANG === code ? ' class="active" aria-current="true"' : '') + '>' + label + '</a>';
+    }
+    return '<div class="lang-switcher">' +
+      a('en', 'EN') + '<span class="lang-sep">|</span>' +
+      a('fr', 'FR') + '<span class="lang-sep">|</span>' +
+      a('nl', 'NL') + '</div>';
   }
 
   function navHTML() {
     return '' +
     '<nav class="site-nav" id="main-nav"><div class="nav-inner">' +
-      '<a href="/home" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>' +
+      '<a href="' + L('/home') + '" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>' +
       '<ul class="nav-links" id="nav-links">' +
 
         /* Welcome — 4 homepages */
         '<li data-group="home">' +
-          '<button class="nav-dropdown-btn" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">Welcome <span class="nav-arrow">▾</span></button>' +
+          '<button class="nav-dropdown-btn" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">' + T.welcome + ' <span class="nav-arrow">▾</span></button>' +
           '<div class="dropdown dropdown-narrow" id="welcome-dropdown" role="menu">' +
-            '<div class="dropdown-col-title">Homepages</div>' +
+            '<div class="dropdown-col-title">' + T.homepages + '</div>' +
             homepageLinks() +
           '</div>' +
         '</li>' +
 
         /* Services */
         '<li data-group="services">' +
-          '<button class="nav-dropdown-btn" data-dropdown="services-dropdown" aria-expanded="false" aria-haspopup="true">Services <span class="nav-arrow">▾</span></button>' +
+          '<button class="nav-dropdown-btn" data-dropdown="services-dropdown" aria-expanded="false" aria-haspopup="true">' + T.services + ' <span class="nav-arrow">▾</span></button>' +
           '<div class="dropdown dropdown-narrow" id="services-dropdown" role="menu">' +
-            '<a href="/direct-lines" role="menuitem"><div><strong>Direct Lines</strong><span>Growth, Value &amp; High Conviction strategies</span></div></a>' +
-            '<a href="/funds" role="menuitem"><div><strong>Funds</strong><span>Our regulated investment funds</span></div></a>' +
-            '<a href="/partners" role="menuitem"><div><strong>Partners</strong><span>How we work with advisers &amp; intermediaries</span></div></a>' +
+            '<a href="' + L('/direct-lines') + '" role="menuitem"><div><strong>' + T.directLines + '</strong><span>' + T.directLinesDesc + '</span></div></a>' +
+            '<a href="' + L('/funds') + '" role="menuitem"><div><strong>' + T.funds + '</strong><span>' + T.fundsDesc + '</span></div></a>' +
+            '<a href="' + L('/partners') + '" role="menuitem"><div><strong>' + T.partners + '</strong><span>' + T.partnersDesc + '</span></div></a>' +
           '</div>' +
         '</li>' +
 
         /* About — plain link, no dropdown */
-        '<li data-group="about"><a href="/about">About Us</a></li>' +
+        '<li data-group="about"><a href="' + L('/about') + '">' + T.about + '</a></li>' +
 
-        '<li data-group="foundation"><a href="/foundation">Foundation</a></li>' +
+        '<li data-group="foundation"><a href="' + L('/foundation') + '">' + T.foundation + '</a></li>' +
 
-        '<li data-group="careers"><a href="/careers">Careers</a></li>' +
+        '<li data-group="careers"><a href="' + L('/careers') + '">' + T.careers + '</a></li>' +
 
         /* Contact — plain link, far right */
-        '<li data-group="contact"><a href="/contact">Contact</a></li>' +
+        '<li data-group="contact"><a href="' + L('/contact') + '">' + T.contact + '</a></li>' +
       '</ul>' +
 
       '<div class="nav-right">' +
-        '<div class="lang-switcher">' +
-          '<a href="#" class="active">EN</a><span class="lang-sep">|</span>' +
-          '<a href="#">FR</a><span class="lang-sep">|</span><a href="#">NL</a>' +
-        '</div>' +
-        '<a href="/contact" class="nav-contact-btn">Contact Us</a>' +
+        langSwitcher() +
+        '<a href="' + L('/contact') + '" class="nav-contact-btn">' + T.contactUs + '</a>' +
         '<button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>' +
       '</div>' +
     '</div></nav>';
