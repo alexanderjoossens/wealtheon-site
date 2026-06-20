@@ -111,14 +111,12 @@
         /* About — plain link, no dropdown */
         '<li data-group="about"><a href="/about">About Us</a></li>' +
 
-        '<li data-group="impact"><a href="/impact">Impact</a></li>' +
         '<li data-group="foundation"><a href="/foundation">Foundation</a></li>' +
-        '<li data-group="news"><a href="/news">News</a></li>' +
-
-        /* Contact — plain link, no dropdown */
-        '<li data-group="contact"><a href="/contact">Contact</a></li>' +
 
         '<li data-group="careers"><a href="/careers">Careers</a></li>' +
+
+        /* Contact — plain link, far right */
+        '<li data-group="contact"><a href="/contact">Contact</a></li>' +
       '</ul>' +
 
       '<div class="nav-right">' +
