@@ -87,6 +87,11 @@ app.get('/foundation', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'foundation.html'));
 });
 
+// Careers page
+app.get('/careers', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'careers.html'));
+});
+
 // Data page
 app.get('/data', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'data.html'));

@@ -1095,6 +1095,14 @@ p { color: var(--text-muted); line-height: 1.75; }
   padding: 4rem 0 3.5rem;
 }
 
+/* Transparent floating nav (glass-pill) is position:fixed and overlays the
+   hero — give the hero extra top clearance and drop the top border so the
+   header floats cleanly, matching the homepage. */
+html.navstyle-glass-pill .page-hero {
+  padding-top: 7rem;
+  border-top: none;
+}
+
 .page-hero .container {}
 
 .page-hero .breadcrumb {

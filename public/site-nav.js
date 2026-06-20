@@ -108,13 +108,8 @@
           '</div>' +
         '</li>' +
 
-        /* About */
-        '<li data-group="about">' +
-          '<button class="nav-dropdown-btn" data-dropdown="about-dropdown" aria-expanded="false" aria-haspopup="true">About Us <span class="nav-arrow">▾</span></button>' +
-          '<div class="dropdown dropdown-narrow" id="about-dropdown" role="menu">' +
-            '<a href="/about" role="menuitem"><div><strong>About Us</strong><span>Company, team &amp; offices</span></div></a>' +
-          '</div>' +
-        '</li>' +
+        /* About — plain link, no dropdown */
+        '<li data-group="about"><a href="/about">About Us</a></li>' +
 
         '<li data-group="impact"><a href="/impact">Impact</a></li>' +
         '<li data-group="foundation"><a href="/foundation">Foundation</a></li>' +
