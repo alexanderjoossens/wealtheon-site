@@ -2057,10 +2057,7 @@ html.navstyle-red .site-nav {
   background: var(--red);
   border-bottom: none;
 }
-html.navstyle-red .nav-logo-img {
-  content: url('/uploads/Wealtheon_logo_white.png');
-  filter: brightness(0) invert(1); /* fallback if content swap unsupported */
-}
+/* Logo always stays the full-colour (rgb) version — no white swap. */
 html.navstyle-red .nav-links > li > a,
 html.navstyle-red .nav-links > li > button { color: rgba(255,255,255,0.85); }
 html.navstyle-red .nav-links > li > a:hover,
@@ -2102,7 +2099,7 @@ html.navstyle-glass-light.is-scrolled .site-nav {
   background: rgba(255,255,255,0.85);
   box-shadow: var(--shadow-sm);
 }
-html.navstyle-glass-light .nav-logo-img { content: url('/uploads/Wealtheon_logo_transparent.png'); }
+/* Logo always stays the full-colour (rgb) version — no transparent swap. */
 
 /* ── Variant: glass, dark — white text/logo ── */
 html.navstyle-glass-dark .site-nav {
@@ -2136,12 +2133,7 @@ html.navstyle-glass-pill.is-scrolled .nav-inner {
   background: rgba(22,19,19,0.82);
 }
 
-/* ── Dark glass variants: white text/logo/toggle ── */
-html.navstyle-glass-dark .nav-logo-img,
-html.navstyle-glass-pill .nav-logo-img {
-  content: url('/uploads/Wealtheon_logo_white.png');
-  filter: brightness(0) invert(1); /* fallback if content swap unsupported */
-}
+/* ── Dark glass variants: white text/toggle (logo stays full colour) ── */
 html.navstyle-glass-dark .nav-links > li > a,
 html.navstyle-glass-dark .nav-links > li > button,
 html.navstyle-glass-pill .nav-links > li > a,

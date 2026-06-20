@@ -116,6 +116,52 @@ app.get('/upload', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'upload.html'));
 });
 
+// ── Localised pages: /fr/* and /nl/* ─────────────────────────
+// Serves public/<lang>/<page>.html when it exists, otherwise falls
+// back to the English page so language switching never 404s.
+app.get(/^\/(fr|nl)(?:\/(.*))?$/, (req, res) => {
+  const lang = req.params[0];
+  let rest = (req.params[1] || '').replace(/\/+$/, '');
+  let page = rest === '' ? 'index' : rest;
+  if (page === 'home') page = 'home6';          // /home alias → home6.html
+  page = page.replace(/[^a-z0-9_-]/gi, '');     // flatten + guard traversal
+  const langFile = path.join(PUBLIC_DIR, lang, page + '.html');
+  if (fs.existsSync(langFile)) return res.sendFile(langFile);
+  const enFile = path.join(PUBLIC_DIR, page + '.html');
+  if (fs.existsSync(enFile)) return res.sendFile(enFile);
+  return res.status(404).sendFile(path.join(PUBLIC_DIR, 'index.html'));
+});
+
+// ── SEO: robots.txt + multilingual sitemap.xml ───────────────
+const SITE_PAGES = ['/', '/home', '/about', '/services', '/direct-lines',
+                    '/funds', '/partners', '/foundation', '/contact'];
+
+function locFor(lang, p) {
+  if (lang === 'en') return BASE_URL + p;
+  return BASE_URL + '/' + lang + (p === '/' ? '/' : p);
+}
+
+app.get('/sitemap.xml', (req, res) => {
+  let urls = '';
+  SITE_PAGES.forEach(p => {
+    LANGS.forEach(lang => {
+      const alts = LANGS.map(a =>
+        `<xhtml:link rel="alternate" hreflang="${a}" href="${locFor(a, p)}"/>`).join('') +
+        `<xhtml:link rel="alternate" hreflang="x-default" href="${locFor('en', p)}"/>`;
+      urls += `<url><loc>${locFor(lang, p)}</loc><changefreq>monthly</changefreq>${alts}</url>`;
+    });
+  });
+  res.type('application/xml').send(
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+    'xmlns:xhtml="http://www.w3.org/1999/xhtml">' + urls + '</urlset>');
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain').send(
+    'User-agent: *\nAllow: /\n\nSitemap: ' + BASE_URL + '/sitemap.xml\n');
+});
+
 // ── API: list and parse all CSV files in /data ───────────────
 app.get('/api/data', (req, res) => {
   try {
