@@ -1095,6 +1095,14 @@ p { color: var(--text-muted); line-height: 1.75; }
   padding: 4rem 0 3.5rem;
 }
 
+/* Transparent floating nav (glass-pill) is position:fixed and overlays the
+   hero — give the hero extra top clearance and drop the top border so the
+   header floats cleanly, matching the homepage. */
+html.navstyle-glass-pill .page-hero {
+  padding-top: 7rem;
+  border-top: none;
+}
+
 .page-hero .container {}
 
 .page-hero .breadcrumb {
@@ -1336,6 +1344,34 @@ p { color: var(--text-muted); line-height: 1.75; }
   border-color: var(--border);
   pointer-events: none;
   opacity: 0.55;
+}
+
+/* Team grouped by department */
+.team-group + .team-group { margin-top: 3rem; }
+
+.team-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Initials avatar for team members without a photo */
+.team-photo--initials {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--red);
+  background: linear-gradient(135deg, #f3ece9, #e6dcd8);
 }
 
 .family-highlight {
@@ -2021,10 +2057,7 @@ html.navstyle-red .site-nav {
   background: var(--red);
   border-bottom: none;
 }
-html.navstyle-red .nav-logo-img {
-  content: url('/uploads/Wealtheon_logo_white.png');
-  filter: brightness(0) invert(1); /* fallback if content swap unsupported */
-}
+/* Logo always stays the full-colour (rgb) version — no white swap. */
 html.navstyle-red .nav-links > li > a,
 html.navstyle-red .nav-links > li > button { color: rgba(255,255,255,0.85); }
 html.navstyle-red .nav-links > li > a:hover,
@@ -2066,7 +2099,7 @@ html.navstyle-glass-light.is-scrolled .site-nav {
   background: rgba(255,255,255,0.85);
   box-shadow: var(--shadow-sm);
 }
-html.navstyle-glass-light .nav-logo-img { content: url('/uploads/Wealtheon_logo_transparent.png'); }
+/* Logo always stays the full-colour (rgb) version — no transparent swap. */
 
 /* ── Variant: glass, dark — white text/logo ── */
 html.navstyle-glass-dark .site-nav {
@@ -2100,12 +2133,7 @@ html.navstyle-glass-pill.is-scrolled .nav-inner {
   background: rgba(22,19,19,0.82);
 }
 
-/* ── Dark glass variants: white text/logo/toggle ── */
-html.navstyle-glass-dark .nav-logo-img,
-html.navstyle-glass-pill .nav-logo-img {
-  content: url('/uploads/Wealtheon_logo_white.png');
-  filter: brightness(0) invert(1); /* fallback if content swap unsupported */
-}
+/* ── Dark glass variants: white text/toggle (logo stays full colour) ── */
 html.navstyle-glass-dark .nav-links > li > a,
 html.navstyle-glass-dark .nav-links > li > button,
 html.navstyle-glass-pill .nav-links > li > a,

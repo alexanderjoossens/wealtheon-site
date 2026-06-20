@@ -26,8 +26,24 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }
 });
 
-// Serve static assets from /public (css, js, images, etc.)
-app.use(express.static(PUBLIC_DIR));
+// Production base URL for canonical / hreflang / sitemap (override via env).
+const BASE_URL = (process.env.BASE_URL || 'https://www.wealtheon.eu').replace(/\/$/, '');
+const LANGS = ['en', 'fr', 'nl'];
+
+// Serve static assets from /public (css, js, images, etc.) with cache headers.
+app.use(express.static(PUBLIC_DIR, {
+  setHeaders: (res, filePath) => {
+    if (/\.(jpg|jpeg|png|gif|webp|svg|ico|woff2?|ttf|eot)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=2592000'); // 30d for assets
+    } else if (/\.(css|js)$/i.test(filePath)) {
+      // Revalidate every time so edits to css/js show up immediately
+      // (browser still caches but must check via ETag → cheap 304s).
+      res.setHeader('Cache-Control', 'no-cache');
+    } else if (/\.html$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    }
+  }
+}));
 
 // ── Page routes ──────────────────────────────────────────────
 
@@ -58,9 +74,18 @@ app.get('/home7', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home7.html'));
 });
 
-// Services page
+// Services pages — split into Direct Lines, Funds, Partners
 app.get('/services', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'services.html'));
+});
+app.get('/direct-lines', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'direct-lines.html'));
+});
+app.get('/funds', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'funds.html'));
+});
+app.get('/partners', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'partners.html'));
 });
 
 // About page
@@ -78,6 +103,11 @@ app.get('/foundation', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'foundation.html'));
 });
 
+// Careers page
+app.get('/careers', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'careers.html'));
+});
+
 // Data page
 app.get('/data', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'data.html'));
@@ -86,6 +116,52 @@ app.get('/data', (req, res) => {
 // Upload manager page
 app.get('/upload', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'upload.html'));
+});
+
+// ── Localised pages: /fr/* and /nl/* ─────────────────────────
+// Serves public/<lang>/<page>.html when it exists, otherwise falls
+// back to the English page so language switching never 404s.
+app.get(/^\/(fr|nl)(?:\/(.*))?$/, (req, res) => {
+  const lang = req.params[0];
+  let rest = (req.params[1] || '').replace(/\/+$/, '');
+  let page = rest === '' ? 'index' : rest;
+  if (page === 'home') page = 'home6';          // /home alias → home6.html
+  page = page.replace(/[^a-z0-9_-]/gi, '');     // flatten + guard traversal
+  const langFile = path.join(PUBLIC_DIR, lang, page + '.html');
+  if (fs.existsSync(langFile)) return res.sendFile(langFile);
+  const enFile = path.join(PUBLIC_DIR, page + '.html');
+  if (fs.existsSync(enFile)) return res.sendFile(enFile);
+  return res.status(404).sendFile(path.join(PUBLIC_DIR, 'index.html'));
+});
+
+// ── SEO: robots.txt + multilingual sitemap.xml ───────────────
+const SITE_PAGES = ['/', '/home', '/about', '/services', '/direct-lines',
+                    '/funds', '/partners', '/foundation', '/contact'];
+
+function locFor(lang, p) {
+  if (lang === 'en') return BASE_URL + p;
+  return BASE_URL + '/' + lang + (p === '/' ? '/' : p);
+}
+
+app.get('/sitemap.xml', (req, res) => {
+  let urls = '';
+  SITE_PAGES.forEach(p => {
+    LANGS.forEach(lang => {
+      const alts = LANGS.map(a =>
+        `<xhtml:link rel="alternate" hreflang="${a}" href="${locFor(a, p)}"/>`).join('') +
+        `<xhtml:link rel="alternate" hreflang="x-default" href="${locFor('en', p)}"/>`;
+      urls += `<url><loc>${locFor(lang, p)}</loc><changefreq>monthly</changefreq>${alts}</url>`;
+    });
+  });
+  res.type('application/xml').send(
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+    'xmlns:xhtml="http://www.w3.org/1999/xhtml">' + urls + '</urlset>');
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain').send(
+    'User-agent: *\nAllow: /\n\nSitemap: ' + BASE_URL + '/sitemap.xml\n');
 });
 
 // ── API: list and parse all CSV files in /data ───────────────

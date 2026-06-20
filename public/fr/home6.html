@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html lang="nl" data-page="home7" data-navstyle="glass-pill">
+<html lang="fr" data-page="home" data-navstyle="glass-pill">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wealtheon — Vermogensbeheer met overtuiging</title>
-  <meta name="description" content="Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd in vijf markten — gedreven door overtuiging, niet door commissie." />
+  <title>Wealtheon — La gestion de patrimoine avec conviction</title>
+  <meta name="description" content="Un gestionnaire de patrimoine belge indépendant et familial. Honoraires uniquement, régulé sur cinq marchés — guidé par la conviction, non par la commission." />
+  <link rel="canonical" href="https://www.wealtheon.eu/fr/home" />
+  <link rel="alternate" hreflang="en" href="https://www.wealtheon.eu/home" />
+  <link rel="alternate" hreflang="fr" href="https://www.wealtheon.eu/fr/home" />
+  <link rel="alternate" hreflang="nl" href="https://www.wealtheon.eu/nl/home" />
+  <link rel="alternate" hreflang="x-default" href="https://www.wealtheon.eu/home" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wealtheon" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Wealtheon — La gestion de patrimoine avec conviction" />
+  <meta property="og:description" content="Un gestionnaire de patrimoine belge indépendant et familial. Honoraires uniquement, régulé sur cinq marchés — guidé par la conviction, non par la commission." />
+  <meta property="og:url" content="https://www.wealtheon.eu/fr/home" />
+  <meta property="og:image" content="https://www.wealtheon.eu/uploads/Wealtheon_logo_rgb.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
        HOME 6 — Cinematic video hero (design handoff: Wealtheon Hero,
-       recolored with blue accents — #1A56DB · off-white
+       recolored to the v8 intent: deck red/cream — #E11B22 · off-white
        #FBFBF9 · near-black #1A1A1A). Self-contained variation page.
        ============================================================ */
     :root {
-      --red:       #1A56DB;
-      --red-deep:  #123FA8;
+      --red:       #E11B22;
+      --red-deep:  #B8141A;
+      --red-rgb:   225, 27, 34;
       --ink:       #1A1A1A;
       --ink-700:   #2A2A2A;
       --ink-500:   #555555;
@@ -45,7 +58,7 @@
 
     /* ---- Liquid glass (dark, tuned for legibility over video) ---- */
     .liquid-glass {
-      background: rgba(18, 20, 25, 0.42);
+      background: rgba(22, 19, 19, 0.42);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: none;
@@ -62,7 +75,7 @@
       background: linear-gradient(180deg,
         rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.12) 20%,
         rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-        rgba(26,86,219,0.18) 80%, rgba(26,86,219,0.4) 100%);
+        rgba(var(--red-rgb),0.18) 80%, rgba(var(--red-rgb),0.4) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -78,8 +91,9 @@
       transition: background 0.3s var(--ease);
       overflow: visible; /* let the Welcome dropdown escape the glass bar */
     }
-    .g-header[data-scrolled] .g-bar { background: rgba(18,20,25,0.78); }
-    .g-logo img { height: 42px; width: auto; filter: brightness(0) invert(1); }
+    .g-header[data-scrolled] .g-bar { background: rgba(22,19,19,0.78); }
+    .g-logo { display: inline-flex; align-items: center; }
+    .g-logo img { height: 34px; width: auto; filter: brightness(0) invert(1); }
     .g-nav { display: flex; align-items: center; gap: 28px; }
     .g-navitem { position: relative; }
     .g-navitem > a, .g-navitem > button {
@@ -99,8 +113,8 @@
     .g-lang button[data-active] { color: var(--red); }
     .g-lang button:hover { color: #fff; }
     .g-cta {
-      background: #fff; color: var(--ink); padding: 11px 22px; border-radius: 9px;
-      font-size: 14px; font-weight: 500;
+      background: #fff; color: var(--ink); padding: 8px 16px; border-radius: 7px;
+      font-size: 13px; font-weight: 500;
       transition: background 0.18s var(--ease), color 0.18s var(--ease);
     }
     .g-cta:hover { background: var(--red); color: #fff; }
@@ -114,7 +128,7 @@
     }
     .g-dd.open { opacity: 1; visibility: visible; transform: translateY(0); }
     .g-dd-inner {
-      background: rgba(20,22,27,0.97);
+      background: rgba(24,21,21,0.97);
       -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 24px 60px rgba(0,0,0,0.5);
@@ -139,9 +153,9 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(120% 90% at 80% 8%, rgba(26,86,219,0.22), transparent 50%),
-        radial-gradient(100% 80% at 8% 96%, rgba(55,60,70,0.5), transparent 62%),
-        linear-gradient(158deg, #32363D 0%, #282C33 40%, #21242B 74%, #1E2127 100%);
+        radial-gradient(120% 90% at 80% 8%, rgba(var(--red-rgb),0.22), transparent 50%),
+        radial-gradient(100% 80% at 8% 96%, rgba(70,55,55,0.5), transparent 62%),
+        linear-gradient(158deg, #3A3232 0%, #2E2828 40%, #262121 74%, #221E1E 100%);
       overflow: hidden;
     }
     .hero-bg::after {
@@ -153,7 +167,7 @@
     .hero-bg .sweep {
       position: absolute; top: -30%; left: -40%;
       width: 60%; height: 160%;
-      background: linear-gradient(105deg, transparent, rgba(26,86,219,0.10), transparent);
+      background: linear-gradient(105deg, transparent, rgba(var(--red-rgb),0.10), transparent);
       transform: rotate(8deg);
       animation: sweep 9s ease-in-out infinite;
     }
@@ -169,8 +183,8 @@
     /* Legibility wash */
     .hero-wash {
       position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(20,22,26,0.5) 0%, rgba(20,22,26,0.15) 45%, transparent 70%),
-                  linear-gradient(0deg, rgba(20,22,26,0.5) 0%, transparent 38%);
+      background: linear-gradient(90deg, rgba(24,20,20,0.5) 0%, rgba(24,20,20,0.15) 45%, transparent 70%),
+                  linear-gradient(0deg, rgba(24,20,20,0.5) 0%, transparent 38%);
     }
 
     .hero-fg {
@@ -191,9 +205,9 @@
 
     .hero h1 {
       font-family: var(--serif); font-weight: 500;
-      font-size: clamp(30px, 5vw, 68px);
-      letter-spacing: -0.025em; line-height: 1.04;
-      margin-bottom: 20px; color: #fff;
+      font-size: clamp(26px, 3.4vw, 46px);
+      letter-spacing: -0.02em; line-height: 1.08;
+      margin-bottom: 16px; color: #fff;
     }
     .hero h1 .line { display: block; }
     .hero h1 .ch {
@@ -207,16 +221,16 @@
       font-size: clamp(16px, 1.4vw, 18px); color: rgba(255,255,255,0.75);
       max-width: 36rem; margin-bottom: 24px;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .btn {
-      display: inline-block; padding: 12px 32px; border-radius: 9px;
-      font-size: 15px; font-weight: 500; cursor: pointer;
-      transition: background 0.2s var(--ease), color 0.2s var(--ease);
+      display: inline-block; padding: 9px 20px; border-radius: 7px;
+      font-size: 13.5px; font-weight: 500; cursor: pointer;
+      transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
     }
     .btn--red { background: var(--red); color: #fff; }
     .btn--red:hover { background: var(--red-deep); }
-    .btn--glass { color: #fff; }
-    .btn--glass:hover { background: #fff !important; color: var(--ink); }
+    .btn--glass { color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .btn--glass:hover { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.55); }
 
     .hero-tag-col { display: flex; align-items: flex-end; justify-content: flex-start; }
     @media (min-width: 1024px) { .hero-tag-col { justify-content: flex-end; } }
@@ -260,9 +274,9 @@
     .sec-head { max-width: 760px; margin-bottom: 52px; }
     .sec-head h2 {
       font-family: var(--serif); font-weight: 500; color: var(--ink);
-      font-size: clamp(28px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em;
+      font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; letter-spacing: -0.015em;
     }
-    .sec-head p { font-size: 18px; color: var(--ink-500); margin-top: 18px; }
+    .sec-head p { font-size: 16px; color: var(--ink-500); margin-top: 16px; }
 
     /* Strategy tiles */
     .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -283,7 +297,7 @@
     .arrow-link:hover .ar { transform: translateX(4px); }
 
     /* KPI band */
-    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 40px; }
+    .kpis { display: flex; flex-wrap: wrap; margin-top: 40px; }
     .kpi { padding: 0 34px; border-left: 1px solid rgba(255,255,255,0.14); }
     .kpi:first-child { padding-left: 0; border-left: 0; }
     .kpi .n {
@@ -304,12 +318,47 @@
     .fit p { font-size: 15px; color: var(--ink-500); line-height: 1.55; }
     .fit em { font-style: italic; color: var(--ink-700); }
 
+    /* Onze waarden — value cards */
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .values-grid { grid-template-columns: 1fr; } }
+    .value-card {
+      position: relative; overflow: hidden;
+      padding: 34px 28px 30px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
+    }
+    .value-card::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      height: 3px; width: 40px; background: var(--red);
+      transition: width .45s var(--ease);
+    }
+    .value-card::after {
+      content: attr(data-n); position: absolute; right: 6px; bottom: -38px;
+      font-family: var(--serif); font-weight: 500; font-size: 150px; line-height: 1;
+      color: rgba(var(--red-rgb), 0.05); pointer-events: none;
+    }
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(20,20,20,0.10);
+      border-color: rgba(var(--red-rgb), 0.45);
+    }
+    .value-card:hover::before { width: 100%; }
+    .value-card .vnum {
+      display: block; font-family: var(--serif); font-weight: 500;
+      font-size: 40px; line-height: 1; color: var(--red); margin-bottom: 22px;
+    }
+    .value-card h4 { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 11px; letter-spacing: -0.01em; }
+    .value-card p { position: relative; z-index: 1; font-size: 14px; color: var(--ink-500); line-height: 1.62; }
+
     /* CTA band */
     .cta { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
     .cta::after {
       content: ""; position: absolute; right: -8%; top: -50%;
       width: 55%; height: 200%;
-      background: radial-gradient(circle, rgba(26,86,219,0.16), transparent 64%);
+      background: radial-gradient(circle, rgba(var(--red-rgb),0.16), transparent 64%);
     }
     .cta .wrap {
       position: relative; z-index: 1;
@@ -319,8 +368,8 @@
     @media (max-width: 880px) { .cta .wrap { grid-template-columns: 1fr; } }
     .cta h2 {
       font-family: var(--serif); font-weight: 500;
-      font-size: clamp(28px, 3.6vw, 46px); line-height: 1.12; letter-spacing: -0.02em;
-      max-width: 18ch;
+      font-size: clamp(24px, 2.8vw, 36px); line-height: 1.15; letter-spacing: -0.015em;
+      max-width: 20ch;
     }
     .cta h2 em { font-style: italic; color: var(--red); }
     .cta p { font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 16px; }
@@ -330,7 +379,7 @@
     .btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
 
     /* Footer — deck style */
-    .foot { background: #121318; color: rgba(255,255,255,0.62); font-size: 14px; }
+    .foot { background: #141212; color: rgba(255,255,255,0.62); font-size: 14px; }
     .foot .wrap { padding-block: 72px 34px; }
     .foot-grid {
       display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px;
@@ -352,6 +401,39 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ════════════════════════════════════════════════════════════
+       THEME-SPECIFIC HERO TREATMENTS (driven by html[data-theme])
+       ════════════════════════════════════════════════════════════ */
+    /* Buildings — real skyline photo, cleaner & professional */
+    html[data-theme="buildings"] .hero-bg {
+      background:
+        linear-gradient(160deg, rgba(26,22,18,0.56) 0%, rgba(17,14,11,0.82) 100%),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+    }
+    html[data-theme="buildings"] .hero-bg .sweep { display: none; }
+    html[data-theme="buildings"] .hero-bg::after { color: rgba(255,255,255,0.06); }
+
+    /* Light — airy light hero with dark text */
+    html[data-theme="light"] .hero { color: #15202E; }
+    html[data-theme="light"] .hero-bg {
+      background:
+        radial-gradient(120% 90% at 82% 6%, rgba(var(--red-rgb),0.16), transparent 56%),
+        linear-gradient(165deg, #ffffff 0%, #eef2f7 56%, #e5edf5 100%);
+    }
+    html[data-theme="light"] .hero-bg::after { color: rgba(30,55,95,0.06); }
+    html[data-theme="light"] .hero-bg .lines {
+      background-image: repeating-linear-gradient(90deg, transparent 0 119px, rgba(20,45,90,0.04) 119px 120px);
+    }
+    html[data-theme="light"] .hero-wash {
+      background: linear-gradient(0deg, rgba(255,255,255,0.55) 0%, transparent 42%);
+    }
+    html[data-theme="light"] .hero-eyebrow span:last-child { color: rgba(30,45,70,0.7); }
+    html[data-theme="light"] .hero h1 { color: #15202E; }
+    html[data-theme="light"] .hero-sub { color: #4A5563; }
+    html[data-theme="light"] .hero-tag span { color: #15202E; }
+    html[data-theme="light"] .btn--glass { color: #1A2230; border-color: rgba(20,30,45,0.28); }
+    html[data-theme="light"] .btn--glass:hover { background: rgba(20,30,45,0.06) !important; border-color: rgba(20,30,45,0.5); }
   </style>
   <link rel="stylesheet" href="/site-nav.css" />
   <script src="/site-nav.js"></script>
@@ -384,21 +466,16 @@
     <div class="hero-grid">
       <!-- Left column -->
       <div>
-        <div class="hero-eyebrow fade fade-1">
-          <span class="sq"></span>
-          <span>Onafhankelijk vermogensbeheer · sinds 1971</span>
-        </div>
 
-        <h1 id="hero-heading" data-text="Wij beheren uw vermogen&#10;zoals wij het onze beheren."></h1>
+        <h1 id="hero-heading" data-text="Nous gérons votre patrimoine&#10;comme nous gérons le nôtre."></h1>
 
         <p class="hero-sub fade fade-2">
-          Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd
-          in vijf markten — gedreven door overtuiging, niet door commissie.
+          Un gestionnaire de patrimoine belge indépendant et familial.
         </p>
 
         <div class="hero-actions fade fade-3">
-          <a href="/services" class="btn btn--red">Onze strategieën</a>
-          <a href="/about" class="btn btn--glass liquid-glass" style="border-radius:9px;">Maak kennis met ons</a>
+          <a href="/services" class="btn btn--red">Nos stratégies</a>
+          <a href="/about" class="btn btn--glass liquid-glass" style="border-radius:9px;">Faites notre connaissance</a>
         </div>
       </div>
 
@@ -413,70 +490,97 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     STRATEGIEËN
+     STRATÉGIES
      ═══════════════════════════════════════════════════════════ -->
 <section class="sec sec--offwhite">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>Drie complementaire benaderingen</h2>
-      <p>Eén filosofie, drie wegen. Samen dekken ze elke marktcyclus en elk beleggersprofiel — toegankelijk via directe lijnen of via onze fondsen.</p>
+      <h2>Trois approches complémentaires</h2>
+      <p>Une seule philosophie, trois approches — adaptées à des profils d’investisseurs et des horizons variés. Accessibles en lignes directes ou via nos fonds.</p>
     </div>
     <div class="tiles reveal">
       <a class="tile" href="/services#value">
         <div class="no">01</div>
         <h3>Value</h3>
-        <div class="role">Patrimoniale ankerpositie</div>
-        <p>Waardecreatie op lange termijn. Buy-and-hold, contrair, geduldig. Risicoprofiel 5–6.</p>
-        <span class="arrow-link">Ontdek Value <span class="ar">→</span></span>
+        <div class="role">Position d’ancrage patrimoniale</div>
+        <p>Création de valeur à long terme. Buy-and-hold, à contre-courant, patient. Profil de risque 5–6.</p>
+        <span class="arrow-link">Découvrir Value <span class="ar">→</span></span>
       </a>
       <a class="tile" href="/services#growth">
         <div class="no">02</div>
         <h3>Growth</h3>
-        <div class="role">Kern van de portefeuille</div>
-        <p>Structurele groei via kwaliteitsbedrijven. Top-down, actief risicobeheer. Risicoprofiel 2–6.</p>
-        <span class="arrow-link">Ontdek Growth <span class="ar">→</span></span>
+        <div class="role">Cœur du portefeuille</div>
+        <p>Croissance structurelle par des entreprises de qualité. Top-down, gestion active du risque. Profil de risque 2–6.</p>
+        <span class="arrow-link">Découvrir Growth <span class="ar">→</span></span>
       </a>
       <a class="tile" href="/services#high-conviction">
         <div class="no">03</div>
         <h3>High Conviction</h3>
-        <div class="role">Offensieve satelliet</div>
-        <p>Gerichte overperformance, geconcentreerd. Altijd belegd, bottom-up. Risicoprofiel 7.</p>
-        <span class="arrow-link">Ontdek High Conviction <span class="ar">→</span></span>
+        <div class="role">Satellite offensif</div>
+        <p>Surperformance ciblée, concentrée. Toujours investi, bottom-up. Profil de risque 7.</p>
+        <span class="arrow-link">Découvrir High Conviction <span class="ar">→</span></span>
       </a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     CIJFERS
+     CHIFFRES
      ═══════════════════════════════════════════════════════════ -->
 <section class="sec sec--ink">
   <div class="wrap">
     <div class="kpis reveal">
-      <div class="kpi"><div class="n">4</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven · Genève</div></div>
-      <div class="kpi"><div class="n">23</div><div class="l">Specialisten</div><div class="s">Eén toegewijd team</div></div>
-      <div class="kpi"><div class="n">±1&nbsp;Md€</div><div class="l">Beheerd vermogen</div><div class="s">Verdubbeld sinds 2020</div></div>
-      <div class="kpi"><div class="n">505+</div><div class="l">Portefeuilles</div><div class="s">Families &amp; ondernemers</div></div>
+      <div class="kpi"><div class="n">3</div><div class="l">Bureaux</div><div class="s">Bruxelles · Waregem · Eindhoven</div></div>
+      <div class="kpi"><div class="n">23</div><div class="l">Spécialistes</div><div class="s">Une seule équipe dévouée</div></div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     WAAROM WEALTHEON
+     POURQUOI WEALTHEON
      ═══════════════════════════════════════════════════════════ -->
 <section class="sec sec--cream">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2>Een huis dat denkt in generaties.</h2>
+      <h2>La gestion de patrimoine avec une vision de long terme.</h2>
     </div>
-    <div class="why-grid reveal">
+    <div class="why-grid reveal" style="grid-template-columns:1fr; max-width:680px;">
       <div>
-        <div class="fit"><span class="idx">01</span><div><h4>100% onafhankelijk · pure player</h4><p>Geen commerciële druk, geen productverkoop. Enkel vermogensbeheer.</p></div></div>
-        <div class="fit"><span class="idx">02</span><div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart. <em>Generaties, geen kwartalen.</em></p></div></div>
+        <div class="fit"><span class="idx">01</span><div><h4>100 % indépendant · pure player</h4><p>Aucune pression commerciale, aucune vente de produits. Uniquement la gestion de patrimoine.</p></div></div>
       </div>
-      <div>
-        <div class="fit"><span class="idx">03</span><div><h4>Fee-only</h4><p>Eén bron van inkomsten. <em>Geen retrocessies sinds 1971. Nooit.</em></p></div></div>
-        <div class="fit"><span class="idx">04</span><div><h4>Gereguleerd in vijf markten</h4><p>FSMA · FINMA · AFM · AMF · BaFin.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NOS VALEURS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="sec sec--offwhite">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Votre allié expérimenté</h2>
+      <p>Wealtheon gère votre portefeuille d’investissement en bon père de famille. Aujourd’hui, pour le jour de demain. C’est ainsi que nous bâtissons ensemble votre avenir patrimonial.</p>
+    </div>
+    <div class="values-grid reveal">
+      <div class="value-card" data-n="01">
+        <span class="vnum">01</span>
+        <h4>Client First</h4>
+        <p>À chaque niveau de notre organisation, nous nous efforçons de dépasser continuellement vos attentes.</p>
+      </div>
+      <div class="value-card" data-n="02">
+        <span class="vnum">02</span>
+        <h4>Intégrité</h4>
+        <p>En tant qu’entreprise familiale active dans le secteur financier, nous attachons une grande importance à notre réputation ; c’est pourquoi nous agissons à tout moment de manière fiable et transparente envers toutes les parties prenantes.</p>
+      </div>
+      <div class="value-card" data-n="03">
+        <span class="vnum">03</span>
+        <h4>Expertise</h4>
+        <p>En tant qu’organisation portée par la connaissance, nous enrichissons continuellement notre expertise de plusieurs décennies.</p>
+      </div>
+      <div class="value-card" data-n="04">
+        <span class="vnum">04</span>
+        <h4>Intérêts alignés</h4>
+        <p>Aux côtés de vous, nous investissons à plus long terme dans nos stratégies d’investissement.</p>
       </div>
     </div>
   </div>
@@ -488,12 +592,12 @@
 <section class="cta">
   <div class="wrap">
     <div class="reveal">
-      <h2>Laten we praten over wat <em>blijvend</em> telt.</h2>
-      <p>Een vertrouwelijk gesprek met een van onze beheerders, vrijblijvend. Beheer vanaf 500 k€ (300 k€ via verzekeringscontract).</p>
+      <h2>Parlons de votre patrimoine sur le <em>long terme</em>.</h2>
+      <p>Un entretien confidentiel avec l’un de nos gestionnaires, sans engagement. Gestion à partir de 500 k€ (300 k€ via contrat d’assurance).</p>
     </div>
     <div class="cta-actions reveal">
-      <a class="btn btn--red" href="/contact">Plan een gesprek</a>
-      <a class="btn btn--ghost" href="/services">Onze diensten</a>
+      <a class="btn btn--red" href="/contact">Planifier un entretien</a>
+      <a class="btn btn--ghost" href="/services">Nos services</a>
     </div>
   </div>
 </section>
@@ -506,35 +610,35 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" />
-        <p>Onafhankelijke Belgische vermogensbeheerder sinds 1971. Fee-only, in familiehanden.</p>
+        <p>Gestionnaire de patrimoine belge indépendant depuis 1971. Honoraires uniquement, en mains familiales.</p>
       </div>
       <div>
-        <h5>Diensten</h5>
+        <h5>Services</h5>
         <ul>
           <li><a href="/services#value">Value</a></li>
           <li><a href="/services#growth">Growth</a></li>
           <li><a href="/services#high-conviction">High Conviction</a></li>
-          <li><a href="/services#funds">Fondsen</a></li>
-          <li><a href="/services#financial-intermediaries">Tussenpersonen</a></li>
+          <li><a href="/services#funds">Fonds</a></li>
+          <li><a href="/services#financial-intermediaries">Intermédiaires</a></li>
         </ul>
       </div>
       <div>
         <h5>Wealtheon</h5>
         <ul>
-          <li><a href="/about">Over ons</a></li>
+          <li><a href="/about">À propos</a></li>
           <li><a href="/impact">Impact</a></li>
-          <li><a href="/news">Nieuws</a></li>
-          <li><a href="/careers">Careers</a></li>
+          <li><a href="/news">Actualités</a></li>
+          <li><a href="/careers">Carrières</a></li>
         </ul>
       </div>
       <div>
-        <h5>Kantoren</h5>
-        <ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li><li>Genève</li></ul>
+        <h5>Bureaux</h5>
+        <ul><li>Bruxelles</li><li>Waregem</li><li>Eindhoven</li></ul>
       </div>
     </div>
     <div class="foot-bot">
       <span>© 2026 Wealtheon Asset Management · www.wealtheon.eu</span>
-      <span class="foot-legal"><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">ESG-beleid</a><a href="#">Klachten</a></span>
+      <span class="foot-legal"><a href="#">Confidentialité</a><a href="#">Disclaimer</a><a href="#">Politique ESG</a><a href="#">Réclamations</a></span>
     </div>
   </div>
 </footer>
@@ -552,7 +656,7 @@
       line.split('').forEach(function (ch, charIndex) {
         var s = document.createElement('span');
         s.className = 'ch';
-        s.textContent = ch === ' ' ? ' ' : ch;
+        s.textContent = ch === ' ' ? ' ' : ch;
         s.style.transitionDelay = (initialDelay + lineIndex * line.length * charDelay + charIndex * charDelay) + 'ms';
         lineEl.appendChild(s);
       });
