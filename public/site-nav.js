@@ -15,10 +15,17 @@
   /* ── Colour style theme (red default ↔ blue), persisted across pages.
        Applied immediately (script runs in <head>) to avoid a flash. ── */
   var THEME_KEY = 'wealtheon_theme';
+  var THEMES = [
+    ['red',       'Red'],
+    ['blue',      'Blue'],
+    ['buildings', 'Buildings'],
+    ['light',     'Light']
+  ];
+  function isTheme(t) { return THEMES.some(function (x) { return x[0] === t; }); }
   function readTheme() {
     var t;
     try { t = localStorage.getItem(THEME_KEY); } catch (e) {}
-    return (t === 'blue' || t === 'red') ? t : 'red';
+    return isTheme(t) ? t : 'red';
   }
   function applyTheme(t) {
     docEl.setAttribute('data-theme', t);
@@ -31,12 +38,13 @@
   applyTheme(readTheme());
 
   function toggleHTML() {
+    var opts = THEMES.map(function (t) {
+      return '<button class="st-opt" type="button" data-key="' + t[0] + '" aria-label="' + t[1] + ' style">' +
+        '<span class="st-dot"></span><span class="st-text">' + t[1] + '</span></button>';
+    }).join('');
     return '<div class="style-toggle" role="group" aria-label="Colour style">' +
       '<span class="st-label">Style</span>' +
-      '<div class="st-track">' +
-        '<button class="st-opt" type="button" data-key="red"><span class="st-dot"></span>Red</button>' +
-        '<button class="st-opt" type="button" data-key="blue"><span class="st-dot"></span>Blue</button>' +
-      '</div></div>';
+      '<div class="st-track">' + opts + '</div></div>';
   }
   function mountToggle() {
     if (document.querySelector('.style-toggle')) return;
