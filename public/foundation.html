@@ -8,6 +8,43 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="/site-nav.css" />
   <script src="/site-nav.js"></script>
+  <style>
+    /* ── Foundation page — photographic hero & theme cards ── */
+    .foundation-hero {
+      position: relative;
+      border-top: 3px solid var(--red);
+      border-bottom: none;
+      background:
+        linear-gradient(180deg, rgba(20,12,12,0.78), rgba(20,12,12,0.62)),
+        url('/uploads/foundation-slide1.jpg') center 30% / cover no-repeat;
+      padding: 5.5rem 0 5rem;
+    }
+    .foundation-hero .breadcrumb a,
+    .foundation-hero .breadcrumb span,
+    .foundation-hero .breadcrumb .sep { color: rgba(255,255,255,0.85); }
+    .foundation-hero h1 { color: #fff; }
+    .foundation-hero p { color: rgba(255,255,255,0.92); }
+
+    /* Theme card with photo header */
+    .theme-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .theme-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .theme-card .theme-photo {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+    .theme-card .theme-body { padding: 1.75rem; }
+  </style>
 </head>
 <body>
 
@@ -19,7 +56,7 @@
 <!-- ═══════════════════════════════════════════════════════════
      PAGE HERO
      ═══════════════════════════════════════════════════════════ -->
-<section class="page-hero">
+<section class="page-hero foundation-hero">
   <div class="container">
     <nav class="breadcrumb">
       <a href="/home">Home</a>
@@ -164,96 +201,114 @@
 
     <div class="funds-grid" style="background:none;">
 
-      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.75rem;">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">01 — Children &amp; education</div>
-        <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">A foundation for social progress</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
-          Good education lets everyone make the most of their talents. We support the Barodia school
-          project in India, providing food, tuition and technology skills to over 150 underprivileged
-          children every day — with priority for girls and the most vulnerable. Wealtheon has been
-          involved since the project's launch in 2007.
-        </p>
-        <ul class="strategy-bullets">
-          <li>Barodia school project — India</li>
-          <li>Priority for girls and the most vulnerable</li>
-          <li>Daily food, tuition &amp; technology skills</li>
-        </ul>
+      <div class="theme-card">
+        <img class="theme-photo" src="/uploads/foundation-slide1.jpg" alt="Children and education — schoolchildren in the Barodia project" loading="lazy" />
+        <div class="theme-body">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">01 — Children &amp; education</div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">A foundation for social progress</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
+            Good education lets everyone make the most of their talents. We support the Barodia school
+            project in India, providing food, tuition and technology skills to over 150 underprivileged
+            children every day — with priority for girls and the most vulnerable. Wealtheon has been
+            involved since the project's launch in 2007.
+          </p>
+          <ul class="strategy-bullets">
+            <li>Barodia school project — India</li>
+            <li>Priority for girls and the most vulnerable</li>
+            <li>Daily food, tuition &amp; technology skills</li>
+          </ul>
+        </div>
       </div>
 
-      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.75rem;">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">02 — Research</div>
-        <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Innovation for the challenges of our time</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
-          Investing in a better future means investing in research across food, energy and healthcare.
-          We donate to Diabetes Onderzoek Nederland (DON), focused on a cure for type&nbsp;1 diabetes,
-          and to the renowned Jules Bordet Institute, a Belgian cancer research centre that depends
-          heavily on private funding.
-        </p>
-        <ul class="strategy-bullets">
-          <li>Diabetes Onderzoek Nederland (DON)</li>
-          <li>Jules Bordet Institute — cancer research</li>
-          <li>Fundamental research &amp; innovation</li>
-        </ul>
+      <div class="theme-card">
+        <img class="theme-photo" src="/uploads/foundation-slide6.jpg" alt="Research — scientist working in a laboratory" loading="lazy" />
+        <div class="theme-body">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">02 — Research</div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Innovation for the challenges of our time</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
+            Investing in a better future means investing in research across food, energy and healthcare.
+            We donate to Diabetes Onderzoek Nederland (DON), focused on a cure for type&nbsp;1 diabetes,
+            and to the renowned Jules Bordet Institute, a Belgian cancer research centre that depends
+            heavily on private funding.
+          </p>
+          <ul class="strategy-bullets">
+            <li>Diabetes Onderzoek Nederland (DON)</li>
+            <li>Jules Bordet Institute — cancer research</li>
+            <li>Fundamental research &amp; innovation</li>
+          </ul>
+        </div>
       </div>
 
-      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.75rem;">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">03 — Sustainable development</div>
-        <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Progress that does not cost the future</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
-          We have a major responsibility to the generations that follow us. We support ODDY-C, founded
-          in 2011 in northern Burundi, which invests in clean water pipes, lifestyle improvements and
-          partnerships with schools in the south of the country.
-        </p>
-        <ul class="strategy-bullets">
-          <li>ODDY-C — northern Burundi</li>
-          <li>Clean water infrastructure</li>
-          <li>School partnerships &amp; lifestyle improvement</li>
-        </ul>
+      <div class="theme-card">
+        <img class="theme-photo" src="/uploads/foundation-slide4.jpg" alt="Sustainable development — hands planting a young seedling" loading="lazy" />
+        <div class="theme-body">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">03 — Sustainable development</div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Progress that does not cost the future</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
+            We have a major responsibility to the generations that follow us. We support ODDY-C, founded
+            in 2011 in northern Burundi, which invests in clean water pipes, lifestyle improvements and
+            partnerships with schools in the south of the country.
+          </p>
+          <ul class="strategy-bullets">
+            <li>ODDY-C — northern Burundi</li>
+            <li>Clean water infrastructure</li>
+            <li>School partnerships &amp; lifestyle improvement</li>
+          </ul>
+        </div>
       </div>
 
-      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.75rem;">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">04 — Art &amp; culture</div>
-        <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Essential for innovation and growth</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
-          We support Musica Mundi, whose annual course and festival lets talented young musicians aged
-          10–18 perform alongside eminent interpreters of chamber music. We also back the Queen Elisabeth
-          Competition and the Royal Concertgebouw Orchestra — making classical music accessible to all.
-        </p>
-        <ul class="strategy-bullets">
-          <li>Musica Mundi — young international talent</li>
-          <li>Queen Elisabeth Competition</li>
-          <li>Royal Concertgebouw Orchestra</li>
-        </ul>
+      <div class="theme-card">
+        <img class="theme-photo" src="/uploads/foundation-slide2.jpg" alt="Art and culture — ballet dancers performing on stage" loading="lazy" />
+        <div class="theme-body">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">04 — Art &amp; culture</div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Essential for innovation and growth</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
+            We support Musica Mundi, whose annual course and festival lets talented young musicians aged
+            10–18 perform alongside eminent interpreters of chamber music. We also back the Queen Elisabeth
+            Competition and the Royal Concertgebouw Orchestra — making classical music accessible to all.
+          </p>
+          <ul class="strategy-bullets">
+            <li>Musica Mundi — young international talent</li>
+            <li>Queen Elisabeth Competition</li>
+            <li>Royal Concertgebouw Orchestra</li>
+          </ul>
+        </div>
       </div>
 
-      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.75rem;">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">05 — Humanitarian aid</div>
-        <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Standing with the victims</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
-          Armed conflicts and natural disasters demand our response. We donate to Human Rights Watch,
-          a leading international institute since 1978, which conducts rigorous investigations in war
-          zones and turns them into accurate, confronting reports — driving real changes in law and policy.
-        </p>
-        <ul class="strategy-bullets">
-          <li>Human Rights Watch — since 1978</li>
-          <li>Rigorous, factual investigations</li>
-          <li>Direct recommendations to governments</li>
-        </ul>
+      <div class="theme-card">
+        <img class="theme-photo" src="/uploads/foundation-slide3.jpg" alt="Humanitarian aid — a child drinking clean running water" loading="lazy" />
+        <div class="theme-body">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">05 — Humanitarian aid</div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Standing with the victims</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
+            Armed conflicts and natural disasters demand our response. We donate to Human Rights Watch,
+            a leading international institute since 1978, which conducts rigorous investigations in war
+            zones and turns them into accurate, confronting reports — driving real changes in law and policy.
+          </p>
+          <ul class="strategy-bullets">
+            <li>Human Rights Watch — since 1978</li>
+            <li>Rigorous, factual investigations</li>
+            <li>Direct recommendations to governments</li>
+          </ul>
+        </div>
       </div>
 
-      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.75rem;">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">06 — Nature</div>
-        <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Of great value to health and economy</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
-          The natural world is crucial for both health and the economy. We support the World Wide Fund
-          for Nature (WWF) — one of the world's largest conservation funds — working globally to fight
-          climate change, make food sustainable, steward water, and protect forests, oceans and wildlife.
-        </p>
-        <ul class="strategy-bullets">
-          <li>World Wide Fund for Nature (WWF)</li>
-          <li>Climate, water &amp; sustainable food</li>
-          <li>Forests, oceans, flora &amp; fauna</li>
-        </ul>
+      <div class="theme-card">
+        <img class="theme-photo" src="/uploads/foundation-slide5.jpg" alt="Nature — a herd of elephants drinking at a river" loading="lazy" />
+        <div class="theme-body">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;">06 — Nature</div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:0.6rem;">Of great value to health and economy</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1rem;">
+            The natural world is crucial for both health and the economy. We support the World Wide Fund
+            for Nature (WWF) — one of the world's largest conservation funds — working globally to fight
+            climate change, make food sustainable, steward water, and protect forests, oceans and wildlife.
+          </p>
+          <ul class="strategy-bullets">
+            <li>World Wide Fund for Nature (WWF)</li>
+            <li>Climate, water &amp; sustainable food</li>
+            <li>Forests, oceans, flora &amp; fauna</li>
+          </ul>
+        </div>
       </div>
 
     </div>
