@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr" data-page="contact" data-navstyle="glass-pill">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Wealtheon</title>
+  <meta name="description" content="Contactez Wealtheon. Visitez l’un de nos quatre bureaux à Bruxelles, Waregem, Eindhoven ou Genève — ou envoyez-nous un message et nous vous répondrons dans un délai d’un jour ouvrable." />
+  <link rel="canonical" href="https://www.wealtheon.eu/fr/contact" />
+  <link rel="alternate" hreflang="en" href="https://www.wealtheon.eu/contact" />
+  <link rel="alternate" hreflang="fr" href="https://www.wealtheon.eu/fr/contact" />
+  <link rel="alternate" hreflang="nl" href="https://www.wealtheon.eu/nl/contact" />
+  <link rel="alternate" hreflang="x-default" href="https://www.wealtheon.eu/contact" />
+  <meta property="og:type" content="website" /><meta property="og:site_name" content="Wealtheon" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Contact — Wealtheon" />
+  <meta property="og:description" content="Contactez Wealtheon. Visitez l’un de nos quatre bureaux à Bruxelles, Waregem, Eindhoven ou Genève — ou envoyez-nous un message et nous vous répondrons dans un délai d’un jour ouvrable." />
+  <meta property="og:url" content="https://www.wealtheon.eu/fr/contact" />
+  <meta property="og:image" content="https://www.wealtheon.eu/uploads/Wealtheon_logo_rgb.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/site-nav.css" />
+  <script src="/site-nav.js"></script>
+  <style>
+    /* ════════════════════════════════════════════════════════════
+       CONTACT — distinct layout per theme
+       red/blue: refined two-tone · buildings: architectural dark
+       light: airy minimal · (fixed glass nav → extra hero top space)
+       ════════════════════════════════════════════════════════════ */
+    .page-hero { padding-top: 6.5rem; }
+    .contact-form-wrap {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 36px clamp(22px, 3vw, 40px); box-shadow: 0 18px 48px rgba(20,20,20,0.06);
+    }
+    .office-card { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+    .office-card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(20,20,20,0.08); border-color: rgba(var(--red-rgb), 0.4); }
+
+    /* ───── RED / BLUE — refined two-tone, bold accent aside ───── */
+    html[data-theme="red"]  .contact-aside-card,
+    html[data-theme="blue"] .contact-aside-card {
+      background: linear-gradient(165deg, var(--red), var(--red-dark));
+      border: none; color: #fff; box-shadow: 0 22px 48px rgba(var(--red-rgb), 0.30);
+    }
+    html[data-theme="red"]  .contact-aside-card h3, html[data-theme="blue"] .contact-aside-card h3,
+    html[data-theme="red"]  .contact-aside-card > p, html[data-theme="blue"] .contact-aside-card > p,
+    html[data-theme="red"]  .contact-aside-card a,  html[data-theme="blue"] .contact-aside-card a { color: #fff; }
+    html[data-theme="red"]  .contact-aside-card .contact-direct-label,
+    html[data-theme="blue"] .contact-aside-card .contact-direct-label { color: rgba(255,255,255,0.62); }
+    html[data-theme="red"]  .contact-aside-card .contact-direct-item a:hover,
+    html[data-theme="blue"] .contact-aside-card .contact-direct-item a:hover { color: #fff; text-decoration: underline; }
+
+    /* Hero extras (hidden unless the Buildings theme uses them) */
+    .cx-eyebrow { display: none; }
+    .cx-skyline { display: none; }
+
+    /* ───── BUILDINGS — light architectural, framed skyline, smooth motion ───── */
+    /* Scroll-reveal (only this theme animates; content stays visible if JS is off) */
+    html.js-reveal[data-theme="buildings"] .cx-reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .85s cubic-bezier(.22,.61,.36,1), transform .85s cubic-bezier(.22,.61,.36,1);
+      will-change: opacity, transform;
+    }
+    html.js-reveal[data-theme="buildings"] .cx-reveal.in { opacity: 1; transform: none; }
+    html.js-reveal[data-theme="buildings"] .offices-grid .office-card:nth-child(2) { transition-delay: .08s; }
+    html.js-reveal[data-theme="buildings"] .offices-grid .office-card:nth-child(3) { transition-delay: .16s; }
+    html.js-reveal[data-theme="buildings"] .offices-grid .office-card:nth-child(4) { transition-delay: .24s; }
+
+    /* Hero — light cream, two-column with a framed skyline (ken-burns) + drawn rule */
+    html[data-theme="buildings"] .page-hero {
+      background: linear-gradient(180deg, #FBF8F3 0%, #F2EADD 100%);
+      border-top: none; color: #1A1410; padding: 7rem 0 7rem; overflow: hidden;
+    }
+    html[data-theme="buildings"] .cx-hero {
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(28px, 5vw, 64px); align-items: center;
+    }
+    @media (max-width: 900px) { html[data-theme="buildings"] .cx-hero { grid-template-columns: 1fr; } }
+    html[data-theme="buildings"] .cx-eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+    }
+    html[data-theme="buildings"] .page-hero h1 { color: #1A1410; }
+    html[data-theme="buildings"] .page-hero h1::after {
+      content: ""; display: block; height: 3px; width: 0; background: var(--red); margin-top: 18px;
+      animation: cxRule 1s cubic-bezier(.22,.61,.36,1) .3s forwards;
+    }
+    @keyframes cxRule { to { width: 96px; } }
+    html[data-theme="buildings"] .page-hero p { color: #5A5048; max-width: 46ch; }
+    html[data-theme="buildings"] .cx-skyline {
+      display: block; position: relative; height: clamp(280px, 34vw, 400px);
+      border-radius: 16px; overflow: hidden; box-shadow: 0 30px 60px rgba(40,30,20,0.18);
+    }
+    html[data-theme="buildings"] .cx-skyline::after {
+      content: ""; position: absolute; inset: -14px -14px auto auto; width: 60%; height: 60%;
+      border: 1px solid var(--red); border-radius: 4px; pointer-events: none; z-index: 2;
+    }
+    html[data-theme="buildings"] .cx-skyline-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      transform: scale(1.1); animation: cxKen 20s ease-in-out infinite alternate; will-change: transform;
+    }
+    @keyframes cxKen { from { transform: scale(1.08) translate(0,0); } to { transform: scale(1.18) translate(-2.5%, -3%); } }
+
+    /* Form section — warm light; the form card lifts up into the hero (layered) */
+    html[data-theme="buildings"] section.section-white { background: #F7F2EA; padding-top: 0; }
+    html[data-theme="buildings"] .contact-layout { margin-top: -90px; position: relative; z-index: 3; align-items: start; }
+    html[data-theme="buildings"] .contact-form-wrap {
+      background: #fff; border: 1px solid #EAE0D2; border-radius: 16px; position: relative; overflow: hidden;
+      box-shadow: 0 30px 64px rgba(40,30,20,0.12);
+    }
+    html[data-theme="buildings"] .contact-form-wrap::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--red), var(--red-dark));
+    }
+    html[data-theme="buildings"] .contact-aside-card {
+      background: #fff; border: 1px solid #EAE0D2; box-shadow: 0 20px 44px rgba(40,30,20,0.08);
+    }
+    html[data-theme="buildings"] .contact-direct-label { color: var(--red); }
+    html[data-theme="buildings"] .quote-box { background: #F3ECE1; border-left: 3px solid var(--red); }
+
+    /* Offices — light cards, bronze top accent, hover + staggered reveal */
+    html[data-theme="buildings"] section.section-light { background: #FBF8F3; }
+    html[data-theme="buildings"] .office-card {
+      background: #fff; border: 1px solid #EAE0D2; border-top: 3px solid var(--red); border-radius: 12px;
+    }
+    html[data-theme="buildings"] .office-card .office-country { color: var(--red); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html[data-theme="buildings"] .cx-skyline-img { animation: none; }
+      html[data-theme="buildings"] .page-hero h1::after { animation: none; width: 96px; }
+      html.js-reveal[data-theme="buildings"] .cx-reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ───── LIGHT — airy, minimal, single centred column, underline inputs ───── */
+    html[data-theme="light"] .page-hero { background: #fff; border-top: none; text-align: center; padding: 7rem 0 1rem; }
+    html[data-theme="light"] .page-hero .container { max-width: 720px; }
+    html[data-theme="light"] .page-hero p { margin-left: auto; margin-right: auto; }
+    html[data-theme="light"] section.section-white { background: #fff; }
+    html[data-theme="light"] .contact-layout { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; }
+    html[data-theme="light"] .contact-form-wrap { background: transparent; border: none; box-shadow: none; padding: 0; }
+    html[data-theme="light"] .contact-form-wrap h2 { font-weight: 500; text-align: center; }
+    html[data-theme="light"] .contact-form-intro { text-align: center; }
+    html[data-theme="light"] .form-field input,
+    html[data-theme="light"] .form-field select,
+    html[data-theme="light"] .form-field textarea {
+      background: transparent; border: none; border-bottom: 1px solid var(--border);
+      border-radius: 0; padding-left: 2px; padding-right: 2px;
+    }
+    html[data-theme="light"] .form-field input:focus,
+    html[data-theme="light"] .form-field select:focus,
+    html[data-theme="light"] .form-field textarea:focus { box-shadow: none; border-bottom-color: var(--red); }
+    html[data-theme="light"] .form-submit { width: 100%; }
+    html[data-theme="light"] .contact-aside { margin-top: 6px; }
+    html[data-theme="light"] .contact-aside-card { background: var(--bg-light); border: none; text-align: center; }
+    html[data-theme="light"] .quote-box { display: none; }
+    html[data-theme="light"] section.section-light { background: #fff; }
+    html[data-theme="light"] .office-card {
+      background: transparent; border: none; border-top: 1px solid var(--border);
+      border-radius: 0; box-shadow: none; padding-top: 22px;
+    }
+    html[data-theme="light"] .office-card:hover { transform: none; box-shadow: none; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<div id="site-nav"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="cx-hero">
+      <div class="cx-hero-text cx-reveal">
+        <span class="cx-eyebrow">Contact</span>
+        <h1>Entamons la conversation</h1>
+        <p>
+          Que vous envisagiez un investissement, exploriez un partenariat ou ayez simplement une question —
+          notre équipe se réjouit de vous lire. Nous répondons à chaque message dans un délai d’un jour ouvrable.
+        </p>
+      </div>
+      <div class="cx-skyline cx-reveal" aria-hidden="true"><span class="cx-skyline-img"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACT FORM + DIRECT CONTACT
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Form -->
+      <div class="contact-form-wrap cx-reveal">
+        <h2>Comment pouvons-nous vous aider ?</h2>
+        <p class="contact-form-intro">
+          Remplissez le formulaire ci-dessous et l’un de nos conseillers vous recontactera personnellement.
+          Vos coordonnées sont traitées de manière confidentielle et ne sont jamais communiquées à des tiers.
+        </p>
+
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">Nom complet <span class="req">*</span></label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Jeanne Dupont" />
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Adresse e-mail <span class="req">*</span></label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="jeanne@exemple.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-phone">Téléphone <span class="optional">(facultatif)</span></label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="+32 ..." />
+            </div>
+            <div class="form-field">
+              <label for="cf-office">Bureau préféré</label>
+              <select id="cf-office" name="office">
+                <option value="">Aucune préférence</option>
+                <option value="brussels">Bruxelles — Belgique</option>
+                <option value="waregem">Waregem — Belgique</option>
+                <option value="eindhoven">Eindhoven — Pays-Bas</option>
+                <option value="geneva">Genève — Suisse</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="cf-subject">Objet</label>
+            <select id="cf-subject" name="subject">
+              <option value="general">Demande générale</option>
+              <option value="invest">Devenir client / investir</option>
+              <option value="intermediary">Partenariat avec un intermédiaire financier</option>
+              <option value="press">Presse et médias</option>
+              <option value="careers">Carrières</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="cf-message">Votre message <span class="req">*</span></label>
+            <textarea id="cf-message" name="message" rows="6" required placeholder="Décrivez-nous brièvement ce dont vous souhaitez discuter..."></textarea>
+          </div>
+
+          <label class="form-consent">
+            <input type="checkbox" id="cf-consent" required />
+            <span>J’accepte que Wealtheon utilise mes coordonnées pour répondre à ma demande, conformément à la <a href="#">Politique de confidentialité</a>. <span class="req">*</span></span>
+          </label>
+
+          <button type="submit" class="btn btn-primary form-submit">Envoyer le message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- Direct contact sidebar -->
+      <aside class="contact-aside cx-reveal">
+        <div class="contact-aside-card">
+          <h3>Vous préférez un contact direct ?</h3>
+          <p>Appelez-nous ou envoyez-nous un e-mail — pendant les heures de bureau, vous parlerez à une personne, pas à un menu.</p>
+
+          <div class="contact-direct">
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Belgique et Pays-Bas</span>
+              <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+              <a href="tel:+3223725010">+32 2 372 50 10</a>
+            </div>
+            <div class="contact-direct-item">
+              <span class="contact-direct-label">Suisse</span>
+              <a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a>
+              <a href="tel:+41223204740">+41 22 320 47 40</a>
+            </div>
+          </div>
+
+          <div class="contact-hours">
+            <span class="contact-direct-label">Heures de bureau</span>
+            <p>Du lundi au vendredi, 9:00 – 17:30 CET</p>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <blockquote>
+            « Votre valeur, notre expérience, pour une croissance commune. »
+          </blockquote>
+          <cite>La famille Wealtheon</cite>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     OFFICES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header cx-reveal">
+      <h2>Visitez l’un de nos bureaux</h2>
+      <p>Quatre bureaux répartis dans trois pays. Vous êtes toujours le bienvenu pour un café et une conversation — sur rendez-vous.</p>
+    </div>
+
+    <div class="offices-grid offices-grid-4">
+
+      <div class="office-card cx-reveal">
+        <p class="office-country">Belgique</p>
+        <h4>Bruxelles</h4>
+        <address>
+          Waterloosesteenweg 1135<br>
+          1180 Bruxelles<br>
+          <a href="tel:+3223725010">+32 2 372 50 10</a><br>
+          <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+        </address>
+      </div>
+
+      <div class="office-card cx-reveal">
+        <p class="office-country">Belgique</p>
+        <h4>Waregem</h4>
+        <address>
+          Kalkhoevestraat 30 B3.2<br>
+          8790 Waregem<br>
+          <a href="tel:+3256960501">+32 56 96 05 01</a><br>
+          <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+        </address>
+      </div>
+
+      <div class="office-card cx-reveal">
+        <p class="office-country">Pays-Bas</p>
+        <h4>Eindhoven</h4>
+        <address>
+          Schimmelt 28 unit-b<br>
+          5611 ZX Eindhoven<br>
+          <a href="tel:+31402960480">+31 40 296 0480</a><br>
+          <a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a>
+        </address>
+      </div>
+
+      <div class="office-card cx-reveal">
+        <p class="office-country">Suisse</p>
+        <h4>Genève</h4>
+        <address>
+          14 Bd des Philosophes<br>
+          1205 Genève<br>
+          <a href="tel:+41223204740">+41 22 320 47 40</a><br>
+          <a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a>
+        </address>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section-red">
+  <div class="cta-section">
+    <h2>Vous ne savez pas par où commencer ?</h2>
+    <p>Découvrez nos stratégies d’investissement et notre façon de travailler — puis discutons-en.</p>
+    <a href="/services" class="btn btn-white">Découvrir nos services</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" style="height:44px;width:auto;margin-bottom:0.6rem;" />
+      <p class="footer-tagline">« Votre valeur, notre expérience, pour une croissance commune »</p>
+      <p class="footer-address"><strong>Belgique — Bruxelles</strong><br>Waterloosesteenweg 1135, 1180 Bruxelles<br>+32 2 372 50 10</p>
+      <p class="footer-address"><strong>Belgique — Waregem</strong><br>Kalkhoevestraat 30 B3.2, 8790 Waregem<br>+32 56 96 05 01</p>
+      <p class="footer-address"><strong>Pays-Bas</strong><br>Schimmelt 28 unit-b, 5611 ZX Eindhoven<br>+31 40 296 0480</p>
+      <p class="footer-address"><strong>Suisse</strong><br>14 Bd des Philosophes, 1205 Genève<br>+41 22 320 47 40</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services#growth">Stratégie de croissance</a></li>
+        <li><a href="/services#value">Stratégie value</a></li>
+        <li><a href="/services#high-conviction">Forte conviction</a></li>
+        <li><a href="/services#funds">Nos fonds</a></li>
+        <li><a href="/services#financial-intermediaries">Intermédiaires financiers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Société</h4>
+      <ul>
+        <li><a href="/about">À propos de nous</a></li>
+        <li><a href="/impact">Impact et ESG</a></li>
+        <li><a href="/news">Actualités</a></li>
+        <li><a href="/careers">Carrières</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Mentions légales</h4>
+      <ul>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Conditions d’utilisation</a></li>
+        <li><a href="#">Politique cookies</a></li>
+        <li><a href="#">Informations réglementaires</a></li>
+        <li><a href="#">MiFID II</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a></li>
+        <li><a href="mailto:info@wealtheon.ch">info@wealtheon.ch</a></li>
+        <li><a href="/contact">Formulaire de contact</a></li>
+        <li><a href="/">Changer de région</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Wealtheon SA. Tous droits réservés. · VAT BE0423.072.032 · CHE-100.840.696</span>
+    <div class="footer-lang">
+      <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+      <a href="#">FR</a><span class="lang-sep">|</span>
+      <a href="#">NL</a>
+    </div>
+  </div>
+  <p class="footer-regulatory">
+    Ce site web est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement.
+    Wealtheon SA est réglementée par le droit belge des services financiers. Wealtheon SA (Genève) est agréée par la FINMA, supervisée par l’AOOS, membre du SAAM, ombudsman OFS.
+  </p>
+</footer>
+
+<script>
+
+  // Smooth scroll-reveal (powers the Buildings contact animations; CSS keeps
+  // content visible for every other theme and if JS is unavailable).
+  (function () {
+    document.documentElement.classList.add('js-reveal');
+    var els = document.querySelectorAll('.cx-reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    } else {
+      els.forEach(function (e) { e.classList.add('in'); });
+    }
+  })();
+
+  // Contact form — front-end prototype handler (no mail backend yet)
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var name = document.getElementById('cf-name').value.trim().split(' ')[0];
+    form.reset();
+    status.textContent = 'Merci' + (name ? ', ' + name : '') + ' ! Votre message a bien été reçu — nous vous répondrons dans un délai d’un jour ouvrable.';
+    status.classList.add('visible');
+    status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+
+</body>
+</html>
