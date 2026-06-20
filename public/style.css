@@ -7,7 +7,8 @@
 :root {
   --red:        #AD0000;
   --red-dark:   #8a0000;
-  --red-light:  rgba(173,0,0,0.08);
+  --red-rgb:    173, 0, 0;            /* accent as r,g,b for rgba() — themeable */
+  --red-light:  rgba(var(--red-rgb),0.08);
   --white:      #ffffff;
   --black:      #1A1A1A;
   --bg-light:   #F5F2F2;
@@ -515,7 +516,7 @@ p { color: var(--text-muted); line-height: 1.75; }
   font-style: normal;
   color: var(--red);
   text-decoration: underline;
-  text-decoration-color: rgba(173,0,0,0.3);
+  text-decoration-color: rgba(var(--red-rgb),0.3);
   text-underline-offset: 4px;
 }
 
@@ -649,7 +650,7 @@ p { color: var(--text-muted); line-height: 1.75; }
 .section-dark h4 { color: var(--white); }
 
 .section-dark p { color: rgba(255,255,255,0.65); }
-.section-dark .section-label { color: rgba(173,0,0,1); }
+.section-dark .section-label { color: rgba(var(--red-rgb),1); }
 
 .section-red .section-label { color: rgba(255,255,255,0.7); }
 .section-red h2 { color: var(--white); }
@@ -873,7 +874,7 @@ p { color: var(--text-muted); line-height: 1.75; }
 
 .fund-card:hover {
   background: rgba(255,255,255,0.08);
-  border-color: rgba(173,0,0,0.6);
+  border-color: rgba(var(--red-rgb),0.6);
 }
 
 .fund-tag {
@@ -1267,7 +1268,7 @@ p { color: var(--text-muted); line-height: 1.75; }
 .team-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-  border-color: rgba(173,0,0,0.25);
+  border-color: rgba(var(--red-rgb),0.25);
 }
 
 .team-photo-placeholder {
@@ -1277,7 +1278,7 @@ p { color: var(--text-muted); line-height: 1.75; }
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
-  color: rgba(173,0,0,0.2);
+  color: rgba(var(--red-rgb),0.2);
 }
 
 .team-photo {
@@ -1692,8 +1693,8 @@ tbody tr:hover { background: var(--bg-light); }
 }
 
 .error-msg {
-  background: rgba(173,0,0,0.06);
-  border: 1px solid rgba(173,0,0,0.2);
+  background: rgba(var(--red-rgb),0.06);
+  border: 1px solid rgba(var(--red-rgb),0.2);
   color: var(--red);
   padding: 1rem 1.5rem;
   border-radius: var(--radius);
@@ -1945,12 +1946,12 @@ code.inline {
 }
 .banner--5 .banner-eyebrow {
   color: var(--red);
-  border-color: rgba(173,0,0,0.3);
+  border-color: rgba(var(--red-rgb),0.3);
 }
 .banner--5 h1 { color: var(--black); }
 .banner--5 h1 em {
   color: var(--red);
-  text-decoration-color: rgba(173,0,0,0.3);
+  text-decoration-color: rgba(var(--red-rgb),0.3);
 }
 .banner--5 .banner-sub { color: var(--text-muted); }
 .banner--5 .banner-scroll { color: var(--text-muted); }

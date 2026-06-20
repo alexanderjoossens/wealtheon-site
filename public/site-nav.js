@@ -12,6 +12,45 @@
 (function () {
   var docEl = document.documentElement;
 
+  /* ── Colour style theme (red default ↔ blue), persisted across pages.
+       Applied immediately (script runs in <head>) to avoid a flash. ── */
+  var THEME_KEY = 'wealtheon_theme';
+  function readTheme() {
+    var t;
+    try { t = localStorage.getItem(THEME_KEY); } catch (e) {}
+    return (t === 'blue' || t === 'red') ? t : 'red';
+  }
+  function applyTheme(t) {
+    docEl.setAttribute('data-theme', t);
+    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+    document.querySelectorAll('.style-toggle .st-opt').forEach(function (b) {
+      if (b.getAttribute('data-key') === t) b.setAttribute('data-active', '');
+      else b.removeAttribute('data-active');
+    });
+  }
+  applyTheme(readTheme());
+
+  function toggleHTML() {
+    return '<div class="style-toggle" role="group" aria-label="Colour style">' +
+      '<span class="st-label">Style</span>' +
+      '<div class="st-track">' +
+        '<button class="st-opt" type="button" data-key="red"><span class="st-dot"></span>Red</button>' +
+        '<button class="st-opt" type="button" data-key="blue"><span class="st-dot"></span>Blue</button>' +
+      '</div></div>';
+  }
+  function mountToggle() {
+    if (document.querySelector('.style-toggle')) return;
+    var wrap = document.createElement('div');
+    wrap.innerHTML = toggleHTML();
+    var el = wrap.firstChild;
+    el.addEventListener('click', function (e) {
+      var btn = e.target.closest('.st-opt');
+      if (btn) applyTheme(btn.getAttribute('data-key'));
+    });
+    document.body.appendChild(el);
+    applyTheme(readTheme()); /* sync active state now the buttons exist */
+  }
+
   /* ── Nav bar style: ?nav= overrides the page default ── */
   var m = window.location.search.match(/[?&]nav=([\w-]+)/);
   var style = (m && m[1]) || docEl.getAttribute('data-navstyle') || 'classic';
@@ -23,12 +62,10 @@
 
   /* ── Markup ── */
   var HOMEPAGES = [
-    ['/home',       'home',       'Home',      'Red — independent asset management'],
+    ['/home',       'home',       'Home',      'Cinematic — toggle red/blue style'],
     ['/home1',      'home1',      'Buildings', 'Skyline — bold &amp; centered'],
-    ['/home-blue',  'home-blue',  'Blue',      'Cinematic — navy hero'],
-    ['/home-white', 'home-white', 'White',     'Light editorial'],
-    ['/home6',      'home6',      'Cinematic Red',  'Dark cinematic — video hero'],
-    ['/home7',      'home7',      'Cinematic Blue', 'Cinematic — blue accents']
+    ['/home-blue',  'home-blue',  'Navy',      'Cinematic navy hero'],
+    ['/home-white', 'home-white', 'Light',     'Light editorial']
   ];
 
   function homepageLinks() {
@@ -161,6 +198,7 @@
   }
 
   function init() {
+    mountToggle();
     var mount = document.getElementById('site-nav');
     if (!mount) return;
     mount.innerHTML = navHTML();

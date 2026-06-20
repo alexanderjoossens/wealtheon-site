@@ -36,13 +36,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// Home page — red default (one of the 4 kept homepages)
+// Home page — the cinematic homepage (red default, blue via Style toggle)
 app.get('/home', (req, res) => {
-  res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
+  res.sendFile(path.join(PUBLIC_DIR, 'home6.html'));
 });
 
 // Homepage variations in the "Welcome" dropdown
-// (home = red/default, home1 = buildings, home-blue, home-white)
 app.get('/home1', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home1.html'));
 });

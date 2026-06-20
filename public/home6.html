@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" data-page="home6" data-navstyle="glass-pill">
+<html lang="nl" data-page="home" data-navstyle="glass-pill">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +17,7 @@
     :root {
       --red:       #E11B22;
       --red-deep:  #B8141A;
+      --red-rgb:   225, 27, 34;
       --ink:       #1A1A1A;
       --ink-700:   #2A2A2A;
       --ink-500:   #555555;
@@ -62,7 +63,7 @@
       background: linear-gradient(180deg,
         rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.12) 20%,
         rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-        rgba(225,27,34,0.18) 80%, rgba(225,27,34,0.4) 100%);
+        rgba(var(--red-rgb),0.18) 80%, rgba(var(--red-rgb),0.4) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -140,7 +141,7 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(120% 90% at 80% 8%, rgba(225,27,34,0.22), transparent 50%),
+        radial-gradient(120% 90% at 80% 8%, rgba(var(--red-rgb),0.22), transparent 50%),
         radial-gradient(100% 80% at 8% 96%, rgba(70,55,55,0.5), transparent 62%),
         linear-gradient(158deg, #3A3232 0%, #2E2828 40%, #262121 74%, #221E1E 100%);
       overflow: hidden;
@@ -154,7 +155,7 @@
     .hero-bg .sweep {
       position: absolute; top: -30%; left: -40%;
       width: 60%; height: 160%;
-      background: linear-gradient(105deg, transparent, rgba(225,27,34,0.10), transparent);
+      background: linear-gradient(105deg, transparent, rgba(var(--red-rgb),0.10), transparent);
       transform: rotate(8deg);
       animation: sweep 9s ease-in-out infinite;
     }
@@ -310,7 +311,7 @@
     .cta::after {
       content: ""; position: absolute; right: -8%; top: -50%;
       width: 55%; height: 200%;
-      background: radial-gradient(circle, rgba(225,27,34,0.16), transparent 64%);
+      background: radial-gradient(circle, rgba(var(--red-rgb),0.16), transparent 64%);
     }
     .cta .wrap {
       position: relative; z-index: 1;
