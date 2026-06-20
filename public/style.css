@@ -1089,7 +1089,8 @@ p { color: var(--text-muted); line-height: 1.75; }
    PAGE HEROES (inner pages)
    ════════════════════════════════════════════════════════════ */
 .page-hero {
-  background: var(--bg-light);
+  background: linear-gradient(180deg, var(--red-light), var(--bg-light) 65%);
+  border-top: 3px solid var(--red);
   border-bottom: 1px solid var(--border);
   padding: 4rem 0 3.5rem;
 }
