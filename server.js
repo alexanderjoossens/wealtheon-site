@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// Home page
+// Home page — red default (one of the 4 kept homepages)
 app.get('/home', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home.html'));
 });
