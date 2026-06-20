@@ -115,13 +115,8 @@
         '<li data-group="foundation"><a href="/foundation">Foundation</a></li>' +
         '<li data-group="news"><a href="/news">News</a></li>' +
 
-        /* Contact */
-        '<li data-group="contact">' +
-          '<button class="nav-dropdown-btn" data-dropdown="contact-dropdown" aria-expanded="false" aria-haspopup="true">Contact <span class="nav-arrow">▾</span></button>' +
-          '<div class="dropdown dropdown-narrow" id="contact-dropdown" role="menu">' +
-            '<a href="/contact" role="menuitem"><div><strong>Contact</strong><span>Form &amp; offices</span></div></a>' +
-          '</div>' +
-        '</li>' +
+        /* Contact — plain link, no dropdown */
+        '<li data-group="contact"><a href="/contact">Contact</a></li>' +
 
         '<li data-group="careers"><a href="/careers">Careers</a></li>' +
       '</ul>' +

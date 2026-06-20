@@ -8,6 +8,107 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="/site-nav.css" />
   <script src="/site-nav.js"></script>
+  <style>
+    /* ════════════════════════════════════════════════════════════
+       CONTACT — distinct layout per theme
+       red/blue: refined two-tone · buildings: architectural dark
+       light: airy minimal · (fixed glass nav → extra hero top space)
+       ════════════════════════════════════════════════════════════ */
+    .page-hero { padding-top: 6.5rem; }
+    .contact-form-wrap {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 36px clamp(22px, 3vw, 40px); box-shadow: 0 18px 48px rgba(20,20,20,0.06);
+    }
+    .office-card { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+    .office-card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(20,20,20,0.08); border-color: rgba(var(--red-rgb), 0.4); }
+
+    /* ───── RED / BLUE — refined two-tone, bold accent aside ───── */
+    html[data-theme="red"]  .contact-aside-card,
+    html[data-theme="blue"] .contact-aside-card {
+      background: linear-gradient(165deg, var(--red), var(--red-dark));
+      border: none; color: #fff; box-shadow: 0 22px 48px rgba(var(--red-rgb), 0.30);
+    }
+    html[data-theme="red"]  .contact-aside-card h3, html[data-theme="blue"] .contact-aside-card h3,
+    html[data-theme="red"]  .contact-aside-card > p, html[data-theme="blue"] .contact-aside-card > p,
+    html[data-theme="red"]  .contact-aside-card a,  html[data-theme="blue"] .contact-aside-card a { color: #fff; }
+    html[data-theme="red"]  .contact-aside-card .contact-direct-label,
+    html[data-theme="blue"] .contact-aside-card .contact-direct-label { color: rgba(255,255,255,0.62); }
+    html[data-theme="red"]  .contact-aside-card .contact-direct-item a:hover,
+    html[data-theme="blue"] .contact-aside-card .contact-direct-item a:hover { color: #fff; text-decoration: underline; }
+
+    /* ───── BUILDINGS — architectural, dark, skyline hero, glass form ───── */
+    html[data-theme="buildings"] .page-hero {
+      background: linear-gradient(160deg, rgba(20,17,14,0.72), rgba(14,12,10,0.88)),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+      border-top: none; color: #fff; padding: 8rem 0 5rem;
+    }
+    html[data-theme="buildings"] .page-hero h1 { color: #fff; }
+    html[data-theme="buildings"] .page-hero p { color: rgba(255,255,255,0.82); }
+    html[data-theme="buildings"] section.section-white { background: #181513; }
+    html[data-theme="buildings"] .contact-form-wrap {
+      background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.12);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.42);
+    }
+    html[data-theme="buildings"] .contact-form-wrap h2 { color: #fff; }
+    html[data-theme="buildings"] .contact-form-intro { color: rgba(255,255,255,0.6); }
+    html[data-theme="buildings"] .form-field label { color: rgba(255,255,255,0.78); }
+    html[data-theme="buildings"] .form-field input,
+    html[data-theme="buildings"] .form-field select,
+    html[data-theme="buildings"] .form-field textarea {
+      background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); color: #fff;
+    }
+    html[data-theme="buildings"] .form-field input::placeholder,
+    html[data-theme="buildings"] .form-field textarea::placeholder { color: rgba(255,255,255,0.4); }
+    html[data-theme="buildings"] .form-consent span { color: rgba(255,255,255,0.66); }
+    html[data-theme="buildings"] .contact-aside-card {
+      background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.12);
+    }
+    html[data-theme="buildings"] .contact-aside-card h3,
+    html[data-theme="buildings"] .contact-aside-card p,
+    html[data-theme="buildings"] .contact-aside-card a { color: #fff; }
+    html[data-theme="buildings"] .contact-direct-label { color: var(--red); }
+    html[data-theme="buildings"] .quote-box { background: rgba(255,255,255,0.045); }
+    html[data-theme="buildings"] .quote-box blockquote,
+    html[data-theme="buildings"] .quote-box cite { color: #fff; }
+    html[data-theme="buildings"] section.section-light { background: #211d1a; }
+    html[data-theme="buildings"] .section-header h2 { color: #fff; }
+    html[data-theme="buildings"] .section-header p { color: rgba(255,255,255,0.6); }
+    html[data-theme="buildings"] .office-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); }
+    html[data-theme="buildings"] .office-card h4 { color: #fff; }
+    html[data-theme="buildings"] .office-card address,
+    html[data-theme="buildings"] .office-card address a { color: rgba(255,255,255,0.72); }
+    html[data-theme="buildings"] .office-card .office-country { color: var(--red); }
+
+    /* ───── LIGHT — airy, minimal, single centred column, underline inputs ───── */
+    html[data-theme="light"] .page-hero { background: #fff; border-top: none; text-align: center; padding: 7rem 0 1rem; }
+    html[data-theme="light"] .page-hero .container { max-width: 720px; }
+    html[data-theme="light"] .page-hero p { margin-left: auto; margin-right: auto; }
+    html[data-theme="light"] section.section-white { background: #fff; }
+    html[data-theme="light"] .contact-layout { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; }
+    html[data-theme="light"] .contact-form-wrap { background: transparent; border: none; box-shadow: none; padding: 0; }
+    html[data-theme="light"] .contact-form-wrap h2 { font-weight: 500; text-align: center; }
+    html[data-theme="light"] .contact-form-intro { text-align: center; }
+    html[data-theme="light"] .form-field input,
+    html[data-theme="light"] .form-field select,
+    html[data-theme="light"] .form-field textarea {
+      background: transparent; border: none; border-bottom: 1px solid var(--border);
+      border-radius: 0; padding-left: 2px; padding-right: 2px;
+    }
+    html[data-theme="light"] .form-field input:focus,
+    html[data-theme="light"] .form-field select:focus,
+    html[data-theme="light"] .form-field textarea:focus { box-shadow: none; border-bottom-color: var(--red); }
+    html[data-theme="light"] .form-submit { width: 100%; }
+    html[data-theme="light"] .contact-aside { margin-top: 6px; }
+    html[data-theme="light"] .contact-aside-card { background: var(--bg-light); border: none; text-align: center; }
+    html[data-theme="light"] .quote-box { display: none; }
+    html[data-theme="light"] section.section-light { background: #fff; }
+    html[data-theme="light"] .office-card {
+      background: transparent; border: none; border-top: 1px solid var(--border);
+      border-radius: 0; box-shadow: none; padding-top: 22px;
+    }
+    html[data-theme="light"] .office-card:hover { transform: none; box-shadow: none; }
+  </style>
 </head>
 <body>
 
@@ -21,11 +122,6 @@
      ═══════════════════════════════════════════════════════════ -->
 <section class="page-hero">
   <div class="container">
-    <nav class="breadcrumb">
-      <a href="/home">Home</a>
-      <span class="sep">›</span>
-      <span>Contact</span>
-    </nav>
     <h1>Let's Have a Conversation</h1>
     <p>
       Whether you're considering an investment, exploring a partnership, or simply have a question —
