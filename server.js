@@ -58,9 +58,18 @@ app.get('/home7', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'home7.html'));
 });
 
-// Services page
+// Services pages — split into Direct Lines, Funds, Partners
 app.get('/services', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'services.html'));
+});
+app.get('/direct-lines', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'direct-lines.html'));
+});
+app.get('/funds', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'funds.html'));
+});
+app.get('/partners', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'partners.html'));
 });
 
 // About page

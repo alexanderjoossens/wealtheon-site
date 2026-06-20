@@ -101,23 +101,11 @@
         /* Services */
         '<li data-group="services">' +
           '<button class="nav-dropdown-btn" data-dropdown="services-dropdown" aria-expanded="false" aria-haspopup="true">Services <span class="nav-arrow">▾</span></button>' +
-          '<div class="dropdown" id="services-dropdown" role="menu"><div class="dropdown-grid">' +
-            '<div>' +
-              '<div class="dropdown-col-title">Direct Lines</div>' +
-              '<a href="/services#growth" role="menuitem"><div><strong>Growth</strong><span>High-growth equity strategy</span></div></a>' +
-              '<a href="/services#high-conviction" role="menuitem"><div><strong>High Conviction</strong><span>Concentrated best-ideas portfolio</span></div></a>' +
-              '<a href="/services#value" role="menuitem"><div><strong>Value</strong><span>Defensive, quality-at-discount</span></div></a>' +
-            '</div>' +
-            '<div>' +
-              '<div class="dropdown-col-title">Funds</div>' +
-              '<a href="/services#funds" role="menuitem"><div><strong>High Conviction Fund</strong><span>Concentrated multi-asset</span></div></a>' +
-              '<a href="/services#funds" role="menuitem"><div><strong>Value Fund</strong><span>Defensive equity fund</span></div></a>' +
-              '<a href="/services#funds" role="menuitem"><div><strong>Protea Fund Growth World Equity</strong><span>Global growth exposure</span></div></a>' +
-              '<a href="/services#funds" role="menuitem"><div><strong>DBI-RDT Value Fund</strong><span>Tax-efficient value fund</span></div></a>' +
-              '<div class="dropdown-col-title" style="margin-top:0.75rem;">Partners</div>' +
-              '<a href="/services#financial-intermediaries" role="menuitem"><div><strong>Financial Intermediaries</strong><span>Partnership &amp; support model</span></div></a>' +
-            '</div>' +
-          '</div></div>' +
+          '<div class="dropdown dropdown-narrow" id="services-dropdown" role="menu">' +
+            '<a href="/direct-lines" role="menuitem"><div><strong>Direct Lines</strong><span>Growth, Value &amp; High Conviction strategies</span></div></a>' +
+            '<a href="/funds" role="menuitem"><div><strong>Funds</strong><span>Our regulated investment funds</span></div></a>' +
+            '<a href="/partners" role="menuitem"><div><strong>Partners</strong><span>How we work with advisers &amp; intermediaries</span></div></a>' +
+          '</div>' +
         '</li>' +
 
         /* About */
