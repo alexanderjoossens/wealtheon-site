@@ -38,7 +38,7 @@
   flex-shrink: 0;
   text-decoration: none;
 }
-.nav-logo span { color: #AD0000; }
+.nav-logo span { color: var(--red); }
 .nav-logo-img { height: 40px; width: auto; display: block; }
 
 /* Main nav links */
@@ -78,8 +78,8 @@
 .nav-links > li > button:hover,
 .nav-links > li > a.active,
 .nav-links > li > button.active {
-  color: #AD0000;
-  background: rgba(173,0,0,0.08);
+  color: var(--red);
+  background: rgba(var(--red-rgb),0.08);
 }
 
 .nav-arrow {
@@ -134,7 +134,7 @@
   transition: background 0.15s, color 0.15s;
 }
 
-.dropdown a:hover { background: #F5F2F2; color: #AD0000; }
+.dropdown a:hover { background: #F5F2F2; color: var(--red); }
 
 .dropdown a strong {
   display: block;
@@ -176,7 +176,7 @@
   transition: color 0.2s;
 }
 .lang-switcher a:hover,
-.lang-switcher a.active { color: #AD0000; }
+.lang-switcher a.active { color: var(--red); }
 .lang-switcher .lang-sep { color: #E5DEDE; font-weight: 300; }
 
 /* Contact button (self-contained — no dependency on .btn) */
@@ -188,14 +188,14 @@
   line-height: 1.4;
   border-radius: 4px;
   cursor: pointer;
-  background: #AD0000;
+  background: var(--red);
   color: #ffffff;
-  border: 2px solid #AD0000;
+  border: 2px solid var(--red);
   text-decoration: none;
   letter-spacing: 0.01em;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-.nav-contact-btn:hover { background: #8a0000; border-color: #8a0000; color: #fff; }
+.nav-contact-btn:hover { background: var(--red-dark); border-color: var(--red-dark); color: #fff; }
 
 /* Mobile hamburger */
 .nav-toggle {
@@ -222,7 +222,7 @@
    ════════════════════════════════════════════════════════════ */
 
 /* ── Variant: solid Wealtheon red ── */
-html.navstyle-red .site-nav { background: #AD0000; border-bottom: none; }
+html.navstyle-red .site-nav { background: var(--red); border-bottom: none; }
 html.navstyle-red .nav-logo-img {
   content: url('/uploads/Wealtheon_logo_white.png');
   filter: brightness(0) invert(1);
@@ -240,8 +240,8 @@ html.navstyle-red .lang-switcher a { color: rgba(255,255,255,0.6); }
 html.navstyle-red .lang-switcher a:hover,
 html.navstyle-red .lang-switcher a.active { color: #fff; }
 html.navstyle-red .lang-switcher .lang-sep { color: rgba(255,255,255,0.3); }
-html.navstyle-red .nav-contact-btn { background: #fff; color: #AD0000; border-color: #fff; }
-html.navstyle-red .nav-contact-btn:hover { background: rgba(255,255,255,0.85); color: #AD0000; }
+html.navstyle-red .nav-contact-btn { background: #fff; color: var(--red); border-color: #fff; }
+html.navstyle-red .nav-contact-btn:hover { background: rgba(255,255,255,0.85); color: var(--red); }
 html.navstyle-red .nav-toggle span { background: #fff; }
 
 /* ── Glass variants: shared (fixed, overlay the hero) ── */
@@ -387,6 +387,7 @@ html[data-theme="red"] {
   --red-deep:  #B8141A;
   --w-red:      #E11B22;
   --w-red-deep: #B8141A;
+  --bg-light:  #F6F1F1;            /* warm grey surfaces */
 }
 
 html[data-theme="blue"] {
@@ -400,6 +401,7 @@ html[data-theme="blue"] {
   /* design system (brand.css) */
   --w-red:      #1A56DB;
   --w-red-deep: #123FA8;
+  --bg-light:  #EFF3F9;            /* cool grey surfaces */
 }
 
 /* Buildings — warm bronze / stone, architectural */
@@ -411,6 +413,8 @@ html[data-theme="buildings"] {
   --red-deep:  #7E6139;
   --w-red:      #9C7B4D;
   --w-red-deep: #7E6139;
+  --bg-light:  #F3EFE8;            /* warm stone surfaces */
+  --border:    #E7E0D3;
 }
 
 /* Light — airy, light-grey + soft steel blue with a touch of warmth */
@@ -422,7 +426,16 @@ html[data-theme="light"] {
   --red-deep:  #466B92;
   --w-red:      #5E86B0;
   --w-red-deep: #466B92;
+  --bg-light:  #F7FAFD;            /* airy, near-white surfaces */
+  --border:    #E8EEF4;
 }
+
+/* Light theme — soften the heavy dark CTA bands into light sections */
+html[data-theme="light"] .section-dark { background: #EEF3F8; color: #1A2230; }
+html[data-theme="light"] .section-dark h2,
+html[data-theme="light"] .section-dark h3,
+html[data-theme="light"] .section-dark h4 { color: #15202E; }
+html[data-theme="light"] .section-dark p { color: #4A5563; }
 
 /* ════════════════════════════════════════════════════════════
    STYLE TOGGLE — floating pill, top-right corner, every page

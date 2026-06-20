@@ -354,6 +354,39 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ════════════════════════════════════════════════════════════
+       THEME-SPECIFIC HERO TREATMENTS (driven by html[data-theme])
+       ════════════════════════════════════════════════════════════ */
+    /* Buildings — real skyline photo, cleaner & professional */
+    html[data-theme="buildings"] .hero-bg {
+      background:
+        linear-gradient(160deg, rgba(26,22,18,0.56) 0%, rgba(17,14,11,0.82) 100%),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+    }
+    html[data-theme="buildings"] .hero-bg .sweep { display: none; }
+    html[data-theme="buildings"] .hero-bg::after { color: rgba(255,255,255,0.06); }
+
+    /* Light — airy light hero with dark text */
+    html[data-theme="light"] .hero { color: #15202E; }
+    html[data-theme="light"] .hero-bg {
+      background:
+        radial-gradient(120% 90% at 82% 6%, rgba(var(--red-rgb),0.16), transparent 56%),
+        linear-gradient(165deg, #ffffff 0%, #eef2f7 56%, #e5edf5 100%);
+    }
+    html[data-theme="light"] .hero-bg::after { color: rgba(30,55,95,0.06); }
+    html[data-theme="light"] .hero-bg .lines {
+      background-image: repeating-linear-gradient(90deg, transparent 0 119px, rgba(20,45,90,0.04) 119px 120px);
+    }
+    html[data-theme="light"] .hero-wash {
+      background: linear-gradient(0deg, rgba(255,255,255,0.55) 0%, transparent 42%);
+    }
+    html[data-theme="light"] .hero-eyebrow span:last-child { color: rgba(30,45,70,0.7); }
+    html[data-theme="light"] .hero h1 { color: #15202E; }
+    html[data-theme="light"] .hero-sub { color: #4A5563; }
+    html[data-theme="light"] .hero-tag span { color: #15202E; }
+    html[data-theme="light"] .btn--glass { color: #1A2230; border-color: rgba(20,30,45,0.28); }
+    html[data-theme="light"] .btn--glass:hover { background: rgba(20,30,45,0.06) !important; border-color: rgba(20,30,45,0.5); }
   </style>
   <link rel="stylesheet" href="/site-nav.css" />
   <script src="/site-nav.js"></script>
