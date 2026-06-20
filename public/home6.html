@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" data-page="home6" data-navstyle="glass-pill">
+<html lang="nl" data-page="home" data-navstyle="glass-pill">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +17,7 @@
     :root {
       --red:       #E11B22;
       --red-deep:  #B8141A;
+      --red-rgb:   225, 27, 34;
       --ink:       #1A1A1A;
       --ink-700:   #2A2A2A;
       --ink-500:   #555555;
@@ -62,7 +63,7 @@
       background: linear-gradient(180deg,
         rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.12) 20%,
         rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
-        rgba(225,27,34,0.18) 80%, rgba(225,27,34,0.4) 100%);
+        rgba(var(--red-rgb),0.18) 80%, rgba(var(--red-rgb),0.4) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -140,7 +141,7 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(120% 90% at 80% 8%, rgba(225,27,34,0.22), transparent 50%),
+        radial-gradient(120% 90% at 80% 8%, rgba(var(--red-rgb),0.22), transparent 50%),
         radial-gradient(100% 80% at 8% 96%, rgba(70,55,55,0.5), transparent 62%),
         linear-gradient(158deg, #3A3232 0%, #2E2828 40%, #262121 74%, #221E1E 100%);
       overflow: hidden;
@@ -154,7 +155,7 @@
     .hero-bg .sweep {
       position: absolute; top: -30%; left: -40%;
       width: 60%; height: 160%;
-      background: linear-gradient(105deg, transparent, rgba(225,27,34,0.10), transparent);
+      background: linear-gradient(105deg, transparent, rgba(var(--red-rgb),0.10), transparent);
       transform: rotate(8deg);
       animation: sweep 9s ease-in-out infinite;
     }
@@ -284,7 +285,7 @@
     .arrow-link:hover .ar { transform: translateX(4px); }
 
     /* KPI band */
-    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 40px; }
+    .kpis { display: flex; flex-wrap: wrap; margin-top: 40px; }
     .kpi { padding: 0 34px; border-left: 1px solid rgba(255,255,255,0.14); }
     .kpi:first-child { padding-left: 0; border-left: 0; }
     .kpi .n {
@@ -305,12 +306,47 @@
     .fit p { font-size: 15px; color: var(--ink-500); line-height: 1.55; }
     .fit em { font-style: italic; color: var(--ink-700); }
 
+    /* Onze waarden — value cards */
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .values-grid { grid-template-columns: 1fr; } }
+    .value-card {
+      position: relative; overflow: hidden;
+      padding: 34px 28px 30px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
+    }
+    .value-card::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      height: 3px; width: 40px; background: var(--red);
+      transition: width .45s var(--ease);
+    }
+    .value-card::after {
+      content: attr(data-n); position: absolute; right: 6px; bottom: -38px;
+      font-family: var(--serif); font-weight: 500; font-size: 150px; line-height: 1;
+      color: rgba(var(--red-rgb), 0.05); pointer-events: none;
+    }
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(20,20,20,0.10);
+      border-color: rgba(var(--red-rgb), 0.45);
+    }
+    .value-card:hover::before { width: 100%; }
+    .value-card .vnum {
+      display: block; font-family: var(--serif); font-weight: 500;
+      font-size: 40px; line-height: 1; color: var(--red); margin-bottom: 22px;
+    }
+    .value-card h4 { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 11px; letter-spacing: -0.01em; }
+    .value-card p { position: relative; z-index: 1; font-size: 14px; color: var(--ink-500); line-height: 1.62; }
+
     /* CTA band */
     .cta { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
     .cta::after {
       content: ""; position: absolute; right: -8%; top: -50%;
       width: 55%; height: 200%;
-      background: radial-gradient(circle, rgba(225,27,34,0.16), transparent 64%);
+      background: radial-gradient(circle, rgba(var(--red-rgb),0.16), transparent 64%);
     }
     .cta .wrap {
       position: relative; z-index: 1;
@@ -353,6 +389,39 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ════════════════════════════════════════════════════════════
+       THEME-SPECIFIC HERO TREATMENTS (driven by html[data-theme])
+       ════════════════════════════════════════════════════════════ */
+    /* Buildings — real skyline photo, cleaner & professional */
+    html[data-theme="buildings"] .hero-bg {
+      background:
+        linear-gradient(160deg, rgba(26,22,18,0.56) 0%, rgba(17,14,11,0.82) 100%),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+    }
+    html[data-theme="buildings"] .hero-bg .sweep { display: none; }
+    html[data-theme="buildings"] .hero-bg::after { color: rgba(255,255,255,0.06); }
+
+    /* Light — airy light hero with dark text */
+    html[data-theme="light"] .hero { color: #15202E; }
+    html[data-theme="light"] .hero-bg {
+      background:
+        radial-gradient(120% 90% at 82% 6%, rgba(var(--red-rgb),0.16), transparent 56%),
+        linear-gradient(165deg, #ffffff 0%, #eef2f7 56%, #e5edf5 100%);
+    }
+    html[data-theme="light"] .hero-bg::after { color: rgba(30,55,95,0.06); }
+    html[data-theme="light"] .hero-bg .lines {
+      background-image: repeating-linear-gradient(90deg, transparent 0 119px, rgba(20,45,90,0.04) 119px 120px);
+    }
+    html[data-theme="light"] .hero-wash {
+      background: linear-gradient(0deg, rgba(255,255,255,0.55) 0%, transparent 42%);
+    }
+    html[data-theme="light"] .hero-eyebrow span:last-child { color: rgba(30,45,70,0.7); }
+    html[data-theme="light"] .hero h1 { color: #15202E; }
+    html[data-theme="light"] .hero-sub { color: #4A5563; }
+    html[data-theme="light"] .hero-tag span { color: #15202E; }
+    html[data-theme="light"] .btn--glass { color: #1A2230; border-color: rgba(20,30,45,0.28); }
+    html[data-theme="light"] .btn--glass:hover { background: rgba(20,30,45,0.06) !important; border-color: rgba(20,30,45,0.5); }
   </style>
   <link rel="stylesheet" href="/site-nav.css" />
   <script src="/site-nav.js"></script>
@@ -385,16 +454,11 @@
     <div class="hero-grid">
       <!-- Left column -->
       <div>
-        <div class="hero-eyebrow fade fade-1">
-          <span class="sq"></span>
-          <span>Onafhankelijk vermogensbeheer · sinds 1971</span>
-        </div>
 
         <h1 id="hero-heading" data-text="Wij beheren uw vermogen&#10;zoals wij het onze beheren."></h1>
 
         <p class="hero-sub fade fade-2">
-          Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only en gereguleerd
-          in vijf markten, zodat ons advies enkel uw belang dient.
+          Een onafhankelijke Belgische vermogensbeheerder in familiehanden.
         </p>
 
         <div class="hero-actions fade fade-3">
@@ -456,10 +520,8 @@
   <div class="wrap">
     <span class="sup reveal">Wealtheon in cijfers</span>
     <div class="kpis reveal">
-      <div class="kpi"><div class="n">4</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven · Genève</div></div>
+      <div class="kpi"><div class="n">3</div><div class="l">Kantoren</div><div class="s">Brussel · Waregem · Eindhoven</div></div>
       <div class="kpi"><div class="n">23</div><div class="l">Specialisten</div><div class="s">Eén toegewijd team</div></div>
-      <div class="kpi"><div class="n">±1&nbsp;Md€</div><div class="l">Beheerd vermogen</div><div class="s">Verdubbeld sinds 2020</div></div>
-      <div class="kpi"><div class="n">505+</div><div class="l">Portefeuilles</div><div class="s">Families &amp; ondernemers</div></div>
     </div>
   </div>
 </section>
@@ -473,14 +535,44 @@
       <span class="sup">Waarom Wealtheon</span>
       <h2>Vermogensbeheer met een langetermijnvisie.</h2>
     </div>
-    <div class="why-grid reveal">
+    <div class="why-grid reveal" style="grid-template-columns:1fr; max-width:680px;">
       <div>
         <div class="fit"><span class="idx">01</span><div><h4>100% onafhankelijk · pure player</h4><p>Geen commerciële druk, geen productverkoop. Enkel vermogensbeheer.</p></div></div>
-        <div class="fit"><span class="idx">02</span><div><h4>Familiebedrijf</h4><p>Geleid door Victor &amp; Kathelijn Zwart, met een langetermijnvisie.</p></div></div>
       </div>
-      <div>
-        <div class="fit"><span class="idx">03</span><div><h4>Fee-only</h4><p>Eén bron van inkomsten: onze vergoeding. Geen retrocessies sinds 1971.</p></div></div>
-        <div class="fit"><span class="idx">04</span><div><h4>Gereguleerd in vijf markten</h4><p>FSMA · FINMA · AFM · AMF · BaFin.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ONZE WAARDEN
+     ═══════════════════════════════════════════════════════════ -->
+<section class="sec sec--offwhite">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sup">Onze waarden</span>
+      <h2>Uw ervaren bondgenoot</h2>
+      <p>Wealtheon beheert uw beleggingsportefeuille als een goede huisvader. Vandaag, voor de dag van morgen. Zo bouwen we samen aan uw vermogende toekomst.</p>
+    </div>
+    <div class="values-grid reveal">
+      <div class="value-card" data-n="01">
+        <span class="vnum">01</span>
+        <h4>Client First</h4>
+        <p>Op elk niveau van onze organisatie streven wij ernaar om uw verwachtingen voortdurend te overtreffen.</p>
+      </div>
+      <div class="value-card" data-n="02">
+        <span class="vnum">02</span>
+        <h4>Integriteit</h4>
+        <p>Als familiebedrijf actief in de financiële sector, hechten wij veel belang aan onze reputatie; daarom handelen wij te allen tijde op een betrouwbare en transparante manier richting alle belanghebbenden.</p>
+      </div>
+      <div class="value-card" data-n="03">
+        <span class="vnum">03</span>
+        <h4>Expertise</h4>
+        <p>Als kennisgedreven organisatie bouwen wij voortdurend aan onze decennialange expertise.</p>
+      </div>
+      <div class="value-card" data-n="04">
+        <span class="vnum">04</span>
+        <h4>Gelijklopende belangen</h4>
+        <p>Samen met u beleggen wij voor de langere termijn in onze beleggingstrategieën.</p>
       </div>
     </div>
   </div>
@@ -534,7 +626,7 @@
       </div>
       <div>
         <h5>Kantoren</h5>
-        <ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li><li>Genève</li></ul>
+        <ul><li>Brussel</li><li>Waregem</li><li>Eindhoven</li></ul>
       </div>
     </div>
     <div class="foot-bot">
