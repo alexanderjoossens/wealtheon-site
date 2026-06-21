@@ -157,14 +157,8 @@
       '<a href="' + L('/home') + '" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>' +
       '<ul class="nav-links" id="nav-links">' +
 
-        /* Welcome — 4 homepages */
-        '<li data-group="home">' +
-          '<button class="nav-dropdown-btn" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">' + T.welcome + ' <span class="nav-arrow">▾</span></button>' +
-          '<div class="dropdown dropdown-narrow" id="welcome-dropdown" role="menu">' +
-            '<div class="dropdown-col-title">' + T.homepages + '</div>' +
-            homepageLinks() +
-          '</div>' +
-        '</li>' +
+        /* Welcome — plain link to the homepage (no dropdown) */
+        '<li data-group="home"><a href="' + L('/home') + '">' + T.welcome + '</a></li>' +
 
         /* Services */
         '<li data-group="services">' +
