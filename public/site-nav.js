@@ -53,7 +53,19 @@
     var el = wrap.firstChild;
     el.addEventListener('click', function (e) {
       var btn = e.target.closest('.st-opt');
-      if (btn) applyTheme(btn.getAttribute('data-key'));
+      if (!btn) return;
+      var key = btn.getAttribute('data-key');
+      if (isHomepage()) {
+        var dest = L(STYLE_HOME[key] || '/home');
+        try { localStorage.setItem(THEME_KEY, key); } catch (e2) {}
+        if (dest.replace(/\/$/, '') === window.location.pathname.replace(/\/$/, '')) {
+          applyTheme(key);                /* already on this variant → just recolour */
+        } else {
+          window.location.assign(dest);   /* go to the chosen homepage variant */
+        }
+      } else {
+        applyTheme(key);                  /* off a homepage → colour theme only */
+      }
     });
     document.body.appendChild(el);
     applyTheme(readTheme()); /* sync active state now the buttons exist */
@@ -104,6 +116,15 @@
   /* Build the href to switch the current page into another language */
   function switchHref(code) { if (code === 'en') return BASEPATH; if (BASEPATH === '/') return '/' + code + '/'; return '/' + code + BASEPATH; }
 
+  /* ── On a homepage, the Style toggle doubles as a homepage-variant chooser:
+       Red/Blue recolour the cinematic home (stay on /home), Buildings → /home1,
+       Light → /home-white — navigating in the CURRENT language. Off a homepage
+       it just sets the colour theme (unchanged behaviour). ── */
+  var HOME_KEYS  = { home:1, home1:1, 'home-blue':1, 'home-white':1, home6:1, home7:1 };
+  var HOME_PATHS = { '/home':1, '/home1':1, '/home6':1, '/home7':1, '/home-blue':1, '/home-white':1 };
+  var STYLE_HOME = { red:'/home', blue:'/home-blue', buildings:'/home1', light:'/home-white' };
+  function isHomepage() { return !!HOME_KEYS[docEl.getAttribute('data-page')] || !!HOME_PATHS[BASEPATH]; }
+
   /* ── Markup ── */
   var HOMEPAGES = [
     ['/home',       'home',       'Home',      'Cinematic — toggle red/blue style'],
@@ -136,14 +157,8 @@
       '<a href="' + L('/home') + '" class="nav-logo"><img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" class="nav-logo-img" /></a>' +
       '<ul class="nav-links" id="nav-links">' +
 
-        /* Welcome — 4 homepages */
-        '<li data-group="home">' +
-          '<button class="nav-dropdown-btn" data-dropdown="welcome-dropdown" aria-expanded="false" aria-haspopup="true">' + T.welcome + ' <span class="nav-arrow">▾</span></button>' +
-          '<div class="dropdown dropdown-narrow" id="welcome-dropdown" role="menu">' +
-            '<div class="dropdown-col-title">' + T.homepages + '</div>' +
-            homepageLinks() +
-          '</div>' +
-        '</li>' +
+        /* Welcome — plain link to the homepage (no dropdown) */
+        '<li data-group="home"><a href="' + L('/home') + '">' + T.welcome + '</a></li>' +
 
         /* Services */
         '<li data-group="services">' +
