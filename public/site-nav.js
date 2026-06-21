@@ -122,7 +122,7 @@
        it just sets the colour theme (unchanged behaviour). ── */
   var HOME_KEYS  = { home:1, home1:1, 'home-blue':1, 'home-white':1, home6:1, home7:1 };
   var HOME_PATHS = { '/home':1, '/home1':1, '/home6':1, '/home7':1, '/home-blue':1, '/home-white':1 };
-  var STYLE_HOME = { red:'/home', blue:'/home', buildings:'/home1', light:'/home-white' };
+  var STYLE_HOME = { red:'/home', blue:'/home-blue', buildings:'/home1', light:'/home-white' };
   function isHomepage() { return !!HOME_KEYS[docEl.getAttribute('data-page')] || !!HOME_PATHS[BASEPATH]; }
 
   /* ── Markup ── */
