@@ -53,7 +53,19 @@
     var el = wrap.firstChild;
     el.addEventListener('click', function (e) {
       var btn = e.target.closest('.st-opt');
-      if (btn) applyTheme(btn.getAttribute('data-key'));
+      if (!btn) return;
+      var key = btn.getAttribute('data-key');
+      if (isHomepage()) {
+        var dest = L(STYLE_HOME[key] || '/home');
+        try { localStorage.setItem(THEME_KEY, key); } catch (e2) {}
+        if (dest.replace(/\/$/, '') === window.location.pathname.replace(/\/$/, '')) {
+          applyTheme(key);                /* already on this variant → just recolour */
+        } else {
+          window.location.assign(dest);   /* go to the chosen homepage variant */
+        }
+      } else {
+        applyTheme(key);                  /* off a homepage → colour theme only */
+      }
     });
     document.body.appendChild(el);
     applyTheme(readTheme()); /* sync active state now the buttons exist */
@@ -103,6 +115,15 @@
   function L(p) { if (LANG === 'en') return p; if (p === '/') return '/' + LANG + '/'; return '/' + LANG + p; }
   /* Build the href to switch the current page into another language */
   function switchHref(code) { if (code === 'en') return BASEPATH; if (BASEPATH === '/') return '/' + code + '/'; return '/' + code + BASEPATH; }
+
+  /* ── On a homepage, the Style toggle doubles as a homepage-variant chooser:
+       Red/Blue recolour the cinematic home (stay on /home), Buildings → /home1,
+       Light → /home-white — navigating in the CURRENT language. Off a homepage
+       it just sets the colour theme (unchanged behaviour). ── */
+  var HOME_KEYS  = { home:1, home1:1, 'home-blue':1, 'home-white':1, home6:1, home7:1 };
+  var HOME_PATHS = { '/home':1, '/home1':1, '/home6':1, '/home7':1, '/home-blue':1, '/home-white':1 };
+  var STYLE_HOME = { red:'/home', blue:'/home', buildings:'/home1', light:'/home-white' };
+  function isHomepage() { return !!HOME_KEYS[docEl.getAttribute('data-page')] || !!HOME_PATHS[BASEPATH]; }
 
   /* ── Markup ── */
   var HOMEPAGES = [
