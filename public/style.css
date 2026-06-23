@@ -1,21 +1,33 @@
 /* ============================================================
    WEALTHEON — Global Stylesheet
-   Color palette: #AD0000 (red), #FFFFFF (white), #1A1A1A (near-black),
-                  #F5F2F2 (bg-light), #E5DEDE (border)
+   Aligned to the homepage (home6) design system:
+     #ED1C23 (red) · #C4161C (red-deep) · #1A1A1A (ink)
+     #FBFBF9 (off-white) · #FAF8F5 (cream) · #E8E4DD (line)
+     Palatino Linotype throughout (system serif — no web font needed)
    ============================================================ */
 
 :root {
-  --red:        #AD0000;
-  --red-dark:   #8a0000;
-  --red-rgb:    173, 0, 0;            /* accent as r,g,b for rgba() — themeable */
+  --red:        #ED1C23;
+  --red-dark:   #C4161C;
+  --red-deep:   #C4161C;
+  --red-rgb:    237, 28, 35;          /* exact logo red — accent as r,g,b for rgba() */
   --red-light:  rgba(var(--red-rgb),0.08);
   --white:      #ffffff;
   --black:      #1A1A1A;
-  --bg-light:   #F5F2F2;
-  --border:     #E5DEDE;
-  --text:       #1A1A1A;
-  --text-muted: #6B6B6B;
+  --ink:        #1A1A1A;
+  --ink-700:    #2A2A2A;
+  --ink-500:    #555555;
+  --ink-400:    #6B6B6B;
+  --offwhite:   #FBFBF9;
+  --cream:      #FAF8F5;
+  --bg-light:   #FAF8F5;              /* warm cream, was #F5F2F2 */
+  --border:     #E8E4DD;
+  --line:       #E8E4DD;
+  --text:       #2A2A2A;
+  --text-muted: #555555;
   --text-light: #9A9A9A;
+  --serif:      'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  --ease:       cubic-bezier(0.22, 0.61, 0.36, 1);
   --radius:     4px;
   --radius-md:  8px;
   --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
@@ -29,12 +41,13 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--white);
-  color: var(--text);
-  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--offwhite);
+  color: var(--ink-700);
+  font-family: var(--serif);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img { max-width: 100%; display: block; }
@@ -43,16 +56,25 @@ ul, ol { list-style: none; }
 
 /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
 h1, h2, h3, h4, h5 {
-  font-weight: 700;
   line-height: 1.2;
   color: var(--black);
   letter-spacing: -0.02em;
 }
 
-h1 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); }
-h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-h3 { font-size: 1.2rem; font-weight: 600; }
-h4 { font-size: 1rem; font-weight: 600; }
+/* Display headings use the editorial serif, matching the homepage */
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); line-height: 1.1; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.15; }
+h3 { font-size: 1.3rem; }
+
+/* Small subheads / labels stay in Inter for legibility */
+h4, h5 { font-family: inherit; font-weight: 600; }
+h4 { font-size: 1rem; }
 
 p { color: var(--text-muted); line-height: 1.75; }
 
@@ -64,12 +86,22 @@ p { color: var(--text-muted); line-height: 1.75; }
 }
 
 .section-label {
+  display: block;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 0.75rem;
+  color: var(--ink-500);
+  margin-bottom: 1.25rem;
+}
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 .red-accent { color: var(--red); }
@@ -603,10 +635,11 @@ p { color: var(--text-muted); line-height: 1.75; }
 .stat-item:last-child { border-right: none; }
 
 .stat-value {
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
   color: var(--black);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1;
   margin-bottom: 0.3rem;
 }
@@ -625,7 +658,7 @@ p { color: var(--text-muted); line-height: 1.75; }
   padding: 5rem 0;
 }
 
-.section-white { background: var(--white); }
+.section-white { background: var(--offwhite); }
 .section-light { background: var(--bg-light); }
 .section-dark  { background: var(--black); color: var(--white); }
 .section-red   { background: var(--red); color: var(--white); }
@@ -650,9 +683,10 @@ p { color: var(--text-muted); line-height: 1.75; }
 .section-dark h4 { color: var(--white); }
 
 .section-dark p { color: rgba(255,255,255,0.65); }
-.section-dark .section-label { color: rgba(var(--red-rgb),1); }
+.section-dark .section-label { color: rgba(255,255,255,0.62); }
 
 .section-red .section-label { color: rgba(255,255,255,0.7); }
+.section-red .section-label::before { background: #fff; }
 .section-red h2 { color: var(--white); }
 .section-red p { color: rgba(255,255,255,0.8); }
 
@@ -695,8 +729,8 @@ p { color: var(--text-muted); line-height: 1.75; }
 }
 
 .strategy-card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--black);
 }
 
@@ -767,14 +801,14 @@ p { color: var(--text-muted); line-height: 1.75; }
 }
 
 .value-number {
+  font-family: var(--serif);
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--red);
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   flex-shrink: 0;
   width: 60px;
-  opacity: 0.25;
 }
 
 .value-content {}
@@ -887,8 +921,8 @@ p { color: var(--text-muted); line-height: 1.75; }
 }
 
 .fund-card h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--white);
   margin-bottom: 0.6rem;
 }
@@ -1089,7 +1123,7 @@ p { color: var(--text-muted); line-height: 1.75; }
    PAGE HEROES (inner pages)
    ════════════════════════════════════════════════════════════ */
 .page-hero {
-  background: linear-gradient(180deg, var(--red-light), var(--bg-light) 65%);
+  background: linear-gradient(180deg, var(--cream), var(--offwhite) 70%);
   border-top: 3px solid var(--red);
   border-bottom: 1px solid var(--border);
   padding: 4rem 0 3.5rem;
@@ -1098,7 +1132,8 @@ p { color: var(--text-muted); line-height: 1.75; }
 /* Transparent floating nav (glass-pill) is position:fixed and overlays the
    hero — give the hero extra top clearance and drop the top border so the
    header floats cleanly, matching the homepage. */
-html.navstyle-glass-pill .page-hero {
+html.navstyle-glass-pill .page-hero,
+html.navstyle-glass-pill .data-hero {
   padding-top: 7rem;
   border-top: none;
 }
@@ -1119,6 +1154,44 @@ html.navstyle-glass-pill .page-hero {
   font-size: 1.05rem;
   max-width: 600px;
   color: var(--text-muted);
+}
+
+/* ── Photographic page hero (Foundation-style) ───────────────
+   Reusable: <section class="page-hero photo-hero"
+                      style="--hero-img:url('/uploads/x.jpg')">
+   Dark overlay keeps the white heading legible over any photo. */
+.photo-hero {
+  position: relative;
+  border-top: 3px solid var(--red);
+  border-bottom: none;
+  padding: 5.5rem 0 5rem;
+  background:
+    linear-gradient(180deg, rgba(20,12,12,0.78), rgba(20,12,12,0.62)),
+    var(--hero-img, none) center 30% / cover no-repeat;
+}
+.photo-hero .breadcrumb a,
+.photo-hero .breadcrumb span,
+.photo-hero .breadcrumb .sep { color: rgba(255,255,255,0.85); }
+.photo-hero h1 { color: #fff; }
+.photo-hero p  { color: rgba(255,255,255,0.92); }
+/* Per-page focal points so faces / subjects stay in frame (covers EN + nl + fr) */
+html[data-page="about"]   .photo-hero { background-position: center 8%; }
+html[data-page="careers"] .photo-hero { background-position: center 42%; }
+html[data-page="contact"] .photo-hero { background-position: center 8%; }
+
+/* All photographic heroes share ONE fixed banner height, so they are pixel-equal
+   regardless of how the heading/intro text wraps or the viewport width.
+   Content is vertically centred; overflow is clipped as a safety net. */
+.photo-hero, .foundation-hero {
+  height: 440px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.photo-hero > .container,
+.foundation-hero > .container { width: 100%; }
+@media (max-width: 768px) {
+  .photo-hero, .foundation-hero { height: auto; min-height: 360px; }
 }
 
 
