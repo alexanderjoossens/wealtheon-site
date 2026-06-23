@@ -7,17 +7,17 @@
   <meta name="description" content="Een onafhankelijke Belgische vermogensbeheerder in familiehanden. Fee-only, gereguleerd in vijf markten — gedreven door overtuiging, niet door commissie." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
        HOME 6 — Cinematic video hero (design handoff: Wealtheon Hero,
-       recolored to the v8 intent: deck red/cream — #E11B22 · off-white
+       recolored to the v8 intent: deck red/cream — #ED1C23 · off-white
        #FBFBF9 · near-black #1A1A1A). Self-contained variation page.
        ============================================================ */
     :root {
-      --red:       #E11B22;
-      --red-deep:  #B8141A;
-      --red-rgb:   225, 27, 34;
+      --red:       #ED1C23;
+      --red-deep:  #C4161C;
+      --red-rgb:   237, 28, 35;
       --ink:       #1A1A1A;
       --ink-700:   #2A2A2A;
       --ink-500:   #555555;
@@ -25,14 +25,14 @@
       --offwhite:  #FBFBF9;
       --cream:     #FAF8F5;
       --line:      #E8E4DD;
-      --serif:     'Source Serif 4', Palatino, serif;
+      --serif:     'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
       --ease:      cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       background: var(--offwhite);
@@ -359,7 +359,7 @@
       font-size: clamp(24px, 2.8vw, 36px); line-height: 1.15; letter-spacing: -0.015em;
       max-width: 20ch;
     }
-    .cta h2 em { font-style: italic; color: var(--red); }
+    .cta h2 em { font-style: italic; color: inherit; }
     .cta p { font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 16px; }
     .cta-actions { display: flex; flex-direction: column; gap: 14px; }
     .cta-actions .btn { text-align: center; }
