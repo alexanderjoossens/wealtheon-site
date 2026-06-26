@@ -103,6 +103,44 @@ Open `http://localhost:3000/news` to see the posts.
   `setInterval` poller, and the `/news`, `/api/posts`, `/api/sync` routes.
 - `public/news.html` (+ `fr/`, `nl/`) — the page that renders `/api/posts`.
 
+## Deploying on Railway (ephemeral filesystem)
+
+Railway wipes the container filesystem on every redeploy/restart, so the token
+file, the posts store and downloaded images do **not** survive unless you take
+two steps. Both are required for posts to stick:
+
+**1. Authenticate via env, not the token file.** You can't run the interactive
+OAuth flow on Railway (no browser). Instead:
+- Run `node scripts/linkedin-auth.js` **on your laptop** once (after approval).
+- Open the generated `data/linkedin-tokens.json`, copy the `refresh_token`.
+- In Railway → service → **Variables**, set `LINKEDIN_REFRESH_TOKEN` to that
+  value (plus `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `LINKEDIN_ORG_URN`,
+  `SYNC_TOKEN`). The server mints fresh access tokens from it automatically; the
+  refresh token itself lasts ~365 days (re-mint yearly).
+
+**2. Add a Volume for persistence.** In Railway → service → **Volumes**, add a
+volume mounted at e.g. `/data`, then set the variable `STORAGE_DIR=/data`.
+Posts (`/data/posts.json`) and images (`/data/uploads/linkedin/…`) then survive
+redeploys. ⚠ Do **not** mount the volume over the repo's `data/` or
+`public/uploads/` — those hold committed files (CSVs, the logo). Use a separate
+path like `/data` and point `STORAGE_DIR` at it.
+
+Without step 2 the site still works, but a redeploy resets it to an empty feed
+and the 15-min poller only re-pulls recent posts (full history would be lost).
+
+## One-time backfill of the whole post history
+
+The routine poller only fetches recent posts. To import the **entire** history
+once, call the sync endpoint with `?all=1`:
+
+```bash
+curl -X POST "https://<your-domain>/api/sync?all=1" \
+  -H "Authorization: Bearer <SYNC_TOKEN>"
+# → {"added": N, "fetched": M}   (pages through all posts; dedupes)
+```
+
+Safe to re-run — already-imported posts are skipped by URN.
+
 ## Operational notes
 
 - **Single instance:** the poller runs inside the Express process. If you ever
