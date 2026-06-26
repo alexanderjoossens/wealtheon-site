@@ -105,8 +105,14 @@ const server = http.createServer(async (req, res) => {
     res.end('<h2>✅ Wealtheon × LinkedIn connected.</h2><p>Tokens saved to data/linkedin-tokens.json. You can close this tab.</p>');
     console.log('\n✅ Tokens saved to data/linkedin-tokens.json');
     console.log(`   access token expires in ~${Math.round((j.expires_in || 0) / 86400)} days`);
-    if (!j.refresh_token) {
-      console.warn('   ⚠ No refresh_token returned — enable refresh tokens for the app, or re-auth before expiry.');
+    if (j.refresh_token) {
+      console.log('\n────────────────────────────────────────────────────────');
+      console.log('Copy this into Railway → Variables (then redeploy):');
+      console.log('\n  LINKEDIN_REFRESH_TOKEN=' + j.refresh_token);
+      console.log('\n(valid ~365 days — re-run this script before it expires)');
+      console.log('────────────────────────────────────────────────────────');
+    } else {
+      console.warn('   ⚠ No refresh_token returned — enable "refresh tokens" for the app, or re-auth before expiry.');
     }
     server.close(() => process.exit(0));
   } catch (e) {
