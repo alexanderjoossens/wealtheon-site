@@ -12,9 +12,16 @@ const DATA_DIR = path.join(__dirname, 'data');
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const UPLOADS_DIR = path.join(PUBLIC_DIR, 'uploads');
 
-// LinkedIn syndication store + settings
-const POSTS_FILE = path.join(DATA_DIR, 'posts.json');
-const LINKEDIN_UPLOADS = path.join(UPLOADS_DIR, 'linkedin');
+// LinkedIn syndication store + settings.
+// STORAGE_DIR lets a host with an ephemeral filesystem (e.g. Railway) point the
+// runtime store + downloaded images at a persistent volume. It must NOT be the
+// repo's data/ or public/ dir (those hold committed files). Defaults preserve
+// the original local-dev layout.
+const STORAGE_DIR = process.env.STORAGE_DIR || DATA_DIR;
+const POSTS_FILE = path.join(STORAGE_DIR, 'posts.json');
+const LINKEDIN_UPLOADS = process.env.STORAGE_DIR
+  ? path.join(process.env.STORAGE_DIR, 'uploads', 'linkedin')
+  : path.join(UPLOADS_DIR, 'linkedin');
 const SYNC_TOKEN = process.env.SYNC_TOKEN || '';
 const POLL_MINUTES = Math.max(1, parseInt(process.env.POLL_MINUTES || '15', 10));
 
@@ -38,6 +45,13 @@ const upload = multer({
 // Production base URL for canonical / hreflang / sitemap (override via env).
 const BASE_URL = (process.env.BASE_URL || 'https://www.wealtheon.eu').replace(/\/$/, '');
 const LANGS = ['en', 'fr', 'nl'];
+
+// Serve downloaded LinkedIn images from the (possibly volume-backed) store so
+// /uploads/linkedin/* resolves even when STORAGE_DIR is outside /public.
+// Registered first so it takes precedence over the general /public handler.
+app.use('/uploads/linkedin', express.static(LINKEDIN_UPLOADS, {
+  setHeaders: (res) => res.setHeader('Cache-Control', 'public, max-age=2592000')
+}));
 
 // Serve static assets from /public (css, js, images, etc.) with cache headers.
 app.use(express.static(PUBLIC_DIR, {
@@ -234,7 +248,7 @@ function readPosts() {
   catch (e) { return []; }
 }
 function writePosts(posts) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.mkdirSync(STORAGE_DIR, { recursive: true });
   fs.writeFileSync(POSTS_FILE, JSON.stringify(posts, null, 2));
 }
 
@@ -261,13 +275,15 @@ async function downloadImage(url, urn) {
 
 // One sync cycle: fetch from LinkedIn, dedupe by urn, download images,
 // auto-publish new posts. Guarded so interval + manual runs can't overlap.
+// { all:true } pages through the ENTIRE post history (one-time backfill);
+// otherwise it grabs the most recent posts (the routine poll).
 let syncing = false;
-async function syncOnce() {
+async function syncOnce({ all = false } = {}) {
   if (syncing) return { added: 0, skipped: 'in-progress' };
   syncing = true;
   try {
-    const fetched = await linkedin.fetchOrgPosts(20);
-    if (!fetched.length) return { added: 0 };
+    const fetched = all ? await linkedin.fetchAllOrgPosts() : await linkedin.fetchOrgPosts(20);
+    if (!fetched.length) return { added: 0, fetched: 0 };
     const posts = readPosts();
     const seen = new Set(posts.map(p => p.urn));
     let added = 0;
@@ -294,7 +310,7 @@ async function syncOnce() {
       posts.sort((a, b) => (b.publishedAt || 0) - (a.publishedAt || 0));
       writePosts(posts);
     }
-    return { added };
+    return { added, fetched: fetched.length };
   } finally {
     syncing = false;
   }
@@ -309,13 +325,16 @@ app.get('/api/posts', (req, res) => {
 });
 
 // ── API: trigger a sync on demand (Bearer SYNC_TOKEN) ────────
+// POST /api/sync          → fetch the most recent posts
+// POST /api/sync?all=1     → one-time backfill of the ENTIRE history
 app.post('/api/sync', async (req, res) => {
   if (!SYNC_TOKEN) return res.status(503).json({ error: 'SYNC_TOKEN not configured' });
   if ((req.headers.authorization || '') !== `Bearer ${SYNC_TOKEN}`) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
+  const all = req.query.all === '1' || req.query.all === 'true';
   try {
-    res.json(await syncOnce());
+    res.json(await syncOnce({ all }));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
