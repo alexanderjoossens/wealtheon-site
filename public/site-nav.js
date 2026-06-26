@@ -87,19 +87,19 @@
      other language. ── */
   var NAV_I18N = {
     en: { welcome:'Welcome', homepages:'Homepages', services:'Services', about:'About Us',
-          foundation:'Foundation', careers:'Careers', contact:'Contact', contactUs:'Contact Us',
+          news:'News', foundation:'Foundation', careers:'Careers', contact:'Contact', contactUs:'Contact Us',
           directLines:'Direct Lines', directLinesDesc:'Growth, Value &amp; High Conviction strategies',
           funds:'Funds', fundsDesc:'Our regulated investment funds',
           partners:'Partners', partnersDesc:'How we work with advisers &amp; intermediaries',
           contactDesc:'Form &amp; offices' },
     fr: { welcome:'Accueil', homepages:'Pages d’accueil', services:'Services', about:'À propos',
-          foundation:'Fondation', careers:'Carrières', contact:'Contact', contactUs:'Nous contacter',
+          news:'Actualités', foundation:'Fondation', careers:'Carrières', contact:'Contact', contactUs:'Nous contacter',
           directLines:'Lignes directes', directLinesDesc:'Stratégies Croissance, Valeur &amp; Haute Conviction',
           funds:'Fonds', fundsDesc:'Nos fonds d’investissement réglementés',
           partners:'Partenaires', partnersDesc:'Notre collaboration avec conseillers &amp; intermédiaires',
           contactDesc:'Formulaire &amp; bureaux' },
     nl: { welcome:'Welkom', homepages:'Homepagina’s', services:'Diensten', about:'Over ons',
-          foundation:'Stichting', careers:'Vacatures', contact:'Contact', contactUs:'Contacteer ons',
+          news:'Nieuws', foundation:'Stichting', careers:'Vacatures', contact:'Contact', contactUs:'Contacteer ons',
           directLines:'Directe lijnen', directLinesDesc:'Groei-, Waarde- &amp; High Conviction-strategieën',
           funds:'Fondsen', fundsDesc:'Onze gereglementeerde beleggingsfondsen',
           partners:'Partners', partnersDesc:'Hoe we samenwerken met adviseurs &amp; tussenpersonen',
@@ -172,6 +172,9 @@
 
         /* About — plain link, no dropdown */
         '<li data-group="about"><a href="' + L('/about') + '">' + T.about + '</a></li>' +
+
+        /* News & Insights — syndicated LinkedIn posts */
+        '<li data-group="news"><a href="' + L('/news') + '">' + T.news + '</a></li>' +
 
         '<li data-group="foundation"><a href="' + L('/foundation') + '">' + T.foundation + '</a></li>' +
 

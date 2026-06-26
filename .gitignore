@@ -1,1 +1,6 @@
 wetransfer/
+
+# LinkedIn syndication — secrets & runtime artifacts
+.env
+data/linkedin-tokens.json
+public/uploads/linkedin/

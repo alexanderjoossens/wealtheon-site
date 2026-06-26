@@ -763,6 +763,12 @@ p { color: var(--text-muted); line-height: 1.75; }
   border-color: rgba(26,107,60,0.25);
 }
 
+.risk-balanced {
+  color: #9a6b1a;
+  background: rgba(154,107,26,0.08);
+  border-color: rgba(154,107,26,0.25);
+}
+
 .risk-concentrated {
   color: #2c5282;
   background: rgba(44,82,130,0.08);
@@ -1311,6 +1317,23 @@ html[data-page="contact"] .photo-hero { background-position: center 8%; }
 .fi-item p {
   font-size: 0.85rem;
 }
+
+/* ── Strategy: asset allocation + representative holdings ────── */
+.alloc { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0 0.25rem; }
+.alloc-row { display: grid; grid-template-columns: 130px 1fr; gap: 0.9rem; align-items: start; }
+.alloc-k {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--red); padding-top: 0.15rem;
+}
+.alloc-v { font-size: 0.92rem; color: var(--text); line-height: 1.55; }
+.holdings { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+.holding {
+  font-size: 0.82rem; font-weight: 600; color: var(--black);
+  background: var(--bg-light); border: 1px solid var(--border); border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+}
+.alloc-note { font-size: 0.78rem; color: var(--text-light); margin-top: 0.8rem; font-style: italic; }
+@media (max-width: 560px) { .alloc-row { grid-template-columns: 1fr; gap: 0.2rem; } }
 
 
 /* ════════════════════════════════════════════════════════════
