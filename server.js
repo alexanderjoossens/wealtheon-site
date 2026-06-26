@@ -1,13 +1,22 @@
+try { require('dotenv').config(); } catch (e) { /* dotenv optional — env may be set by the host */ }
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const linkedin = require('./lib/linkedin');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const UPLOADS_DIR = path.join(PUBLIC_DIR, 'uploads');
+
+// LinkedIn syndication store + settings
+const POSTS_FILE = path.join(DATA_DIR, 'posts.json');
+const LINKEDIN_UPLOADS = path.join(UPLOADS_DIR, 'linkedin');
+const SYNC_TOKEN = process.env.SYNC_TOKEN || '';
+const POLL_MINUTES = Math.max(1, parseInt(process.env.POLL_MINUTES || '15', 10));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOADS_DIR),
@@ -108,6 +117,11 @@ app.get('/careers', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'careers.html'));
 });
 
+// News & Insights — LinkedIn company-page posts syndicated here
+app.get('/news', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'news.html'));
+});
+
 // Data page
 app.get('/data', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'data.html'));
@@ -136,7 +150,7 @@ app.get(/^\/(fr|nl)(?:\/(.*))?$/, (req, res) => {
 
 // ── SEO: robots.txt + multilingual sitemap.xml ───────────────
 const SITE_PAGES = ['/', '/home', '/about', '/services', '/direct-lines',
-                    '/funds', '/partners', '/foundation', '/contact'];
+                    '/funds', '/partners', '/foundation', '/news', '/contact'];
 
 function locFor(lang, p) {
   if (lang === 'en') return BASE_URL + p;
@@ -214,7 +228,117 @@ app.delete('/api/images/:filename', (req, res) => {
   res.json({ deleted: filename });
 });
 
-// ── Start ────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`Wealtheon running at http://localhost:${PORT}`);
+// ── LinkedIn syndication: store + poller ─────────────────────
+function readPosts() {
+  try { return JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8')); }
+  catch (e) { return []; }
+}
+function writePosts(posts) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.writeFileSync(POSTS_FILE, JSON.stringify(posts, null, 2));
+}
+
+// Download a remote image into public/uploads/linkedin and return its web path.
+async function downloadImage(url, urn) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const ct = res.headers.get('content-type') || '';
+    const ext = ct.includes('png') ? '.png'
+              : ct.includes('gif') ? '.gif'
+              : ct.includes('webp') ? '.webp'
+              : '.jpg';
+    fs.mkdirSync(LINKEDIN_UPLOADS, { recursive: true });
+    const safe = String(urn).replace(/[^a-z0-9]/gi, '_');
+    const name = `${safe}_${Date.now()}${ext}`;
+    fs.writeFileSync(path.join(LINKEDIN_UPLOADS, name), Buffer.from(await res.arrayBuffer()));
+    return '/uploads/linkedin/' + name;
+  } catch (e) {
+    console.error('[linkedin] image download failed:', e.message);
+    return null;
+  }
+}
+
+// One sync cycle: fetch from LinkedIn, dedupe by urn, download images,
+// auto-publish new posts. Guarded so interval + manual runs can't overlap.
+let syncing = false;
+async function syncOnce() {
+  if (syncing) return { added: 0, skipped: 'in-progress' };
+  syncing = true;
+  try {
+    const fetched = await linkedin.fetchOrgPosts(20);
+    if (!fetched.length) return { added: 0 };
+    const posts = readPosts();
+    const seen = new Set(posts.map(p => p.urn));
+    let added = 0;
+    for (const f of fetched) {
+      if (seen.has(f.urn)) continue;
+      const images = [];
+      for (const u of (f.imageUrls || [])) {
+        const local = await downloadImage(u, f.urn);
+        if (local) images.push(local);
+      }
+      posts.push({
+        urn: f.urn,
+        url: f.url,
+        publishedAt: f.publishedAt || Date.now(),
+        fetchedAt: Date.now(),
+        text: f.text || '',
+        images,
+        status: 'published'   // auto-publish
+      });
+      seen.add(f.urn);
+      added++;
+    }
+    if (added) {
+      posts.sort((a, b) => (b.publishedAt || 0) - (a.publishedAt || 0));
+      writePosts(posts);
+    }
+    return { added };
+  } finally {
+    syncing = false;
+  }
+}
+
+// ── API: published posts for the News page ───────────────────
+app.get('/api/posts', (req, res) => {
+  const posts = readPosts()
+    .filter(p => p.status === 'published')
+    .sort((a, b) => (b.publishedAt || 0) - (a.publishedAt || 0));
+  res.json({ posts });
 });
+
+// ── API: trigger a sync on demand (Bearer SYNC_TOKEN) ────────
+app.post('/api/sync', async (req, res) => {
+  if (!SYNC_TOKEN) return res.status(503).json({ error: 'SYNC_TOKEN not configured' });
+  if ((req.headers.authorization || '') !== `Bearer ${SYNC_TOKEN}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  try {
+    res.json(await syncOnce());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── Start ────────────────────────────────────────────────────
+// Only listen + poll when run directly (node server.js); skipped when this
+// module is require()'d by a test harness.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Wealtheon running at http://localhost:${PORT}`);
+
+    if (linkedin.isConfigured()) {
+      const tick = () => syncOnce()
+        .then(r => { if (r.added) console.log(`[linkedin] synced ${r.added} new post(s)`); })
+        .catch(e => console.error('[linkedin] sync error:', e.message));
+      setTimeout(tick, 10 * 1000);                    // first run shortly after boot
+      setInterval(tick, POLL_MINUTES * 60 * 1000);    // then every POLL_MINUTES
+      console.log(`[linkedin] poller active — every ${POLL_MINUTES} min`);
+    } else {
+      console.log('[linkedin] not configured — /news shows published posts only. See LINKEDIN_SETUP.md');
+    }
+  });
+}
+
+module.exports = { app, syncOnce, readPosts, writePosts, downloadImage };

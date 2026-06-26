@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-page="news" data-navstyle="glass-pill">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News &amp; Insights — Wealtheon</title>
+  <meta name="description" content="The latest news and insights from Wealtheon, syndicated from our LinkedIn company page." />
+  <link rel="canonical" href="https://www.wealtheon.eu/news" />
+  <link rel="alternate" hreflang="en" href="https://www.wealtheon.eu/news" />
+  <link rel="alternate" hreflang="fr" href="https://www.wealtheon.eu/fr/news" />
+  <link rel="alternate" hreflang="nl" href="https://www.wealtheon.eu/nl/news" />
+  <link rel="alternate" hreflang="x-default" href="https://www.wealtheon.eu/news" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wealtheon" />
+  <meta property="og:title" content="News &amp; Insights — Wealtheon" />
+  <meta property="og:description" content="The latest from Wealtheon, syndicated from our LinkedIn company page." />
+  <meta property="og:url" content="https://www.wealtheon.eu/news" />
+  <meta property="og:image" content="https://www.wealtheon.eu/uploads/Wealtheon_logo_rgb.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/site-nav.css" />
+  <script src="/site-nav.js"></script>
+  <style>
+    .news-section { padding: 3.5rem 0 5rem; }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+    .news-card {
+      display: flex; flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+    }
+    .news-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .news-card-media { display: block; aspect-ratio: 16 / 10; background: var(--cream); overflow: hidden; }
+    .news-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease); }
+    .news-card:hover .news-card-media img { transform: scale(1.03); }
+    .news-card-body { display: flex; flex-direction: column; gap: .75rem; padding: 1.5rem; flex: 1; }
+    .news-card-date { font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; color: var(--text-light); }
+    .news-card-text {
+      color: var(--text); margin: 0; white-space: pre-wrap; line-height: 1.7;
+      display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .news-card-link {
+      margin-top: auto; color: var(--red); font-weight: 600; font-size: .95rem;
+      display: inline-flex; gap: .35rem; align-items: center; transition: gap .2s var(--ease);
+    }
+    .news-card-link:hover { gap: .6rem; }
+    .news-empty { text-align: center; color: var(--text-muted); padding: 3rem 0; font-size: 1.05rem; }
+    .news-hero-cta { margin-top: 1.25rem; }
+    .news-hero-cta a { color: var(--red); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>News &amp; Insights</h1>
+    <p>The latest from Wealtheon — published straight from our LinkedIn company page.</p>
+    <p class="news-hero-cta"><a href="https://www.linkedin.com/company/wealtheon-asset-management/" target="_blank" rel="noopener">Follow Wealtheon on LinkedIn →</a></p>
+  </div>
+</section>
+
+<section class="section section-white news-section">
+  <div class="container">
+    <div id="news-feed"><p class="news-empty">Loading…</p></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/uploads/Wealtheon_logo_rgb.png" alt="Wealtheon" style="height:44px;width:auto;margin-bottom:0.6rem;" />
+      <p class="footer-tagline">"Your value, our experience, for common growth"</p>
+      <p class="footer-address"><strong>Belgium — Brussels</strong><br>Waterloosesteenweg 1135, 1180 Brussels<br>+32 2 372 50 10</p>
+      <p class="footer-address"><strong>Belgium — Waregem</strong><br>Kalkhoevestraat 30 B3.2, 8790 Waregem<br>+32 56 96 05 01</p>
+      <p class="footer-address"><strong>The Netherlands</strong><br>Schimmelt 28 unit-b, 5611 ZX Eindhoven<br>+31 40 296 0480</p>
+      <p class="footer-address"><a href="https://www.linkedin.com/company/wealtheon-asset-management/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Follow Wealtheon on LinkedIn →</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services#growth">Growth Strategy</a></li>
+        <li><a href="/services#value">Value Strategy</a></li>
+        <li><a href="/services#high-conviction">High Conviction</a></li>
+        <li><a href="/services#funds">Our Funds</a></li>
+        <li><a href="/services#financial-intermediaries">Financial Intermediaries</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/impact">Impact &amp; ESG</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/careers">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Regulatory Disclosures</a></li>
+        <li><a href="#">MiFID II</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@wealtheon.eu">info@wealtheon.eu</a></li>
+        <li><a href="https://www.linkedin.com/company/wealtheon-asset-management/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="/contact">Contact form</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Wealtheon. All rights reserved. · VAT BE0423.072.032 · UID 17223344</span>
+    <div class="footer-lang">
+      <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+      <a href="#">FR</a><span class="lang-sep">|</span>
+      <a href="#">NL</a>
+    </div>
+  </div>
+  <p class="footer-regulatory">
+    This website is for information purposes only and does not constitute investment advice.
+    Wealtheon is an independent asset manager regulated under Belgian financial services law and operating within the EU MiFID II framework.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var feed = document.getElementById('news-feed');
+  var LOCALE = 'en-GB';
+  var STR = {
+    viewOn: 'View on LinkedIn →',
+    empty: 'No updates yet. Follow Wealtheon on LinkedIn for the latest.'
+  };
+
+  function fmtDate(ts) {
+    try { return new Intl.DateTimeFormat(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(ts)); }
+    catch (e) { return ''; }
+  }
+
+  function card(p) {
+    var art = document.createElement('article');
+    art.className = 'news-card';
+
+    if (p.images && p.images.length) {
+      var media = document.createElement('a');
+      media.className = 'news-card-media';
+      media.href = p.url; media.target = '_blank'; media.rel = 'noopener';
+      var img = document.createElement('img');
+      img.src = p.images[0]; img.alt = ''; img.loading = 'lazy';
+      media.appendChild(img);
+      art.appendChild(media);
+    }
+
+    var body = document.createElement('div');
+    body.className = 'news-card-body';
+
+    if (p.publishedAt) {
+      var time = document.createElement('time');
+      time.className = 'news-card-date';
+      time.dateTime = new Date(p.publishedAt).toISOString();
+      time.textContent = fmtDate(p.publishedAt);
+      body.appendChild(time);
+    }
+
+    var text = document.createElement('p');
+    text.className = 'news-card-text';
+    text.textContent = p.text || '';
+    body.appendChild(text);
+
+    var link = document.createElement('a');
+    link.className = 'news-card-link';
+    link.href = p.url; link.target = '_blank'; link.rel = 'noopener';
+    link.textContent = STR.viewOn;
+    body.appendChild(link);
+
+    art.appendChild(body);
+    return art;
+  }
+
+  function showEmpty() {
+    feed.innerHTML = '';
+    var e = document.createElement('p');
+    e.className = 'news-empty';
+    e.textContent = STR.empty;
+    feed.appendChild(e);
+  }
+
+  fetch('/api/posts')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var posts = (d && d.posts) || [];
+      if (!posts.length) return showEmpty();
+      feed.innerHTML = '';
+      var grid = document.createElement('div');
+      grid.className = 'news-grid';
+      posts.forEach(function (p) { grid.appendChild(card(p)); });
+      feed.appendChild(grid);
+    })
+    .catch(showEmpty);
+})();
+</script>
+
+</body>
+</html>
