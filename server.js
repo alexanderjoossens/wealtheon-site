@@ -199,7 +199,7 @@ app.get(/^\/(fr|nl)(?:\/(.*))?$/, (req, res) => {
 const SITE_PAGES = ['/', '/home', '/about', '/services', '/direct-lines',
                     '/funds', '/fund-world-equity', '/fund-value-world-equity',
                     '/fund-high-conviction', '/fund-dbi-rdt',
-                    '/partners', '/foundation', '/news', '/contact'];
+                    '/partners', '/foundation', '/news', '/contact', '/privacy'];
 
 function locFor(lang, p) {
   if (lang === 'en') return BASE_URL + p;
