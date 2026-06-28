@@ -260,7 +260,7 @@
      otherwise appends a new column. ── */
   var LEGAL_LINKS = [
     ['/esg-beleid',              'ESG Beleid'],
-    ['/klacht',                  'KLACHT'],
+    ['/klacht',                  'Klacht'],
     ['/beleggersrechten',        'De samenvatting van de rechten van de belegger'],
     ['/top-5-execution-venues',  'Top 5 execution venues']
   ];
