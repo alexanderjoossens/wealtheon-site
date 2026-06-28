@@ -111,6 +111,20 @@ app.get('/partners', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'partners.html'));
 });
 
+// Individual fund detail pages (Funds tab)
+app.get('/fund-world-equity', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-world-equity.html'));
+});
+app.get('/fund-value-world-equity', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-value-world-equity.html'));
+});
+app.get('/fund-high-conviction', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-high-conviction.html'));
+});
+app.get('/fund-dbi-rdt', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-dbi-rdt.html'));
+});
+
 // About page
 app.get('/about', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'about.html'));
@@ -164,7 +178,9 @@ app.get(/^\/(fr|nl)(?:\/(.*))?$/, (req, res) => {
 
 // ── SEO: robots.txt + multilingual sitemap.xml ───────────────
 const SITE_PAGES = ['/', '/home', '/about', '/services', '/direct-lines',
-                    '/funds', '/partners', '/foundation', '/news', '/contact'];
+                    '/funds', '/fund-world-equity', '/fund-value-world-equity',
+                    '/fund-high-conviction', '/fund-dbi-rdt',
+                    '/partners', '/foundation', '/news', '/contact'];
 
 function locFor(lang, p) {
   if (lang === 'en') return BASE_URL + p;
