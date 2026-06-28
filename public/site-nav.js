@@ -146,9 +146,9 @@
         (LANG === code ? ' class="active" aria-current="true"' : '') + '>' + label + '</a>';
     }
     return '<div class="lang-switcher">' +
-      a('en', 'EN') + '<span class="lang-sep">|</span>' +
+      a('nl', 'NL') + '<span class="lang-sep">|</span>' +
       a('fr', 'FR') + '<span class="lang-sep">|</span>' +
-      a('nl', 'NL') + '</div>';
+      a('en', 'EN') + '</div>';
   }
 
   function navHTML() {
@@ -167,6 +167,17 @@
             '<a href="' + L('/direct-lines') + '" role="menuitem"><div><strong>' + T.directLines + '</strong><span>' + T.directLinesDesc + '</span></div></a>' +
             '<a href="' + L('/funds') + '" role="menuitem"><div><strong>' + T.funds + '</strong><span>' + T.fundsDesc + '</span></div></a>' +
             '<a href="' + L('/partners') + '" role="menuitem"><div><strong>' + T.partners + '</strong><span>' + T.partnersDesc + '</span></div></a>' +
+          '</div>' +
+        '</li>' +
+
+        /* Funds — individual fund pages */
+        '<li data-group="funds">' +
+          '<button class="nav-dropdown-btn" data-dropdown="funds-dropdown" aria-expanded="false" aria-haspopup="true">' + T.funds + ' <span class="nav-arrow">▾</span></button>' +
+          '<div class="dropdown dropdown-narrow" id="funds-dropdown" role="menu">' +
+            '<a href="' + L('/fund-world-equity') + '" role="menuitem"><div><strong>Wealtheon World Equity</strong><span>FundPartner Solutions S.A.</span></div></a>' +
+            '<a href="' + L('/fund-value-world-equity') + '" role="menuitem"><div><strong>Wealtheon Value World Equity</strong><span>ISIN LU3238191574</span></div></a>' +
+            '<a href="' + L('/fund-high-conviction') + '" role="menuitem"><div><strong>Wealtheon High Conviction World Equity</strong><span>ISIN LU3238190766</span></div></a>' +
+            '<a href="' + L('/fund-dbi-rdt') + '" role="menuitem"><div><strong>DBI-RDT Value Fund</strong><span>Wealtheon Global Equity Value DBI-RDT</span></div></a>' +
           '</div>' +
         '</li>' +
 
@@ -243,8 +254,41 @@
     }
   }
 
+  /* ── Footer: shared "Juridische info" (legal) column ──────────
+     Injected so every page's footer stays in sync from one place.
+     Replaces a page's placeholder "Legal" column in situ when present,
+     otherwise appends a new column. ── */
+  var LEGAL_LINKS = [
+    ['/esg-beleid',              'ESG Beleid'],
+    ['/klacht',                  'Klacht'],
+    ['/beleggersrechten',        'De samenvatting van de rechten van de belegger'],
+    ['/top-5-execution-venues',  'Top 5 execution venues']
+  ];
+  function mountFooterLegal() {
+    var linksHTML = LEGAL_LINKS.map(function (l) {
+      return '<li><a href="' + l[0] + '">' + l[1] + '</a></li>';
+    }).join('');
+    document.querySelectorAll('.site-footer .footer-inner').forEach(function (inner) {
+      if (inner.getAttribute('data-legal-done')) return;
+      inner.setAttribute('data-legal-done', '1');
+      var legalCol = null;
+      inner.querySelectorAll('.footer-col').forEach(function (c) {
+        var h = c.querySelector('h4');
+        if (h && /^(legal|juridische info)$/i.test(h.textContent.trim())) legalCol = c;
+      });
+      if (!legalCol) {
+        legalCol = document.createElement('div');
+        legalCol.className = 'footer-col';
+        inner.appendChild(legalCol);
+      }
+      legalCol.classList.add('footer-col--legal');
+      legalCol.innerHTML = '<h4>Juridische info</h4><ul>' + linksHTML + '</ul>';
+    });
+  }
+
   function init() {
     mountToggle();
+    mountFooterLegal();
     var mount = document.getElementById('site-nav');
     if (!mount) return;
     mount.innerHTML = navHTML();

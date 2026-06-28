@@ -111,6 +111,20 @@ app.get('/partners', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'partners.html'));
 });
 
+// Individual fund detail pages (Funds tab)
+app.get('/fund-world-equity', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-world-equity.html'));
+});
+app.get('/fund-value-world-equity', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-value-world-equity.html'));
+});
+app.get('/fund-high-conviction', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-high-conviction.html'));
+});
+app.get('/fund-dbi-rdt', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'fund-dbi-rdt.html'));
+});
+
 // About page
 app.get('/about', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'about.html'));
@@ -131,6 +145,11 @@ app.get('/careers', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'careers.html'));
 });
 
+// Privacy policy
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'privacy.html'));
+});
+
 // News & Insights — LinkedIn company-page posts syndicated here
 app.get('/news', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'news.html'));
@@ -144,6 +163,20 @@ app.get('/data', (req, res) => {
 // Upload manager page
 app.get('/upload', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'upload.html'));
+});
+
+// Legal / regulatory pages (footer "Juridische info")
+app.get('/esg-beleid', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'esg-beleid.html'));
+});
+app.get('/klacht', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'klacht.html'));
+});
+app.get('/beleggersrechten', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'beleggersrechten.html'));
+});
+app.get('/top-5-execution-venues', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'top-5-execution-venues.html'));
 });
 
 // ── Localised pages: /fr/* and /nl/* ─────────────────────────
@@ -164,7 +197,9 @@ app.get(/^\/(fr|nl)(?:\/(.*))?$/, (req, res) => {
 
 // ── SEO: robots.txt + multilingual sitemap.xml ───────────────
 const SITE_PAGES = ['/', '/home', '/about', '/services', '/direct-lines',
-                    '/funds', '/partners', '/foundation', '/news', '/contact'];
+                    '/funds', '/fund-world-equity', '/fund-value-world-equity',
+                    '/fund-high-conviction', '/fund-dbi-rdt',
+                    '/partners', '/foundation', '/news', '/contact', '/privacy'];
 
 function locFor(lang, p) {
   if (lang === 'en') return BASE_URL + p;

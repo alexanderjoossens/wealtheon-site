@@ -15,6 +15,20 @@
        light: airy minimal · (fixed glass nav → extra hero top space)
        ════════════════════════════════════════════════════════════ */
     .page-hero { padding-top: 6.5rem; }
+
+    /* RED / BLUE — photographic banner (skyscrapers) behind the hero text */
+    html[data-theme="red"]  .page-hero,
+    html[data-theme="blue"] .page-hero {
+      position: relative; border-top: none;
+      background-color: #14110f;
+      background-image:
+        linear-gradient(180deg, rgba(16,11,11,0.60), rgba(16,11,11,0.50)),
+        url('/uploads/contact-hero.jpg');
+      background-position: center 40%; background-size: cover; background-repeat: no-repeat;
+      padding: 8.5rem 0 5rem;
+    }
+    html[data-theme="red"]  .page-hero h1, html[data-theme="blue"] .page-hero h1 { color: #fff; }
+    html[data-theme="red"]  .page-hero p,  html[data-theme="blue"] .page-hero p  { color: rgba(255,255,255,0.92); }
     .contact-form-wrap {
       background: #fff; border: 1px solid var(--border); border-radius: 16px;
       padding: 36px clamp(22px, 3vw, 40px); box-shadow: 0 18px 48px rgba(20,20,20,0.06);
@@ -83,7 +97,7 @@
     }
     html[data-theme="buildings"] .cx-skyline-img {
       position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      background: url('/uploads/contact-hero.jpg') center/cover no-repeat;
       transform: scale(1.1); animation: cxKen 20s ease-in-out infinite alternate; will-change: transform;
     }
     @keyframes cxKen { from { transform: scale(1.08) translate(0,0); } to { transform: scale(1.18) translate(-2.5%, -3%); } }
@@ -236,7 +250,7 @@
 
           <label class="form-consent">
             <input type="checkbox" id="cf-consent" required />
-            <span>I agree that Wealtheon may use my details to respond to my enquiry, in accordance with the <a href="#">Privacy Policy</a>. <span class="req">*</span></span>
+            <span>I agree that Wealtheon may use my details to respond to my enquiry, in accordance with the <a href="/privacy">Privacy Policy</a>. <span class="req">*</span></span>
           </label>
 
           <button type="submit" class="btn btn-primary form-submit">Send message</button>
@@ -387,7 +401,7 @@
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
         <li><a href="#">Terms of Use</a></li>
         <li><a href="#">Cookie Policy</a></li>
         <li><a href="#">Regulatory Disclosures</a></li>
@@ -407,9 +421,9 @@
   <div class="footer-bottom">
     <span class="copyright">© 2026 Wealtheon SA. All rights reserved. · VAT BE0423.072.032 · CHE-100.840.696</span>
     <div class="footer-lang">
-      <a href="#" class="active">EN</a><span class="lang-sep">|</span>
+      <a href="#">NL</a><span class="lang-sep">|</span>
       <a href="#">FR</a><span class="lang-sep">|</span>
-      <a href="#">NL</a>
+      <a href="#" class="active">EN</a>
     </div>
   </div>
   <p class="footer-regulatory">
