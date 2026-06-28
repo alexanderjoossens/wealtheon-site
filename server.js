@@ -145,6 +145,11 @@ app.get('/careers', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'careers.html'));
 });
 
+// Privacy policy
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'privacy.html'));
+});
+
 // News & Insights — LinkedIn company-page posts syndicated here
 app.get('/news', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'news.html'));
@@ -158,6 +163,20 @@ app.get('/data', (req, res) => {
 // Upload manager page
 app.get('/upload', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'upload.html'));
+});
+
+// Legal / regulatory pages (footer "Juridische info")
+app.get('/esg-beleid', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'esg-beleid.html'));
+});
+app.get('/klacht', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'klacht.html'));
+});
+app.get('/beleggersrechten', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'beleggersrechten.html'));
+});
+app.get('/top-5-execution-venues', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'top-5-execution-venues.html'));
 });
 
 // ── Localised pages: /fr/* and /nl/* ─────────────────────────

@@ -38,6 +38,12 @@
       <p class="fund-niw-note">Rendementen uit het verleden zijn geen betrouwbare indicator voor toekomstige rendementen.</p>
     </div>
 
+    <!-- NAV evolution chart -->
+    <div class="fund-chart">
+      <h2>Evolutie van de netto-inventariswaarde</h2>
+      <canvas id="navChart"></canvas>
+    </div>
+
     <!-- Key facts -->
     <div class="fund-facts" style="margin-bottom:2.75rem;">
       <div class="fund-fact"><div class="fund-fact-label">Laatste NIW</div><div class="fund-fact-value">1163.77</div></div>
@@ -229,7 +235,7 @@
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
         <li><a href="#">Terms of Use</a></li>
         <li><a href="#">Cookie Policy</a></li>
         <li><a href="#">Regulatory Disclosures</a></li>
@@ -259,6 +265,37 @@
     Wealtheon SA is regulated under Belgian financial services law. Wealtheon SA (Geneva) is authorised by FINMA, supervised by AOOS, member of SAAM, ombudsman OFS.
   </p>
 </footer>
+
+<!-- NAV evolution chart (Chart.js) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>
+  (function () {
+    var el = document.getElementById('navChart');
+    if (!el || !window.Chart) return;
+    new Chart(el, {
+      type: 'line',
+      data: {
+        labels: ['22-05-2026', '01-06-2026', '08-06-2026', '15-06-2026', '22-06-2026'],
+        datasets: [{
+          label: 'NIW',
+          data: [1164.91, 1157.65, 1159.15, 1168.98, 1163.77],
+          backgroundColor: 'rgba(219, 8, 20, 0.10)',
+          borderColor: '#DB0814',
+          fill: true,
+          borderWidth: 2,
+          tension: 0.25,
+          pointRadius: 3,
+          pointBackgroundColor: '#DB0814'
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: false } }
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
