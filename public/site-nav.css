@@ -79,6 +79,10 @@
 .nav-links > li > a.active,
 .nav-links > li > button.active {
   color: var(--red);
+}
+/* Grey/tinted background only on hover — the active page is shown by colour, no box */
+.nav-links > li > a:hover,
+.nav-links > li > button:hover {
   background: rgba(var(--red-rgb),0.08);
 }
 
@@ -230,6 +234,9 @@ html.navstyle-red .nav-links > li > button:hover,
 html.navstyle-red .nav-links > li > a.active,
 html.navstyle-red .nav-links > li > button.active {
   color: #fff;
+}
+html.navstyle-red .nav-links > li > a:hover,
+html.navstyle-red .nav-links > li > button:hover {
   background: rgba(255,255,255,0.14);
 }
 html.navstyle-red .lang-switcher a { color: rgba(255,255,255,0.6); }
@@ -304,6 +311,11 @@ html.navstyle-glass-pill .nav-links > li > button:hover,
 html.navstyle-glass-pill .nav-links > li > a.active,
 html.navstyle-glass-pill .nav-links > li > button.active {
   color: #fff;
+}
+html.navstyle-glass-dark .nav-links > li > a:hover,
+html.navstyle-glass-dark .nav-links > li > button:hover,
+html.navstyle-glass-pill .nav-links > li > a:hover,
+html.navstyle-glass-pill .nav-links > li > button:hover {
   background: rgba(255,255,255,0.1);
 }
 html.navstyle-glass-dark .lang-switcher a,

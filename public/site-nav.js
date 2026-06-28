@@ -146,9 +146,9 @@
         (LANG === code ? ' class="active" aria-current="true"' : '') + '>' + label + '</a>';
     }
     return '<div class="lang-switcher">' +
-      a('en', 'EN') + '<span class="lang-sep">|</span>' +
+      a('nl', 'NL') + '<span class="lang-sep">|</span>' +
       a('fr', 'FR') + '<span class="lang-sep">|</span>' +
-      a('nl', 'NL') + '</div>';
+      a('en', 'EN') + '</div>';
   }
 
   function navHTML() {
