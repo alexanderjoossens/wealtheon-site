@@ -2261,6 +2261,11 @@ html.navstyle-glass-pill .nav-links > li > button:hover,
 html.navstyle-glass-pill .nav-links > li > a.active,
 html.navstyle-glass-pill .nav-links > li > button.active {
   color: #fff;
+}
+html.navstyle-glass-dark .nav-links > li > a:hover,
+html.navstyle-glass-dark .nav-links > li > button:hover,
+html.navstyle-glass-pill .nav-links > li > a:hover,
+html.navstyle-glass-pill .nav-links > li > button:hover {
   background: rgba(255,255,255,0.1);
 }
 html.navstyle-glass-dark .lang-switcher a,
