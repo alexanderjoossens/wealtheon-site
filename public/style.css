@@ -661,7 +661,7 @@ p { color: var(--text-muted); line-height: 1.75; }
 .section-white { background: var(--offwhite); }
 .section-light { background: var(--bg-light); }
 .section-dark  { background: var(--black); color: var(--white); }
-.section-red   { background: var(--red); color: var(--white); }
+.section-red   { background: #181210; color: var(--white); border-top: 3px solid var(--red); }
 
 .section-header {
   margin-bottom: 3rem;
@@ -686,9 +686,20 @@ p { color: var(--text-muted); line-height: 1.75; }
 .section-dark .section-label { color: rgba(255,255,255,0.62); }
 
 .section-red .section-label { color: rgba(255,255,255,0.7); }
-.section-red .section-label::before { background: #fff; }
+.section-red .section-label::before { background: var(--red); }
 .section-red h2 { color: var(--white); }
-.section-red p { color: rgba(255,255,255,0.8); }
+.section-red p { color: rgba(255,255,255,0.72); }
+
+/* CTA band: dark & refined, shorter than before — red lives only in the
+   thin top accent and the button, so it reads premium instead of loud. */
+.section-red.section { padding: 0; }
+.section-red .cta-section { padding: 3.75rem 6%; }
+.section-red .btn-white {
+  background: var(--red); color: #fff; border-color: var(--red);
+}
+.section-red .btn-white:hover {
+  background: var(--red-dark); border-color: var(--red-dark);
+}
 
 
 /* ════════════════════════════════════════════════════════════
