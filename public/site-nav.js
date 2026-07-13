@@ -12,64 +12,13 @@
 (function () {
   var docEl = document.documentElement;
 
-  /* ── Colour style theme (red default ↔ blue), persisted across pages.
-       Applied immediately (script runs in <head>) to avoid a flash. ── */
-  var THEME_KEY = 'wealtheon_theme';
-  var THEMES = [
-    ['red',       'Red'],
-    ['blue',      'Blue'],
-    ['buildings', 'Buildings'],
-    ['light',     'Light']
-  ];
-  function isTheme(t) { return THEMES.some(function (x) { return x[0] === t; }); }
-  function readTheme() {
-    var t;
-    try { t = localStorage.getItem(THEME_KEY); } catch (e) {}
-    return isTheme(t) ? t : 'red';
-  }
-  function applyTheme(t) {
-    docEl.setAttribute('data-theme', t);
-    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
-    document.querySelectorAll('.style-toggle .st-opt').forEach(function (b) {
-      if (b.getAttribute('data-key') === t) b.setAttribute('data-active', '');
-      else b.removeAttribute('data-active');
-    });
-  }
-  applyTheme(readTheme());
-
-  function toggleHTML() {
-    var opts = THEMES.map(function (t) {
-      return '<button class="st-opt" type="button" data-key="' + t[0] + '" aria-label="' + t[1] + ' style">' +
-        '<span class="st-dot"></span><span class="st-text">' + t[1] + '</span></button>';
-    }).join('');
-    return '<div class="style-toggle" role="group" aria-label="Colour style">' +
-      '<span class="st-label">Style</span>' +
-      '<div class="st-track">' + opts + '</div></div>';
-  }
-  function mountToggle() {
-    if (document.querySelector('.style-toggle')) return;
-    var wrap = document.createElement('div');
-    wrap.innerHTML = toggleHTML();
-    var el = wrap.firstChild;
-    el.addEventListener('click', function (e) {
-      var btn = e.target.closest('.st-opt');
-      if (!btn) return;
-      var key = btn.getAttribute('data-key');
-      if (isHomepage()) {
-        var dest = L(STYLE_HOME[key] || '/home');
-        try { localStorage.setItem(THEME_KEY, key); } catch (e2) {}
-        if (dest.replace(/\/$/, '') === window.location.pathname.replace(/\/$/, '')) {
-          applyTheme(key);                /* already on this variant → just recolour */
-        } else {
-          window.location.assign(dest);   /* go to the chosen homepage variant */
-        }
-      } else {
-        applyTheme(key);                  /* off a homepage → colour theme only */
-      }
-    });
-    document.body.appendChild(el);
-    applyTheme(readTheme()); /* sync active state now the buttons exist */
-  }
+  /* ── Colour style: red only. The former red/blue/buildings/light "Style"
+       switcher has been removed, so force the red theme on every page and
+       clear any previously-persisted choice — a returning visitor who once
+       picked another style still gets red. Applied immediately (script runs
+       in <head>) to avoid a flash. ── */
+  docEl.setAttribute('data-theme', 'red');
+  try { localStorage.removeItem('wealtheon_theme'); } catch (e) {}
 
   /* ── Nav bar style: ?nav= overrides the page default ── */
   var m = window.location.search.match(/[?&]nav=([\w-]+)/);
@@ -115,15 +64,6 @@
   function L(p) { if (LANG === 'en') return p; if (p === '/') return '/' + LANG + '/'; return '/' + LANG + p; }
   /* Build the href to switch the current page into another language */
   function switchHref(code) { if (code === 'en') return BASEPATH; if (BASEPATH === '/') return '/' + code + '/'; return '/' + code + BASEPATH; }
-
-  /* ── On a homepage, the Style toggle doubles as a homepage-variant chooser:
-       Red/Blue recolour the cinematic home (stay on /home), Buildings → /home1,
-       Light → /home-white — navigating in the CURRENT language. Off a homepage
-       it just sets the colour theme (unchanged behaviour). ── */
-  var HOME_KEYS  = { home:1, home1:1, 'home-blue':1, 'home-white':1, home6:1, home7:1 };
-  var HOME_PATHS = { '/home':1, '/home1':1, '/home6':1, '/home7':1, '/home-blue':1, '/home-white':1 };
-  var STYLE_HOME = { red:'/home', blue:'/home-blue', buildings:'/home1', light:'/home-white' };
-  function isHomepage() { return !!HOME_KEYS[docEl.getAttribute('data-page')] || !!HOME_PATHS[BASEPATH]; }
 
   /* ── Markup ── */
   var HOMEPAGES = [
@@ -287,7 +227,6 @@
   }
 
   function init() {
-    mountToggle();
     mountFooterLegal();
     var mount = document.getElementById('site-nav');
     if (!mount) return;
