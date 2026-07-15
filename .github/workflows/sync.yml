@@ -1,11 +1,11 @@
 name: Auto Sync with Source
 
 on:
-  schedule:
+  # schedule:
     # Every 15 minutes between 9:00 AM and 5:45 PM local time (7:00 AM - 3:45 PM UTC)
-    - cron: '*/15 7-15 * * *'
+    # - cron: '*/15 7-15 * * *'
     # Every hour between 6:00 PM and 8:00 AM local time (4:00 PM - 6:00 AM UTC)
-    - cron: '0 16-23,0-6 * * *'
+    # - cron: '0 16-23,0-6 * * *'
   workflow_dispatch: # Allows you to run it manually from the Actions tab
 
 jobs:
